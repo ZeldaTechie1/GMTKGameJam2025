@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckin8e81s18g5"]
+
+[ext_resource type="Script" uid="uid://dt38ple8v0tf5" path="res://Scenes/Player/Scripts/BasicPlayer.cs" id="1_a3d8c"]
+[ext_resource type="Script" uid="uid://dew2oewo5dold" path="res://Scenes/Player/Scripts/CameraRotate.cs" id="1_uvnfx"]
+[ext_resource type="Script" uid="uid://diiukeqsw3gqh" path="res://Scenes/Player/Scripts/CameraFollow.cs" id="3_xpcdj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_a3d8c"]
+size = Vector3(0.755, 0.24, 0.265)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3d8c"]
+albedo_color = Color(0.134668, 0.389672, 0.446483, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvnfx"]
+margin = 0.01
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a3d8c"]
+radius = 0.3
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCamera", "Graphics")]
+floor_constant_speed = true
+script = ExtResource("1_a3d8c")
+PlayerCamera = NodePath("SpringArmPivot/Camera3D")
+Graphics = NodePath("Graphics")
+
+[node name="Graphics" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_tugb3")
+
+[node name="Glasses" type="MeshInstance3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.457631, -0.38385)
+mesh = SubResource("PrismMesh_a3d8c")
+surface_material_override/0 = SubResource("StandardMaterial3D_a3d8c")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_uvnfx")
+
+[node name="SpringArmPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("1_uvnfx")
+min_vertical_angle = -90.0
+max_vertical_angle = 45.0
+
+[node name="SpringArm3D" type="SpringArm3D" parent="SpringArmPivot"]
+shape = SubResource("SphereShape3D_a3d8c")
+spring_length = 6.0
+
+[node name="CameraFollowLocation" type="Marker3D" parent="SpringArmPivot/SpringArm3D"]
+
+[node name="Camera3D" type="Camera3D" parent="SpringArmPivot" node_paths=PackedStringArray("followLocation")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("3_xpcdj")
+followLocation = NodePath("../SpringArm3D/CameraFollowLocation")
+followSpeed = 10.0
