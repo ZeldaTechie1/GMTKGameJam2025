@@ -14,9 +14,10 @@ public partial class Tile : Node3D
 
     public TrackPiece Track;
 
-    public int CellSize = 1;
+    public int CellSize = 50;
 
-
+    [Export]
+    public Node3D[] ObstacleSpawnPoints;
 
     public int TileID { get; set; }
 
@@ -51,7 +52,7 @@ public partial class Tile : Node3D
                 return TrackPieceType.Straight;
                 break;
             case TileType.Checkpoint:
-                return TrackPieceType.Straight;
+                return TrackPieceType.Checkpoint;
                 break;
             case TileType.Start:
                 return TrackPieceType.Start;
@@ -61,6 +62,10 @@ public partial class Tile : Node3D
                 break;
         }
         return TrackPieceType.Default;
+    }
+    public void ClearTrack()
+    {
+        Track.QueueFree();
     }
 
 

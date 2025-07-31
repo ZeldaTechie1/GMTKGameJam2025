@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=12 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="Texture2D" uid="uid://cp82rh5du6871" path="res://Textures/PrototypeTextures/PNG/Dark/texture_07.png" id="1_3ija4"]
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/Player/player.tscn" id="1_ep0r4"]
 [ext_resource type="Script" uid="uid://b46t1q6jieqtm" path="res://Scenes/SignalTester.cs" id="2_am0fs"]
 [ext_resource type="PackedScene" uid="uid://d3ff2b7m68md6" path="res://Scenes/LevelManager.tscn" id="3_dkipe"]
 [ext_resource type="PackedScene" uid="uid://3ci47gsa67wp" path="res://Scenes/GameGrid/Tiles/game_grid.tscn" id="4_bw8hf"]
+[ext_resource type="PackedScene" uid="uid://dmc83r8wd13em" path="res://Scenes/GameGrid/Tiles/tile_track1.tscn" id="6_varko"]
+[ext_resource type="PackedScene" uid="uid://c4ovbnws1k2h5" path="res://Scenes/GameGrid/Tiles/tile_track2.tscn" id="7_62pdt"]
+[ext_resource type="PackedScene" uid="uid://ca0ikr4k3yf2j" path="res://Scenes/GameGrid/Tiles/tile_track3.tscn" id="8_f7gih"]
+[ext_resource type="PackedScene" uid="uid://dmavjk8leao74" path="res://Scenes/GameGrid/Tiles/tile_track4.tscn" id="9_spijo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkipe"]
 albedo_texture = ExtResource("1_3ija4")
@@ -232,6 +236,8 @@ GoalArea = NodePath("../Environment/Area3D")
 
 [node name="GameGrid" parent="." instance=ExtResource("4_bw8hf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-Margin = 1.5
+BoardLength = 10
+CellSize = 10
+TrackPieces = Array[PackedScene]([ExtResource("6_varko"), ExtResource("7_62pdt"), ExtResource("8_f7gih"), ExtResource("9_spijo")])
 
 [editable path="Player"]

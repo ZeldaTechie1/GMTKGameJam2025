@@ -24,7 +24,7 @@ public partial class GameGrid : Node3D
   
 
     public Tile FirstStartTile;
-    public Tile CurrentStartTile;
+    public Tile LastCheckPointTile;
     public Tile CurrentEndTile;
 
 
@@ -35,6 +35,8 @@ public partial class GameGrid : Node3D
         LoadPieces();
         GenerateMap();
         PopulateTileshWithTracks(Board);
+
+        AppendtoBoard(10);
 
      
       
@@ -52,7 +54,7 @@ public partial class GameGrid : Node3D
                 Tile tileHolder = new Tile(i, TileType.Start);
                 AddChild(tileHolder);
                 tileHolder.GlobalPosition = position;
-                CurrentStartTile = tileHolder;
+                FirstStartTile = tileHolder;
                 Board.Add(tileHolder);
 
             }
@@ -61,6 +63,7 @@ public partial class GameGrid : Node3D
                 Tile tileHolder = new Tile(i, TileType.End);
                 AddChild(tileHolder);
                 tileHolder.GlobalPosition = position;
+                LastCheckPointTile = tileHolder;
                 CurrentEndTile = tileHolder;
                 Board.Add(tileHolder);
             }
@@ -74,9 +77,56 @@ public partial class GameGrid : Node3D
             
         }
     }
-    public void PopulateTileshWithTracks(List<Tile>BoardSegment)
+
+    public void AppendtoBoard(int aditionaLength)
     {
-     
+        List<Tile> NewTiles = new List<Tile>();
+
+        LastCheckPointTile = CurrentEndTile;
+        int NewBoardLength = BoardLength + aditionaLength;
+        int CheckpointStart = LastCheckPointTile.TileID;
+        for (int i = CheckpointStart; i < NewBoardLength; i++)
+        {
+
+            Vector3 position = GlobalPosition + new Vector3(0, 0, i * (CellSize * Margin));
+            if (i == CheckpointStart)
+            {
+                Board[CheckpointStart].ClearTrack();
+                Board[CheckpointStart].Tile_Type = TileType.Checkpoint;
+                NewTiles.Add(Board[CheckpointStart]);
+
+            }
+
+            else if (i == NewBoardLength - 1)
+            {
+                Tile tileHolder = new Tile(i, TileType.End);
+                AddChild(tileHolder);
+                tileHolder.GlobalPosition = position;
+                CurrentEndTile = tileHolder;
+                NewTiles.Add(tileHolder);
+            }
+            else
+            {
+                Tile tileHolder = new Tile(i, TileType.Block);
+                AddChild(tileHolder);
+                tileHolder.GlobalPosition = position;
+                NewTiles.Add(tileHolder);
+            }
+        }
+        PopulateTileshWithTracks(NewTiles);
+
+        Board[CheckpointStart] = NewTiles[0];
+        NewTiles.RemoveAt(0);
+        Board.AddRange(NewTiles);
+
+        BoardLength = NewBoardLength;
+
+        
+    }
+
+    public void PopulateTileshWithTracks(List<Tile> BoardSegment)
+    {
+
         foreach (Tile t in BoardSegment)
         {
             TrackPiece piece = GetTrackPiece(t);
@@ -87,8 +137,8 @@ public partial class GameGrid : Node3D
             }
 
             else
-            { 
-                 GD.PrintErr("ERROR!");
+            {
+                GD.PrintErr("ERROR!");
             }
 
         }
