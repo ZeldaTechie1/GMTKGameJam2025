@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfg8mdgmjfjtj"]
+
+[ext_resource type="Script" uid="uid://bndjr4mwb574n" path="res://Scenes/GameGrid/Scripts/Tile.cs" id="1_8houl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdtwa"]
+albedo_color = Color(3.92266e-06, 0.646806, 0.203069, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjacm"]
+albedo_color = Color(5.77569e-07, 0.647657, 0.176433, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_djpev"]
+material = SubResource("StandardMaterial3D_fjacm")
+size = Vector3(1, 0.25, 1)
+
+[node name="MeshLibrary" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_bdtwa")
+mesh = SubResource("BoxMesh_djpev")
+script = ExtResource("1_8houl")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_bdtwa")
+mesh = SubResource("BoxMesh_djpev")
+script = ExtResource("1_8houl")

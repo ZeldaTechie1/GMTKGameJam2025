@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjw51jc57iv7x"]
+
+[ext_resource type="Script" uid="uid://cchskq7nkfscg" path="res://Scenes/GameGrid/Tiles/TrackPiece.cs" id="1_7m1mj"]
+
+[node name="TrackPiece" type="MeshInstance3D"]
+script = ExtResource("1_7m1mj")
+PeiceType = 1
