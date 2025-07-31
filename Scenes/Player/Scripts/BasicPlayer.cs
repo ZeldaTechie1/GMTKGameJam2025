@@ -4,27 +4,23 @@ using System.Diagnostics;
 
 public partial class BasicPlayer : CharacterBody3D
 {
-	public const float Speed = 5.0f;
-	public const float JumpVelocity = 4.5f;
+	[Export]public float CurrentSpeed = 0.0f;
+	[Export]public float Acceleration = 1.0f;
+	[Export]public float Deceleration = 0.5f;
+	[Export]public float JumpVelocity = 4.5f;
 
 	[Export] Camera3D PlayerCamera;
 	[Export] MeshInstance3D Graphics;
+	bool wasOnFloor;
 
 	public override void _PhysicsProcess(double delta)
 	{
-		base._PhysicsProcess(delta);
-		Vector3 velocity = Velocity;
+		Vector3 velocity = GetRealVelocity();
 
 		// Add the gravity.
 		if (!IsOnFloorOnly())
-		{
+		{	
 			velocity += GetGravity() * (float)delta;
-		}
-
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloorOnly())
-		{
-			velocity.Y = JumpVelocity;
 		}
 
 		// Get the input direction and handle the movement/deceleration.
@@ -35,22 +31,44 @@ public partial class BasicPlayer : CharacterBody3D
 		cameraBasis = cameraBasis.Rotated(cameraBasis.X, -cameraBasis.GetEuler().X);//this fixes the issue where the player would slow down the more up/down you look
 
 		Vector3 direction = (cameraBasis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
-		Vector3 lookAtDirection = new Vector3(direction.X, 0, direction.Z) + Graphics.GlobalPosition;
-		if (direction.Length() > Mathf.Epsilon)
-			Graphics.LookAt(lookAtDirection,Vector3.Up);
+        Vector3 floorNormal = GetFloorNormal();
+		if(direction == Vector3.Zero)
+		{
+			direction = -Graphics.Basis.Z;
+        }
 
-		if (direction != Vector3.Zero)
+		DebugDraw3D.DrawArrowRay(GlobalPosition+(Vector3.ModelTop * 2), floorNormal, 1, Colors.Blue);
+        
+		if (IsOnFloor())
+        {
+			direction = direction.Slide(floorNormal);
+        }
+
+        DebugDraw3D.DrawArrowRay(GlobalPosition + (Vector3.ModelTop * 2), direction, 1);
+        Vector3 lookAtDirection = direction + Graphics.GlobalPosition;
+        
+		if(IsOnFloor())
 		{
-			velocity.X = direction.X * Speed;
-			velocity.Z = direction.Z * Speed;
-		}
-		else
+            Graphics.LookAt(lookAtDirection,floorNormal);
+        }
+
+        if (inputDir != Vector2.Zero)
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
-		}
+			velocity += (direction * Acceleration);
+        }
+		else if (IsOnFloor() && Mathf.RadToDeg(GetFloorAngle()) < 10)
+		{
+			GD.Print(Mathf.RadToDeg(GetFloorAngle()));
+            Vector3 horizontalVelocity = new Vector3(velocity.X, 0, velocity.Z);
+            velocity -= (Deceleration * horizontalVelocity.Normalized());
+			
+			if (horizontalVelocity.Length() < .2f)
+				velocity = new Vector3(0,velocity.Y,0);
+        }
 
 		Velocity = velocity;
+		CurrentSpeed = velocity.Length();
+        DebugDraw3D.DrawArrowRay(GlobalPosition + (Vector3.ModelTop * 2), velocity, velocity.Length()*(float)delta,Colors.Red,is_absolute_size:true);
 		MoveAndSlide();
 	}
 }

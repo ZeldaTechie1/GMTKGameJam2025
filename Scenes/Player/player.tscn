@@ -12,15 +12,20 @@ size = Vector3(0.755, 0.24, 0.265)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3d8c"]
 albedo_color = Color(0.134668, 0.389672, 0.446483, 1)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvnfx"]
-margin = 0.01
+[sub_resource type="SphereShape3D" id="SphereShape3D_xpcdj"]
+radius = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a3d8c"]
 radius = 0.3
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCamera", "Graphics")]
+collision_layer = 3
 floor_constant_speed = true
+floor_block_on_wall = false
+floor_max_angle = 3.14159
+floor_snap_length = 0.2
 script = ExtResource("1_a3d8c")
+Deceleration = 0.4
 PlayerCamera = NodePath("SpringArmPivot/Camera3D")
 Graphics = NodePath("Graphics")
 
@@ -35,7 +40,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_a3d8c")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_uvnfx")
+shape = SubResource("SphereShape3D_xpcdj")
 
 [node name="SpringArmPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
