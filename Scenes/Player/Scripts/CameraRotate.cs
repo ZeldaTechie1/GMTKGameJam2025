@@ -4,19 +4,32 @@ using System.ComponentModel.DataAnnotations;
 
 public partial class CameraRotate : Node3D
 {
+    [Export] LevelManager levelManager;
 	[Export] float mouse_sensitivity = .005f;
     [Export(PropertyHint.Range, "-90,0,0.1")] float min_vertical_angle = -Mathf.Pi / 2;
     [Export(PropertyHint.Range, "0,90,0.1")] float max_vertical_angle = Mathf.Pi / 4;
+    bool inPlay;
 
     public override void _Ready()
     {
-        base._Ready();
-
-        Input.MouseMode = Input.MouseModeEnum.Captured;
+        levelManager.PlayStarted += () =>
+        {
+            inPlay = true;
+            Input.MouseMode = Input.MouseModeEnum.Captured;
+        };
+        levelManager.PlayEnded += () =>
+        {
+            inPlay = false;
+            Input.MouseMode = Input.MouseModeEnum.Visible;
+        };
+        
     }
 
     public override void _UnhandledInput(InputEvent @event)
     {
+        if (!inPlay)
+            return;
+
         base._UnhandledInput(@event);
 
 		if (@event is InputEventMouseMotion motion)

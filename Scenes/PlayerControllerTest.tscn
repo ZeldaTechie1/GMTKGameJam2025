@@ -219,19 +219,32 @@ shape = SubResource("BoxShape3D_am0fs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12604, -0.352375, -3.99549)
 size = Vector3(7.21667, 1, 8.99292)
 
-[node name="Player" parent="." instance=ExtResource("1_ep0r4")]
+[node name="Player" parent="." node_paths=PackedStringArray("levelManager") instance=ExtResource("1_ep0r4")]
 floor_constant_speed = false
 floor_max_angle = 1.22173
+levelManager = NodePath("../LevelManager")
 Deceleration = 0.5
+
+[node name="SpringArmPivot" parent="Player" index="2" node_paths=PackedStringArray("levelManager")]
+levelManager = NodePath("../../LevelManager")
 
 [node name="Hand" parent="Player" index="4" node_paths=PackedStringArray("LevelManager")]
 LevelManager = NodePath("../../LevelManager")
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("GoalArea") instance=ExtResource("3_dkipe")]
+[node name="Control" parent="Player/Hand" index="0"]
+visible = true
+
+[node name="LevelManager" parent="." node_paths=PackedStringArray("GoalArea", "OverviewCamera", "PlayerCamera") instance=ExtResource("3_dkipe")]
 GoalArea = NodePath("../Environment/Area3D")
+OverviewCamera = NodePath("../Camera3D")
+PlayerCamera = NodePath("../Player/SpringArmPivot/Camera3D")
 
 [node name="GameGrid" parent="." instance=ExtResource("4_bw8hf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 Margin = 1.5
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, -37.2927, 25.184, -14.7984)
+current = true
 
 [editable path="Player"]

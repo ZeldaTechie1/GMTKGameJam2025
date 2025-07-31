@@ -6,23 +6,24 @@ public partial class LevelManager : Node3D
     [Export] Timer levelTimer;
     [Export] RichTextLabel timerText;
     [Export] Area3D GoalArea;
+    [Export] Camera3D OverviewCamera;
+    [Export] Camera3D PlayerCamera;
 
+    [Signal] public delegate void LevelStartedEventHandler();
     [Signal] public delegate void TimerEndedEventHandler();
     [Signal] public delegate void RoundStartedEventHandler();
     [Signal] public delegate void RoundFinishedEventHandler();
+    [Signal] public delegate void PlayStartedEventHandler();
+    [Signal] public delegate void PlayEndedEventHandler();
     [Signal] public delegate void PlayerFailedEventHandler();
     [Signal] public delegate void PlayerSucceededEventHandler();
 
+    LevelState currentState;
+
     public override void _Ready()
     {
-        
-        StartRound();
-    }
-
-    private void GoalArea_BodyEntered(Node3D body)
-    {
-        if (body is BasicPlayer)
-            GoalReached();
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+        StartLevel();
     }
 
     public override void _Process(double delta)
@@ -34,35 +35,72 @@ public partial class LevelManager : Node3D
             int millisecs = Mathf.FloorToInt((levelTimer.TimeLeft - (int)levelTimer.TimeLeft) * 100);
             timerText.Text = $"{minutes}:{seconds}:{millisecs}";
         }
+
+        if(Input.IsActionJustPressed("StartPlay"))
+        {
+            if (currentState == LevelState.InRound)
+            {
+                EndRound();
+                StartPlay();
+            }
+        }
+    }
+
+    private void GoalArea_BodyEntered(Node3D body)
+    {
+        if (body is BasicPlayer)
+            GoalReached();
+    }
+
+    public void StartLevel()
+    {
+        StartRound();
     }
 
     public void StartRound()
     {
-        levelTimer.Start();
+        currentState = LevelState.InRound;
+        OverviewCamera.Current = true;
+        PlayerCamera.Current = false;
         EmitRoundStarted();
+    }
+    public void EndRound()
+    {
+        OverviewCamera.Current = false;
+        PlayerCamera.Current = true;
+        EmitRoundFinished();
+    }
+
+    public void StartPlay()
+    {
+        currentState = LevelState.InPlay;
+        EmitPlayStarted();
+        levelTimer.Start();
         levelTimer.Timeout += TimerFinished;
         GoalArea.BodyEntered += GoalArea_BodyEntered;
     }
+
+    public void EndPlay()
+    {
+        EmitPlayFinished();
+        levelTimer.Timeout -= TimerFinished;
+        GoalArea.BodyEntered -= GoalArea_BodyEntered;
+        StartRound();
+    }
+
     public void TimerFinished()
     {
         levelTimer.Stop();
         EmitTimerEnded();
         EmitPlayerFailed();
-        EndRound();
+        EndPlay();
     }
 
     public void GoalReached()
     {
         levelTimer.Stop();
         EmitPlayerSucceeded();
-        EndRound();
-    }
-
-    public void EndRound()
-    {
-        EmitRoundFinished();
-        levelTimer.Timeout -= TimerFinished;
-        GoalArea.BodyEntered -= GoalArea_BodyEntered;
+        EndPlay();
     }
 
     private void EmitTimerEnded()
@@ -80,6 +118,16 @@ public partial class LevelManager : Node3D
         EmitSignal(SignalName.RoundFinished);
     }
 
+    private void EmitPlayStarted()
+    {
+        EmitSignal(SignalName.PlayStarted);
+    }
+
+    private void EmitPlayFinished()
+    {
+        EmitSignal(SignalName.PlayEnded);
+    }
+
 
     private void EmitPlayerFailed()
     {
@@ -91,4 +139,10 @@ public partial class LevelManager : Node3D
         EmitSignal(SignalName.PlayerSucceeded);
     }
 
+}
+
+public enum LevelState
+{
+    InRound,
+    InPlay
 }

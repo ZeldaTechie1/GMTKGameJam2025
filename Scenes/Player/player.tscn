@@ -67,14 +67,17 @@ followSpeed = 10.0
 script = ExtResource("4_mtuoh")
 deck = Array[PackedScene]([ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac")])
 
-[node name="Hand" type="Node3D" parent="." node_paths=PackedStringArray("currentDeck", "currentHand", "currentHandContainer")]
+[node name="Hand" type="Node3D" parent="." node_paths=PackedStringArray("currentDeck", "currentHand", "currentHandContainer", "mainUIContainer")]
 script = ExtResource("5_htcer")
 currentDeck = NodePath("../Deck")
 currentHand = []
 currentHandContainer = NodePath("Control/HandContainer")
+mainUIContainer = NodePath("Control")
 maxHandCount = 5
+maxDraws = 3
 
 [node name="Control" type="Control" parent="Hand"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

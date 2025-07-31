@@ -4,6 +4,7 @@ using System.Diagnostics;
 
 public partial class BasicPlayer : CharacterBody3D
 {
+	[Export]LevelManager levelManager;
 	[Export]public float CurrentSpeed = 0.0f;
 	[Export]public float Acceleration = 1.0f;
 	[Export]public float Deceleration = 0.5f;
@@ -12,9 +13,19 @@ public partial class BasicPlayer : CharacterBody3D
 	[Export] Camera3D PlayerCamera;
 	[Export] MeshInstance3D Graphics;
 	bool wasOnFloor;
+	bool inPlay;
 
-	public override void _PhysicsProcess(double delta)
+    public override void _Ready()
+    {
+		levelManager.PlayStarted += ()=> inPlay = true;
+		levelManager.PlayEnded += ()=> inPlay = false;
+    }
+
+    public override void _PhysicsProcess(double delta)
 	{
+		if (!inPlay)
+			return;
+
 		Vector3 velocity = GetRealVelocity();
 
 		// Add the gravity.

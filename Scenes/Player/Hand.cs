@@ -8,7 +8,10 @@ public partial class Hand : Node3D
     [Export] Deck currentDeck;
     [Export] Godot.Collections.Array<Card> currentHand;
     [Export] HBoxContainer currentHandContainer;
+    [Export] Control mainUIContainer;
     [Export] int maxHandCount;
+    [Export] int maxDraws;
+    [Export] int currentDraws;
 
     public override void _Ready()
     {
@@ -21,11 +24,22 @@ public partial class Hand : Node3D
         {
             Draw();
         }
+
+        if(Input.IsActionJustPressed("PickCard"))
+        {
+            TESTUseRandomCard();
+        }
     }
 
     public void RoundStarted()
     {
-        DrawCards(maxHandCount);
+        mainUIContainer.Show();
+        currentDraws = 0;
+    }
+
+    public void RoundEnded()
+    {
+        mainUIContainer.Hide();
     }
 
     public void Draw()
@@ -35,6 +49,11 @@ public partial class Hand : Node3D
 
     public void DrawCards(int amount)
     {
+        if (currentDraws >= maxDraws)
+        {
+            GD.Print("Not enough draws");
+            return;
+        }
         if (currentHand.Count + amount > maxHandCount)
         {
             amount = maxHandCount - currentHand.Count;
@@ -45,7 +64,6 @@ public partial class Hand : Node3D
             GD.Print("Hand already full!");
             return;
         }
-            
 
         PackedScene[] drawnCards = currentDeck.Draw(amount);
         if (drawnCards == null)
@@ -53,13 +71,25 @@ public partial class Hand : Node3D
             GD.Print("Not enough cards in the deck. What have you done?! It's over, you've ruined it. This establishment was built on cards and now it's all gone!");
             return;
         }
-            
 
         foreach (PackedScene card in drawnCards)
         {
             Node newCard = card.Instantiate(PackedScene.GenEditState.Disabled);
             currentHand.Add(newCard as Card);
             currentHandContainer.AddChild(newCard);
+            currentDraws++;
         }
+    }
+
+    public void TESTUseRandomCard()
+    {
+        if(currentHand.Count == 0)
+        {
+            GD.Print("Not enough cards to pick from");
+            return;
+        }
+        int randCard = Random.Shared.Next(0, currentHand.Count);
+        currentHand.RemoveAt(randCard);
+        currentHandContainer.GetChild(randCard).QueueFree();
     }
 }
