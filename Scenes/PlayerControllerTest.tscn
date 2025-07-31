@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=6 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="Texture2D" uid="uid://cp82rh5du6871" path="res://Textures/PrototypeTextures/PNG/Dark/texture_07.png" id="1_3ija4"]
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/Player/player.tscn" id="1_ep0r4"]
 [ext_resource type="PackedScene" uid="uid://d3ff2b7m68md6" path="res://Scenes/LevelManager.tscn" id="3_dkipe"]
+[ext_resource type="PackedScene" uid="uid://3ci47gsa67wp" path="res://Scenes/GameGrid/Tiles/game_grid.tscn" id="4_bw8hf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkipe"]
 albedo_texture = ExtResource("1_3ija4")
@@ -202,7 +203,10 @@ size = Vector3(0.794922, 44.6332, 20.6636)
 [node name="Player" parent="." instance=ExtResource("1_ep0r4")]
 floor_constant_speed = false
 floor_max_angle = 1.22173
-Acceleration = 0.5
-Deceleration = 0.2
+Deceleration = 0.5
 
 [node name="LevelManager" parent="." instance=ExtResource("3_dkipe")]
+
+[node name="GameGrid" parent="." instance=ExtResource("4_bw8hf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+Margin = 1.5

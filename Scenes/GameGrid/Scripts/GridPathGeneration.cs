@@ -13,13 +13,14 @@ public class GridPathGeneration
         {
             get
             {
-               return Grid[0].Count;
+              return Grid[0].Count;
             }
         }
         int GridCols
         {
             get
             {
+            
                 return Grid.Count;
             }
         }
@@ -30,93 +31,124 @@ public class GridPathGeneration
         }
 
         public List<Tile> FindPath(Tile start, Tile end)
-        {
+        {   GD.PrintErr("Grid: R("+GridRows+") C("+GridCols+")");
+            GD.PrintErr("Start:"+start.GridPosition);
+            GD.PrintErr("End:"+start.GridPosition);
           
 
             List<Tile> Path = new List<Tile>();
-            PriorityQueue<Tile, float> OpenList = new PriorityQueue<Tile,float>();
-            List<Tile> ClosedList = new List<Tile>();
+            List<Tile> OpenList = new List<Tile>();
+            HashSet<Tile> ClosedList = new HashSet<Tile>();
             List<Tile> adjacencies;
             Tile current = start;
-           
-            // add start node to Open List
-            OpenList.Enqueue(start, start.F);
+            var gScore = new Dictionary<Vector2, double> { [start.GridPosition] = 0 };
+            var hScore = new Dictionary<Vector2, double> { [start.GridPosition] =start.Position.DistanceTo(end.Position)};
+            
+            var parentMap = new Dictionary<Vector2, Tile>();
 
-            while(OpenList.Count != 0 && !ClosedList.Exists(x => x.Position == end.Position))
+        // add start node to Open List
+            OpenList.Add(start);
+
+        while (OpenList.Count > 0)
+        {
+            current = OpenList.OrderBy(node => gScore[node.GridPosition] + hScore[node.GridPosition]).First();
+            ClosedList.Add(current);
+            adjacencies = GetAdjacentNodes(current);
+             if (current.GridPosition == end.GridPosition)
+            { GD.PrintErr("YIPPIE!");
+             return ReconstructPath(parentMap, current);
+            }
+            OpenList.Remove(current);
+            ClosedList.Add(current);
+
+
+            foreach (Tile t in adjacencies)
             {
-                current = OpenList.Dequeue();
-                ClosedList.Add(current);
-                adjacencies = GetAdjacentNodes(current);
+                double tentativeGScore = gScore[current.GridPosition] + current.Position.DistanceTo(t.Position);
 
-                foreach(Tile t in adjacencies)
+
+                if (!gScore.ContainsKey(t.GridPosition) || tentativeGScore < gScore[t.GridPosition])
                 {
-                    if (!ClosedList.Contains(t) && t.Tile_Type==TileType.Empty)
+                    // Update gScore and hScore
+                    gScore[t.GridPosition] = tentativeGScore;
+                    hScore[t.GridPosition] = t.Position.DistanceTo(end.Position);
+
+                    // Set the current node as the parent of the neighbor
+                    parentMap[t.GridPosition] = current;
+                    if (!OpenList.Contains(t))
                     {
-                        bool isFound = false;
-                        foreach (var oLNode in OpenList.UnorderedItems)
-                        {
-                            if (oLNode.Element == t)
-                            {
-                                isFound = true;
-                            }
-                        }
-                        if (!isFound)
-                        {
-                            t.LastTile = current;
-                            t.Cost = t.Weight + t.LastTile.Cost;
-                            OpenList.Enqueue(t, t.F);
-                        }
+                        OpenList.Add(t);
                     }
                 }
-            }
-            
-            // construct path, if end was not closed return null
-            if(!ClosedList.Exists(x => x.Position == end.Position))
-            {
-                return null;
-            }
 
-            // if all good, return path
-            Tile temp = ClosedList[ClosedList.IndexOf(current)];
-            if (temp == null) return null;
-            do
-            {
-                Path.Add(temp);
-                temp.LastTile.NextTile = temp;
-                temp = temp.LastTile;
-            } while (temp != start && temp != null) ;
-            return Path;
+            }
+             
         }
-		
-        private List<Tile> GetAdjacentNodes(Tile n)
+            GD.PrintErr("DOH!");
+            return null;
+   
+        }
+        
+    List<Tile> ReconstructPath(Dictionary<Vector2, Tile> parentMap, Tile current)
+    {
+        var path = new List<Tile> { current };
+        
+        while (parentMap.ContainsKey(current.GridPosition))
         {
-            List<Tile> temp = new List<Tile>();
-
-            int row = (int)n.GridPosition.Y;
-            int col = (int)n.GridPosition.X;
-            //west
-            if(row + 1 < GridRows)
-            {
-                temp.Add(Grid[col][row + 1]);
-            }
-            //east
-            if (row - 1 >= 0)
-            {
-            temp.Add(Grid[col][row - 1]);
-            }
-            //south
-            if(col - 1 >= 0)
-            {
-                temp.Add(Grid[col - 1][row]);
-            }
-            //north
-            if(col + 1 < GridCols)
-            {
-                temp.Add(Grid[col + 1][row]);
-            }
-
-            return temp;
+            current = parentMap[current.GridPosition];
+            path.Add(current);
         }
+        
+        path.Reverse();
+        return path;
+    }
+
+
+		
+    private List<Tile> GetAdjacentNodes(Tile n)
+    {
+        List<Tile> temp = new List<Tile>();
+
+        int row = (int)n.GridPosition.Y;
+        int col = (int)n.GridPosition.X;
+        //west
+        if (row + 1 < GridRows)
+        {
+           GD.PrintErr("--:Col("+Grid[0].Count+")Row X("+Grid.Count()+")");
+           GD.PrintErr("--:Col("+col+")Row X("+(row+1)+")");
+
+            try
+            {
+                var This = Grid[col][row + 1];
+                temp.Add(This);
+
+            }
+            catch
+            {
+
+            }
+
+            
+        }
+        //east
+        if (row - 1 >= 0)
+        {
+            temp.Add(Grid[col][row-1]);
+        }
+        //south
+        /*    if(col - 1 >= 0)
+           {
+               GD.PrintErr(col-1);
+               temp.Add(Grid[col - 1][row]);
+           } */
+        //north
+        if (col + 1 < GridCols)
+        {
+            temp.Add(Grid[col+1][row]);
+        }
+
+        return temp;
+    }
     }
 
 

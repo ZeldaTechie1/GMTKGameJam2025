@@ -52,17 +52,39 @@ public partial class Tile : Node3D
 
     Vector3 GetDirectionToNext()
     {
-        return Position.DirectionTo(NextTile.Position);
+        if (NextTile != null)
+        {
+            return Position.DirectionTo(NextTile.Position);
+        }
+        else
+        {
+            return Vector3.Zero;
+        }
+
+       
     }
 
     Vector3 GetDirectionToLast()
     {
-        return Position.DirectionTo(LastTile.Position);
+        if (LastTile != null)
+        {
+            return Position.DirectionTo(LastTile.Position);
+        }
+        else
+        {
+            return Vector3.Zero;
+        }
+        
+    }
+
+    Vector3 GetFlowDirection()
+    {
+         return LastTile.Position.DirectionTo(NextTile.Position);
     }
 
     public void RoatePiece()
     {
-        
+
     }
 
     public TrackPeiceType NeededPeice()
@@ -73,9 +95,9 @@ public partial class Tile : Node3D
 
             Vector3 last = GetDirectionToLast();
 
-            if (next.Y > 0)
+            if (next.Z > 0)
             {
-                if (last.Y < 0)
+                if (last.Z < 0)
                 {
                     return TrackPeiceType.Straight;
                 }
@@ -94,16 +116,63 @@ public partial class Tile : Node3D
                 return TrackPeiceType.Curve;
             }
 
+            GD.PrintErr("Tile (" + GridPosition.X + "," + GridPosition.Y + ") Cant Determine Track Peice ["+next+","+last+"]");
             return default;
 
         }
         return TrackPeiceType.End;
-
-
-
     }
 
-    
+
+    public void OrientTrackPiece()
+    {
+        Vector3 a = GetFlowDirection();
+        Vector3 b = Track.GetPathDirection();
+        Vector3 J = a * b;
+        Vector3 K = a.Abs() * b.Abs();
+        
+        switch (Track.TrackType)
+        {
+            case TrackPeiceType.Curve:
+                while (J != K)
+                {
+                    Track.Rotate(new Vector3(0, 1, 0), 90.0f);
+                    a = GetFlowDirection();
+                    b = Track.GetPathDirection();
+                    J = a * b;
+                    K = a.Abs() * b.Abs();
+                }
+
+                break;
+            case TrackPeiceType.End:
+                if (Tile_Type == TileType.End)
+                {
+                    Track.Rotate(new Vector3(0, 1, 0), 180.0f);
+                }
+            
+                break;
+            case TrackPeiceType.Default:
+                break;
+
+            case TrackPeiceType.Straight:
+                while (J != K)
+                {
+                    Track.Rotate(new Vector3(0, 1, 0), 90.0f);
+                    a = GetFlowDirection();
+                    b = Track.GetPathDirection();
+                    J = a * b;
+                    K = a.Abs() * b.Abs();
+
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+
+
+
 
 
 

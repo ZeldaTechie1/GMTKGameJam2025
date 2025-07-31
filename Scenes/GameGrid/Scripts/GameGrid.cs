@@ -1,15 +1,16 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 public partial class GameGrid : Node3D
 {
 
     [Export]
-    int Width = 3;
+    int Rows = 3;
 
     [Export]
-    int Height = 5;
+    int Columns = 5;
 
     [Export]
     float Margin = .02f;
@@ -40,65 +41,73 @@ public partial class GameGrid : Node3D
 
     public override void _Ready()
     {
-        for (int i = 0; i < TrackPieces.Count(); i++)
-        {
-            PreloadPieces.Add((TrackPiece)TrackPieces[i].Instantiate());
-        }
-        
+        base._Ready();
+        LoadPieces();
         CreateFirstGrid();
         GPGen = new GridPathGeneration(TotalGridTiles);
+        CurrentPath = GPGen.FindPath(CurrentStartTile,CurrentEndTile);
+        PopulateCurrentPathWithTracks();
 
+    }
+    public void LoadPieces()
+    {
+        for (int i = 0; i < TrackPieces.Count(); i++)
+        {
+            var holder= (TrackPiece)TrackPieces[i].Instantiate(PackedScene.GenEditState.Disabled);
+            GD.PrintErr("Load index (" +i+ "), Type ["+holder.TrackType+"]," +TrackPieces[i].ToString());
+            PreloadPieces.Add(holder);
+        }
     }
 
     void CreateFirstGrid()
     {
         List<List<Tile>> TempGridTiles = new List<List<Tile>>();
-        for (int w = 0; w < Width; w++)
+        for (int C = 0; C < Columns; C++)
         {
-            List<Vector3> RowPositions = new List<Vector3>();
             List<Tile> RowTiles = new List<Tile>();
-            for (int h = 0; h < Height; h++)
+            for (int R = 0; R < Rows; R++)
             {
-                Vector3 position = GlobalPosition + new Vector3(w * (CellSize * Margin), 0, h * (CellSize * Margin));
+                Vector3 position = GlobalPosition + new Vector3(C * (CellSize * Margin), 0,R * (CellSize * Margin));
                 //RowPositions.Add(position);
 
-                if (TempGridTiles.Count() > 0)
+                if ((R == (Columns - 1) / 2) && C == 0)
                 {
-                    if ((w == (Width - 1) / 2) && h == 0)
+                    try
                     {
-                        try
-                        {
-                            Tile tileHolder = new Tile(TileType.Start, new Vector2(w,h),10);
-                            RowTiles.Add(tileHolder);
-                            tileHolder.GlobalPosition = position;
-                            CurrentStartTile = tileHolder;
-                            FirstStartTile = tileHolder;
-                        }
-                        catch
-                        {
-
-                        }
+                        Tile tileHolder = new Tile(TileType.Start, new Vector2(C, R), 10);
+                        RowTiles.Add(tileHolder);
+                        AddChild(tileHolder);
+                        tileHolder.GlobalPosition = position;
+                        GD.PrintErr("BEANS");
+                        CurrentStartTile = tileHolder;
+                        FirstStartTile = tileHolder;
 
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        try
-                        {
-                            Random rand = new Random();
-
-                            Tile tileHolder = new Tile(TileType.Empty,new Vector2(w,h),rand.Next(1,2));
-                            RowTiles.Add(tileHolder);
-                            AddChild(tileHolder);
-                            tileHolder.GlobalPosition = position;
-
-                        }
-                        catch
-                        {
-                            GD.PrintErr("error");
-                        }
+                        GD.PrintErr(ex.ToString());
                     }
 
                 }
+                else
+                {
+                    try
+                    {
+                        Random rand = new Random();
+
+                        Tile tileHolder = new Tile(TileType.Empty, new Vector2(C, R), rand.Next(1, 2));
+                        RowTiles.Add(tileHolder);
+                        AddChild(tileHolder);
+                        tileHolder.GlobalPosition = position;
+
+                    }
+                    catch
+                    {
+                        GD.PrintErr("error");
+                    }
+                }
+
+                
 
             }
             //GridSpaces.Add(RowPositions);
@@ -107,24 +116,25 @@ public partial class GameGrid : Node3D
         }
         CurrentEndTile = ChooseEndTile(TempGridTiles[TempGridTiles.Count - 1]);
 
-        for (int w = 0; w < TempGridTiles.Count; w++)
+        for (int C = 0; C < TempGridTiles.Count; C++)
         {
-            for (int h = 0; h < TempGridTiles[w].Count; h++)
+            for (int R = 0; R < TempGridTiles[C].Count; R++)
             {
-                if (CurrentEndTile.GridPosition == new Vector2(w, h))
+                if (CurrentEndTile.GridPosition == new Vector2(C, R))
                 {
-                    TempGridTiles[w][h].Tile_Type = TileType.End;
-                    TempGridTiles[w][h].DistanceToTarget = 0;
-
+                    TempGridTiles[C][R].Tile_Type = TileType.End;
+                    TempGridTiles[C][R].DistanceToTarget = 0;
                 }
                 else
                 {
-                    TempGridTiles[w][h].DistanceToTarget = Math.Abs(TempGridTiles[w][h].Position.DistanceSquaredTo(CurrentEndTile.Position));
+                    TempGridTiles[C][R].DistanceToTarget = Math.Abs(TempGridTiles[C][R].Position.DistanceSquaredTo(CurrentEndTile.Position));
                 }
-                TempGridTiles[w][h].CellSize = CellSize;
+                TempGridTiles[C][R].CellSize = CellSize;
             }
         }
         TotalGridTiles.AddRange(TempGridTiles);
+        GD.PrintErr("Grid Temp: R("+TempGridTiles.Count+") C("+TempGridTiles[0].Count+")");
+        GD.PrintErr("Grid Total: R("+TotalGridTiles.Count+") C("+TotalGridTiles[0].Count+")");
     }
 
     public void ChoosePath()
@@ -155,32 +165,39 @@ public partial class GameGrid : Node3D
 
     public void PopulateCurrentPathWithTracks()
     {
-        foreach (Tile t in CurrentPath)
+        if (CurrentPath.Count == 0)
         {
-            TrackPiece piece = GetTrackPiece(t);
-            if (piece != null)
-            {
-                t.Track = piece;
-                t.AddChild(piece);
-                
-            }
-            
+            GD.PrintErr("NO Path");
         }
+        foreach (Tile t in CurrentPath)
+            {
+                TrackPiece piece = GetTrackPiece(t);
+                if (piece != null)
+                {
+                    t.Track = piece;
+                    t.AddChild(piece);
+                    t.OrientTrackPiece();
+                }
+
+            }
     }
 
     public TrackPiece GetTrackPiece(Tile t)
     {   try
         {
             TrackPeiceType needed = t.NeededPeice();
+            GD.PrintErr("Tile (" + t.GridPosition.X + "," +t.GridPosition.Y + ") Cant Determine Track Peice ["+needed+"]");
             List<int> possiblePieces = new List<int>();
     
             for(int i= 0; i < PreloadPieces.Count();i++)
             {
+                GD.PrintErr("preloads:" + PreloadPieces[i].TrackType);
                 if (PreloadPieces[i].TrackType == needed)
                 {
                     possiblePieces.Add(i);
                 }
             }
+
 
             Random rand = new Random();
 
@@ -192,11 +209,13 @@ public partial class GameGrid : Node3D
             }
             else
             {
+                GD.PrintErr("PieceNotFound");
                 return null;
             }
         }
-        catch
+        catch (Exception ex)
         {
+            GD.PrintErr("Eror:"+ex.ToString());
             return null;
         }
       
@@ -207,25 +226,7 @@ public partial class GameGrid : Node3D
     
 
 
-    void CreateDisplayGrid()
-    {
-        for (int w = 0; w < Width; w++)
-        {
-            for (int h = 0; h < Height; h++)
-            {
-                MeshInstance3D mesh = new MeshInstance3D();
-                var shape = new PlaneMesh();
-                shape.Size = new Vector2(CellSize, CellSize);
-                mesh.Mesh = shape;
-
-                AddChild(mesh);
-                mesh.GlobalPosition = GlobalPosition + new Vector3(w * (CellSize * Margin), 0, h * (CellSize * Margin));
-
-            }
-
-        }
-    }
-    void ClearDisplayGrid()
+       void ClearDisplayGrid()
     {
         foreach (Node x in GetChildren())
         {
