@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4ovbnws1k2h5"]
+[gd_scene load_steps=7 format=3 uid="uid://c4ovbnws1k2h5"]
 
 [ext_resource type="Script" uid="uid://cchskq7nkfscg" path="res://Scenes/GameGrid/Tiles/TrackPiece.cs" id="1_jxa7s"]
 
@@ -8,10 +8,22 @@ albedo_color = Color(0, 0.571471, 0.835868, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_487m1"]
 size = Vector3(1, 0.25, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4apup"]
+albedo_color = Color(0.373043, 0.613871, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ld3tj"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pytwf"]
+albedo_color = Color(1, 0, 0, 1)
+
 [node name="TrackPiece" type="MeshInstance3D" node_paths=PackedStringArray("EntrancePoint1", "EntrancePoint2")]
 material_override = SubResource("StandardMaterial3D_jxa7s")
 mesh = SubResource("BoxMesh_487m1")
 script = ExtResource("1_jxa7s")
+PieceType = 3
 EntrancePoint1 = NodePath("Entrance Point1")
 EntrancePoint2 = NodePath("Entrance Point2")
 
@@ -20,3 +32,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 
 [node name="Entrance Point2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, 0)
+material_override = SubResource("StandardMaterial3D_4apup")
+mesh = SubResource("CylinderMesh_ld3tj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0.5)
+material_override = SubResource("StandardMaterial3D_pytwf")
+mesh = SubResource("CylinderMesh_ld3tj")

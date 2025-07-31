@@ -7,6 +7,7 @@
 
 [node name="GameGrid" type="Node3D"]
 script = ExtResource("1_sr3kw")
+BoardLength = 20
 Margin = 1.0
 CellSize = 50
 TrackPieces = Array[PackedScene]([ExtResource("2_g32cu"), ExtResource("3_mm6k2"), ExtResource("4_bfwbw")])
