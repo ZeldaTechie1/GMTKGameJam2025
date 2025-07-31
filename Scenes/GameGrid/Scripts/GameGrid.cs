@@ -49,11 +49,12 @@ public partial class GameGrid : Node3D
         PopulateCurrentPathWithTracks();
 
     }
-    public void LoadPieces()
+    public void LoadPieces() 
     {
         for (int i = 0; i < TrackPieces.Count(); i++)
         {
-            var holder= (TrackPiece)TrackPieces[i].Instantiate(PackedScene.GenEditState.Disabled);
+            var test = TrackPieces[i].GetLocalScene();
+            TrackPiece holder= (TrackPiece)(TrackPieces[i].Instantiate(PackedScene.GenEditState.Disabled));
             GD.PrintErr("Load index (" +i+ "), Type ["+holder.TrackType+"]," +TrackPieces[i].ToString());
             PreloadPieces.Add(holder);
         }
@@ -185,7 +186,7 @@ public partial class GameGrid : Node3D
     public TrackPiece GetTrackPiece(Tile t)
     {   try
         {
-            TrackPeiceType needed = t.NeededPeice();
+            TrackPieceType needed = t.NeededPiece();
             GD.PrintErr("Tile (" + t.GridPosition.X + "," +t.GridPosition.Y + ") Cant Determine Track Peice ["+needed+"]");
             List<int> possiblePieces = new List<int>();
     

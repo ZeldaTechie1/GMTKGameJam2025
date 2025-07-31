@@ -87,7 +87,7 @@ public partial class Tile : Node3D
 
     }
 
-    public TrackPeiceType NeededPeice()
+    public TrackPieceType NeededPiece()
     {
         if (Tile_Type == TileType.Empty)
         {
@@ -99,28 +99,28 @@ public partial class Tile : Node3D
             {
                 if (last.Z < 0)
                 {
-                    return TrackPeiceType.Straight;
+                    return TrackPieceType.Straight;
                 }
                 else
                 {
-                    return TrackPeiceType.Curve;
+                    return TrackPieceType.Curve;
                 }
 
             }
             else if (next.X == (last.X * -1))
             {
-                return TrackPeiceType.Straight;
+                return TrackPieceType.Straight;
             }
             else if (next.X != 0 && last.X == 0)
             {
-                return TrackPeiceType.Curve;
+                return TrackPieceType.Curve;
             }
 
             GD.PrintErr("Tile (" + GridPosition.X + "," + GridPosition.Y + ") Cant Determine Track Peice ["+next+","+last+"]");
             return default;
 
         }
-        return TrackPeiceType.End;
+        return TrackPieceType.End;
     }
 
 
@@ -133,7 +133,7 @@ public partial class Tile : Node3D
         
         switch (Track.TrackType)
         {
-            case TrackPeiceType.Curve:
+            case TrackPieceType.Curve:
                 while (J != K)
                 {
                     Track.Rotate(new Vector3(0, 1, 0), 90.0f);
@@ -144,17 +144,17 @@ public partial class Tile : Node3D
                 }
 
                 break;
-            case TrackPeiceType.End:
+            case TrackPieceType.End:
                 if (Tile_Type == TileType.End)
                 {
                     Track.Rotate(new Vector3(0, 1, 0), 180.0f);
                 }
             
                 break;
-            case TrackPeiceType.Default:
+            case TrackPieceType.Default:
                 break;
 
-            case TrackPeiceType.Straight:
+            case TrackPieceType.Straight:
                 while (J != K)
                 {
                     Track.Rotate(new Vector3(0, 1, 0), 90.0f);

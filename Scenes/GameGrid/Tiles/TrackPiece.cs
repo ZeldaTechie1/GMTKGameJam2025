@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 public partial class TrackPiece : MeshInstance3D
 {
     [Export]
-    TrackPeiceType PeiceType;
+    TrackPieceType PieceType;
 
     [Export]
     Node3D EntrancePoint1;
@@ -16,7 +16,7 @@ public partial class TrackPiece : MeshInstance3D
 
     public int CellSize;
 
-    public TrackPeiceType TrackType;
+    public TrackPieceType TrackType { get=> PieceType; }
 
     public Vector3 GetPathDirection()
     {
@@ -37,10 +37,10 @@ public partial class TrackPiece : MeshInstance3D
 
 }
 
-public enum TrackPeiceType
+public enum TrackPieceType
 {
-    Straight,
     Curve,
+    Straight,
     End,
     Default
 }
