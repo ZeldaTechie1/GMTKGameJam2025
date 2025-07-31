@@ -58,7 +58,6 @@ public partial class BasicPlayer : CharacterBody3D
         }
 		else if (IsOnFloor() && Mathf.RadToDeg(GetFloorAngle()) < 10)
 		{
-			GD.Print(Mathf.RadToDeg(GetFloorAngle()));
             Vector3 horizontalVelocity = new Vector3(velocity.X, 0, velocity.Z);
             velocity -= (Deceleration * horizontalVelocity.Normalized());
 			

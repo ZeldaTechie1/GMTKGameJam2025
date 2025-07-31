@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://hwcv6b7ghlma"]
+
+[ext_resource type="Texture2D" uid="uid://dbha8sfbpj8ou" path="res://Textures/PrototypeTextures/PNG/Dark/texture_12.png" id="1_7wcm4"]
+
+[sub_resource type="Theme" id="Theme_0vrwk"]
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -130.0
+offset_right = 107.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0vrwk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+text = "Test card title"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_7wcm4")
+expand_mode = 5

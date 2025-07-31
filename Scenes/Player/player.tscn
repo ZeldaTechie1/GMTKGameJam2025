@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckin8e81s18g5"]
+[gd_scene load_steps=12 format=3 uid="uid://ckin8e81s18g5"]
 
 [ext_resource type="Script" uid="uid://dt38ple8v0tf5" path="res://Scenes/Player/Scripts/BasicPlayer.cs" id="1_a3d8c"]
 [ext_resource type="Script" uid="uid://dew2oewo5dold" path="res://Scenes/Player/Scripts/CameraRotate.cs" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://diiukeqsw3gqh" path="res://Scenes/Player/Scripts/CameraFollow.cs" id="3_xpcdj"]
+[ext_resource type="Script" uid="uid://niro6ve3eqif" path="res://Scenes/DeckManager/Deck.cs" id="4_mtuoh"]
+[ext_resource type="PackedScene" uid="uid://hwcv6b7ghlma" path="res://Scenes/DeckManager/Card.tscn" id="5_dd0ac"]
+[ext_resource type="Script" uid="uid://dhx0qqeu46y7w" path="res://Scenes/DeckManager/Hand.cs" id="5_htcer"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
@@ -59,3 +62,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("3_xpcdj")
 followLocation = NodePath("../SpringArm3D/CameraFollowLocation")
 followSpeed = 10.0
+
+[node name="Deck" type="Node3D" parent="."]
+script = ExtResource("4_mtuoh")
+deck = Array[PackedScene]([ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac"), ExtResource("5_dd0ac")])
+
+[node name="Hand" type="Node3D" parent="." node_paths=PackedStringArray("currentDeck", "currentHand", "currentHandContainer")]
+script = ExtResource("5_htcer")
+currentDeck = NodePath("../Deck")
+currentHand = []
+currentHandContainer = NodePath("Control/HandContainer")
+maxHandCount = 5
+
+[node name="Control" type="Control" parent="Hand"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="HandContainer" type="HBoxContainer" parent="Hand/Control"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -406.0
+offset_top = -216.0
+offset_right = 406.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
