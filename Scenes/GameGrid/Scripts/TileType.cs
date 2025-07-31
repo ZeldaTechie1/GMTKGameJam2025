@@ -5,7 +5,7 @@ public enum TileType
 {
     Empty,
     Block,
-    Placed,
+    Checkpoint,
     Start,
     End
 }

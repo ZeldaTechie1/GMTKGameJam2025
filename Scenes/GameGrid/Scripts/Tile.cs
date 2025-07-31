@@ -16,169 +16,56 @@ public partial class Tile : Node3D
 
     public int CellSize = 1;
 
-    public Vector2 GridPosition;
 
-    public float DistanceToTarget;
-    public float Cost;
-    public float Weight;
-    public float F
+
+    public int TileID { get; set; }
+
+    public Dictionary<Vector2, double> Adjacent { get; set; } // Key: neighbor's NodeId, Value: distance
+
+    public void addAdjacent(Vector2 adjacentGridPosition, double value)
     {
-        get
-        {
-            if (DistanceToTarget != -1 && Cost != -1)
-                return DistanceToTarget + Cost;
-            else
-                return -1;
-        }
+        Adjacent.Add(adjacentGridPosition, value);
     }
 
+    public float Weight;
 
     public Tile LastTile = null;
     public Tile NextTile = null;
-    public Tile(TileType type, Vector2 gP, float weight = 1)
+    public Tile(int TID, TileType type)
     {
+        TileID = TID;
         Tile_Type = type;
 
-        GridPosition = gP;
-
-
     }
 
-    public Tile()
-    {
-        Tile_Type = TileType.Empty;
 
-    }
-
-    Vector3 GetDirectionToNext()
-    {
-        if (NextTile != null)
-        {
-            return Position.DirectionTo(NextTile.Position);
-        }
-        else
-        {
-            return Vector3.Zero;
-        }
-
-       
-    }
-
-    Vector3 GetDirectionToLast()
-    {
-        if (LastTile != null)
-        {
-            return Position.DirectionTo(LastTile.Position);
-        }
-        else
-        {
-            return Vector3.Zero;
-        }
-        
-    }
-
-    Vector3 GetFlowDirection()
-    {
-         return LastTile.Position.DirectionTo(NextTile.Position);
-    }
-
-    public void RoatePiece()
-    {
-
-    }
 
     public TrackPieceType NeededPiece()
     {
-        if (Tile_Type == TileType.Empty)
+        switch (Tile_Type)
         {
-            Vector3 next = GetDirectionToNext();
-
-            Vector3 last = GetDirectionToLast();
-
-            if (next.Z > 0)
-            {
-                if (last.Z < 0)
-                {
-                    return TrackPieceType.Straight;
-                }
-                else
-                {
-                    return TrackPieceType.Curve;
-                }
-
-            }
-            else if (next.X == (last.X * -1))
-            {
+            case TileType.Empty:
+                return TrackPieceType.Empty;
+                break;
+            case TileType.Block:
                 return TrackPieceType.Straight;
-            }
-            else if (next.X != 0 && last.X == 0)
-            {
-                return TrackPieceType.Curve;
-            }
-
-            GD.PrintErr("Tile (" + GridPosition.X + "," + GridPosition.Y + ") Cant Determine Track Peice ["+next+","+last+"]");
-            return default;
-
-        }
-        return TrackPieceType.End;
-    }
-
-
-    public void OrientTrackPiece()
-    {
-        Vector3 a = GetFlowDirection();
-        Vector3 b = Track.GetPathDirection();
-        Vector3 J = a * b;
-        Vector3 K = a.Abs() * b.Abs();
-        
-        switch (Track.TrackType)
-        {
-            case TrackPieceType.Curve:
-                while (J != K)
-                {
-                    Track.Rotate(new Vector3(0, 1, 0), 90.0f);
-                    a = GetFlowDirection();
-                    b = Track.GetPathDirection();
-                    J = a * b;
-                    K = a.Abs() * b.Abs();
-                }
-
                 break;
-            case TrackPieceType.End:
-                if (Tile_Type == TileType.End)
-                {
-                    Track.Rotate(new Vector3(0, 1, 0), 180.0f);
-                }
-            
+            case TileType.Checkpoint:
+                return TrackPieceType.Straight;
                 break;
-            case TrackPieceType.Default:
+            case TileType.Start:
+                return TrackPieceType.Start;
                 break;
-
-            case TrackPieceType.Straight:
-                while (J != K)
-                {
-                    Track.Rotate(new Vector3(0, 1, 0), 90.0f);
-                    a = GetFlowDirection();
-                    b = Track.GetPathDirection();
-                    J = a * b;
-                    K = a.Abs() * b.Abs();
-
-                }
-                break;
-
-            default:
+            case TileType.End:
+                return TrackPieceType.End;
                 break;
         }
+        return TrackPieceType.Default;
     }
-
-
-
-
-
-
-
 
 
 
 
 }
+
+

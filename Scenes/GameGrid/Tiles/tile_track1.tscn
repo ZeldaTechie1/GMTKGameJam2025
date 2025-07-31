@@ -8,7 +8,6 @@ size = Vector3(1, 0.25, 0.5)
 [node name="TrackPiece" type="MeshInstance3D" node_paths=PackedStringArray("EntrancePoint1", "EntrancePoint2")]
 mesh = SubResource("BoxMesh_487m1")
 script = ExtResource("1_lgybx")
-PeiceType = 1
 EntrancePoint1 = NodePath("Entrance Point1")
 EntrancePoint2 = NodePath("Entrance Point2")
 

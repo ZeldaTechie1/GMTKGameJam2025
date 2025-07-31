@@ -208,5 +208,6 @@ Deceleration = 0.5
 [node name="LevelManager" parent="." instance=ExtResource("3_dkipe")]
 
 [node name="GameGrid" parent="." instance=ExtResource("4_bw8hf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-Margin = 1.5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.416, 4.33153, 0)
+BoardLength = 10
+CellSize = 1

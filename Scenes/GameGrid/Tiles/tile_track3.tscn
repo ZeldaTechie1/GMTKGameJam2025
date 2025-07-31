@@ -12,7 +12,7 @@ size = Vector3(1, 0.25, 1)
 material_override = SubResource("StandardMaterial3D_jxa7s")
 mesh = SubResource("BoxMesh_487m1")
 script = ExtResource("1_88h61")
-PeiceType = 2
+PieceType = 2
 EntrancePoint1 = NodePath("Entrance Point1")
 EntrancePoint2 = NodePath("Entrance Point2")
 
