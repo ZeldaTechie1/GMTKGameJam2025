@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=11 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="Texture2D" uid="uid://cp82rh5du6871" path="res://Textures/PrototypeTextures/PNG/Dark/texture_07.png" id="1_3ija4"]
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/Player/player.tscn" id="1_ep0r4"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://d3ff2b7m68md6" path="res://Scenes/LevelManager.tscn" id="3_dkipe"]
 [ext_resource type="PackedScene" uid="uid://3ci47gsa67wp" path="res://Scenes/GameGrid/Tiles/game_grid.tscn" id="4_bw8hf"]
 [ext_resource type="PackedScene" uid="uid://dk0w4ypsectjr" path="res://Scenes/GameGrid/Tiles/LoopDeLoopPiece.tscn" id="6_8o3bs"]
+[ext_resource type="PackedScene" uid="uid://ccwr6mjfwj16d" path="res://Scenes/GameGrid/Tiles/LumpyPiece.tscn" id="7_rntjc"]
+[ext_resource type="PackedScene" uid="uid://b0w1x4nhy32y6" path="res://Scenes/GameGrid/Tiles/straightPiece.tscn" id="8_varko"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkipe"]
 albedo_texture = ExtResource("1_3ija4")
@@ -232,9 +234,6 @@ levelManager = NodePath("../../LevelManager")
 [node name="Hand" parent="Player" index="4" node_paths=PackedStringArray("LevelManager")]
 LevelManager = NodePath("../../LevelManager")
 
-[node name="Control" parent="Player/Hand" index="0"]
-visible = true
-
 [node name="LevelManager" parent="." node_paths=PackedStringArray("GoalArea", "OverviewCamera", "PlayerCamera") instance=ExtResource("3_dkipe")]
 GoalArea = NodePath("../Environment/Area3D")
 OverviewCamera = NodePath("../Camera3D")
@@ -252,5 +251,11 @@ current = true
 
 [node name="TrackPiece" parent="." instance=ExtResource("6_8o3bs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2485, 0.159833, -61.7147)
+
+[node name="TrackPiece2" parent="." instance=ExtResource("7_rntjc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2282, 0.140054, -81.719)
+
+[node name="TrackPiece3" parent="." instance=ExtResource("8_varko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2721, 0.12147, 18.5571)
 
 [editable path="Player"]

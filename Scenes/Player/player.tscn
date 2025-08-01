@@ -77,7 +77,6 @@ maxHandCount = 5
 maxDraws = 3
 
 [node name="Control" type="Control" parent="Hand"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

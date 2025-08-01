@@ -16,16 +16,17 @@ public partial class Hand : Node3D
     public override void _Ready()
     {
         LevelManager.RoundStarted += RoundStarted;
+        LevelManager.RoundFinished += RoundEnded;
     }
 
     public override void _Process(double delta)
     {
-        if(Input.IsActionJustPressed("Draw"))
+        if(Input.IsActionJustPressed("Draw") && LevelManager.currentState == LevelState.InRound)
         {
             Draw();
         }
 
-        if(Input.IsActionJustPressed("PickCard"))
+        if(Input.IsActionJustPressed("PickCard") && LevelManager.currentState == LevelState.InRound)
         {
             TESTUseRandomCard();
         }
@@ -34,6 +35,7 @@ public partial class Hand : Node3D
     public void RoundStarted()
     {
         mainUIContainer.Show();
+        DrawCards(maxHandCount);
         currentDraws = 0;
     }
 

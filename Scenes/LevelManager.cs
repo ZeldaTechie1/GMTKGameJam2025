@@ -18,7 +18,7 @@ public partial class LevelManager : Node3D
     [Signal] public delegate void PlayerFailedEventHandler();
     [Signal] public delegate void PlayerSucceededEventHandler();
 
-    LevelState currentState;
+    public LevelState currentState;
 
     public override void _Ready()
     {

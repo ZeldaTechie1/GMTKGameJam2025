@@ -13,17 +13,15 @@ public partial class BasicPlayer : CharacterBody3D
 	[Export] Camera3D PlayerCamera;
 	[Export] MeshInstance3D Graphics;
 	bool wasOnFloor;
-	bool inPlay;
 
-    public override void _Ready()
-    {
-		levelManager.PlayStarted += ()=> inPlay = true;
-		levelManager.PlayEnded += ()=> inPlay = false;
+    public override void _Ready() 
+	{
+    
     }
 
     public override void _PhysicsProcess(double delta)
 	{
-		if (!inPlay)
+		if (levelManager.currentState != LevelState.InPlay)
 			return;
 
 		Vector3 velocity = GetRealVelocity();
@@ -65,7 +63,7 @@ public partial class BasicPlayer : CharacterBody3D
 
         if (inputDir != Vector2.Zero)
 		{
-			velocity += (direction * Acceleration);
+			velocity += (direction * Acceleration * (IsOnFloor()? 1:.3f));
         }
 		else if (IsOnFloor() && Mathf.RadToDeg(GetFloorAngle()) < 10)
 		{
