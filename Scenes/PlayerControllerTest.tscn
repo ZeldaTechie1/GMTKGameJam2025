@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b46t1q6jieqtm" path="res://Scenes/SignalTester.cs" id="2_am0fs"]
 [ext_resource type="PackedScene" uid="uid://d3ff2b7m68md6" path="res://Scenes/LevelManager.tscn" id="3_dkipe"]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://3ci47gsa67wp" path="res://Scenes/GameBoard/Tiles/GameBoard.tscn" id="4_bw8hf"]
 [ext_resource type="PackedScene" uid="uid://dk0w4ypsectjr" path="res://Scenes/GameBoard/Tiles/LoopDeLoopPiece.tscn" id="6_8o3bs"]
 [ext_resource type="PackedScene" uid="uid://ccwr6mjfwj16d" path="res://Scenes/GameBoard/Tiles/LumpyPiece.tscn" id="7_rntjc"]
@@ -15,11 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://xjyjmtjf357b" path="res://Scenes/GameGrid/Modifiers/Launcher.tscn" id="12_spijo"]
 [ext_resource type="PackedScene" uid="uid://di5gpkrgo0sq2" path="res://Scenes/GameGrid/Modifiers/Bouncer.tscn" id="13_x5qdp"]
 =======
+=======
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://dk0w4ypsectjr" path="res://Scenes/GameBoard/Tiles/LoopDeLoopPiece.tscn" id="6_8o3bs"]
 [ext_resource type="PackedScene" uid="uid://ccwr6mjfwj16d" path="res://Scenes/GameBoard/Tiles/LumpyPiece.tscn" id="7_rntjc"]
 [ext_resource type="PackedScene" uid="uid://3ci47gsa67wp" path="res://Scenes/GameBoard/Tiles/GameBoard.tscn" id="8_rntjc"]
 [ext_resource type="PackedScene" uid="uid://b0w1x4nhy32y6" path="res://Scenes/GameBoard/Tiles/straightPiece.tscn" id="8_varko"]
 [ext_resource type="PackedScene" uid="uid://dmc83r8wd13em" path="res://Scenes/GameBoard/Tiles/tile_track1.tscn" id="9_varko"]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkipe"]
