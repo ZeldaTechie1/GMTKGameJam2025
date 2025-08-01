@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://xjyjmtjf357b"]
+
+[ext_resource type="PackedScene" uid="uid://bktyn28yv4cbw" path="res://Scenes/GameGrid/Modifiers/BaseModifier.tscn" id="1_hvmvl"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_hvmvl"]
+inner_radius = 1.116
+
+[node name="Launcher" instance=ExtResource("1_hvmvl")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+modifierType = 4
+LaunchPower = 10.0
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.274414, 0)
+
+[node name="Visual" parent="." index="1"]
+mesh = SubResource("TorusMesh_hvmvl")

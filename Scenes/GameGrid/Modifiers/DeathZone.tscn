@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://tb4f3wv1isnr"]
+
+[ext_resource type="PackedScene" uid="uid://bktyn28yv4cbw" path="res://Scenes/GameGrid/Modifiers/BaseModifier.tscn" id="1_o6y2e"]
+
+[node name="Area3D" instance=ExtResource("1_o6y2e")]
+modifierType = 6

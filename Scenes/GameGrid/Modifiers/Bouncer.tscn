@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://di5gpkrgo0sq2"]
+
+[ext_resource type="PackedScene" uid="uid://bktyn28yv4cbw" path="res://Scenes/GameGrid/Modifiers/BaseModifier.tscn" id="1_p25w0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p25w0"]
+albedo_color = Color(0.144868, 0.206453, 1, 1)
+
+[node name="BaseArea" instance=ExtResource("1_p25w0")]
+modifierType = 5
+LaunchPower = 5.0
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.274414, 0)
+
+[node name="Visual" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_p25w0")
