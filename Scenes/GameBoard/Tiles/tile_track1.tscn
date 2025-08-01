@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cchskq7nkfscg" path="res://Scenes/GameBoard/Scripts/TrackPiece.cs" id="1_lgybx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_487m1"]
-size = Vector3(1, 0.25, 0.5)
+size = Vector3(50, 0.25, 50)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m6pr6"]
 resource_local_to_scene = true
@@ -13,7 +13,6 @@ size = Vector3(1, 0.998108, 0.502)
 data = PackedVector3Array(-0.5, 0.125, 0.25, 0.5, 0.125, 0.25, -0.5, -0.125, 0.25, 0.5, 0.125, 0.25, 0.5, -0.125, 0.25, -0.5, -0.125, 0.25, 0.5, 0.125, -0.25, -0.5, 0.125, -0.25, 0.5, -0.125, -0.25, -0.5, 0.125, -0.25, -0.5, -0.125, -0.25, 0.5, -0.125, -0.25, 0.5, 0.125, 0.25, 0.5, 0.125, -0.25, 0.5, -0.125, 0.25, 0.5, 0.125, -0.25, 0.5, -0.125, -0.25, 0.5, -0.125, 0.25, -0.5, 0.125, -0.25, -0.5, 0.125, 0.25, -0.5, -0.125, -0.25, -0.5, 0.125, 0.25, -0.5, -0.125, 0.25, -0.5, -0.125, -0.25, 0.5, 0.125, 0.25, -0.5, 0.125, 0.25, 0.5, 0.125, -0.25, -0.5, 0.125, 0.25, -0.5, 0.125, -0.25, 0.5, 0.125, -0.25, -0.5, -0.125, 0.25, 0.5, -0.125, 0.25, -0.5, -0.125, -0.25, 0.5, -0.125, 0.25, 0.5, -0.125, -0.25, -0.5, -0.125, -0.25)
 
 [node name="TrackPiece" type="MeshInstance3D" node_paths=PackedStringArray("ItemSpawnPoints")]
-transform = Transform3D(-2.18557e-06, 0, 50, 0, 1, 0, -50, 0, -2.18557e-06, 0, 0, 0)
 mesh = SubResource("BoxMesh_487m1")
 script = ExtResource("1_lgybx")
 ItemSpawnPoints = []

@@ -10,6 +10,7 @@ resource_local_to_scene = true
 size = Vector3(1, 0.5, 0.502)
 
 [node name="StarterTrack" instance=ExtResource("1_30w6e")]
+top_level = true
 surface_material_override/0 = SubResource("StandardMaterial3D_ytyj4")
 PieceType = 3
 

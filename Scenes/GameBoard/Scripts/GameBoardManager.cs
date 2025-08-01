@@ -30,7 +30,7 @@ public partial class GameBoardManager : Node3D
     public Tile SelectedTile;
 
     [Export]
-    public MeshInstance3D Selecter;
+    public Node3D Selector;
 
     public override void _Ready()
     {
@@ -55,10 +55,11 @@ public partial class GameBoardManager : Node3D
     {
         for (int i = 0; i < BoardLength; i++)
         {
-            Vector3 position = GlobalPosition + new Vector3(0, 0, i * (CellSize * Margin));
+            Vector3 position = this.GlobalPosition + new Vector3(0, 0, i * (CellSize ));
+            //DebugDraw3D.DrawArrow(position, position + new Vector3(0, 100, 0), new Color(225, 0, 0,1),1,false,60);
+            GD.Print("Index:" + i + "Position:" + position);
             if (i == 0)
             {
-
                 Tile tileHolder = new Tile(i, TileType.Start);
                 AddChild(tileHolder);
                 tileHolder.GlobalPosition = position;
@@ -141,7 +142,7 @@ public partial class GameBoardManager : Node3D
             if (piece != null)
             {
                 t.Track = piece;
-                t.Track.Position = t.Position;
+                t.Track.GlobalPosition = t.GlobalPosition;
                 if(piece.PieceType == TrackPieceType.End)
                 {
                     Level_Manager.GoalArea = piece.GetNode("Area3D") as Area3D;
@@ -213,6 +214,8 @@ public partial class GameBoardManager : Node3D
     public void SelectTile(Tile tile)
     {
         SelectedTile = tile;
+        Selector.Position = tile.Position;
+         GD.Print("Index:" + tile.TileID + "Position:" + tile.GlobalPosition);
         
     }
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://gk4ob1ht32dp"]
+
+[ext_resource type="Script" uid="uid://cchskq7nkfscg" path="res://Scenes/GameBoard/Scripts/TrackPiece.cs" id="1_ndet6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjckc"]
+albedo_color = Color(0, 0.662329, 0.0406892, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m5a4q"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gibl0"]
+size = Vector3(50.0061, 1.21497, 49.9317)
+
+[node name="TestTile" type="Node3D" node_paths=PackedStringArray("ItemSpawnPoints")]
+script = ExtResource("1_ndet6")
+ItemSpawnPoints = []
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_cjckc")
+mesh = SubResource("BoxMesh_m5a4q")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0348663, 0.107483, 0.0557556)
+shape = SubResource("BoxShape3D_gibl0")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://3ci47gsa67wp"]
+[gd_scene load_steps=9 format=3 uid="uid://3ci47gsa67wp"]
 
 [ext_resource type="Script" uid="uid://dgf4hlynyt7u" path="res://Scenes/GameBoard/Scripts/GameBoardManager.cs" id="1_6rlmk"]
 [ext_resource type="PackedScene" uid="uid://dmc83r8wd13em" path="res://Scenes/GameBoard/Tiles/tile_track1.tscn" id="3_kff81"]
@@ -6,11 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://ca0ikr4k3yf2j" path="res://Scenes/GameBoard/Tiles/EndTrack.tscn" id="4_f0rn3"]
 [ext_resource type="PackedScene" uid="uid://ccwr6mjfwj16d" path="res://Scenes/GameBoard/Tiles/LumpyPiece.tscn" id="4_w0my6"]
 [ext_resource type="PackedScene" uid="uid://dmavjk8leao74" path="res://Scenes/GameBoard/Tiles/CheckpointTrack.tscn" id="5_g1laj"]
-[ext_resource type="PackedScene" uid="uid://b0w1x4nhy32y6" path="res://Scenes/GameBoard/Tiles/straightPiece.tscn" id="5_qmawp"]
+[ext_resource type="PackedScene" uid="uid://ptsvuuf6jhya" path="res://Scenes/GameBoard/Tiles/starter_track.tscn" id="8_qmawp"]
+[ext_resource type="PackedScene" uid="uid://du5cm5vpnxdfi" path="res://Scenes/Props/Low-Poly-Modular-City-Pack-lto4eb(1)/Low Poly Modular City Pack/TrafficCone.fbx" id="8_w0my6"]
 
-[node name="GameBoard" type="Node3D"]
+[node name="GameBoard" type="Node3D" node_paths=PackedStringArray("Selector")]
 script = ExtResource("1_6rlmk")
 BoardLength = 10
 Margin = 0.0
 CellSize = 40
-TrackPieces = Array[PackedScene]([ExtResource("3_kff81"), ExtResource("5_g1laj"), ExtResource("4_f0rn3"), ExtResource("3_rv7iq"), ExtResource("4_w0my6"), ExtResource("5_qmawp")])
+TrackPieces = Array[PackedScene]([ExtResource("3_kff81"), ExtResource("5_g1laj"), ExtResource("4_f0rn3"), ExtResource("3_rv7iq"), ExtResource("4_w0my6"), ExtResource("8_qmawp")])
+Selector = NodePath("TrafficCone")
+
+[node name="TrafficCone" parent="." instance=ExtResource("8_w0my6")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)

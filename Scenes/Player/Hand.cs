@@ -45,10 +45,10 @@ public partial class Hand : Node3D
                 {
                     //GD.Print("Hit at point: ", results["collider_id"]);
                     var holder = (Node3D)results["collider"];
-
-                    if (holder.GetParent().GetParent() is Tile)
+                    
+                    if (holder.GetParent().GetParent() is Tile tile)
                     {
-                        GD.Print("YIPPIE!");
+                        GBManager.SelectTile(tile);
                     }
                 }   
                     
