@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-public partial class GameGrid : Node3D
+public partial class GameBoardManager : Node3D
 {
+    [Export]
+    LevelManager Level_Manager;
 
     [Export]
     int BoardLength;
@@ -31,18 +33,25 @@ public partial class GameGrid : Node3D
 
     public override void _Ready()
     {
+        Level_Manager.GenerateBoard += LevelStart;
+        Level_Manager.AddToBoard += AddToBoard;
         base._Ready();
         LoadPieces();
+
+
+     
+    }
+    public void LevelStart()
+    {
+        GD.PrintErr("Board Generating");
         GenerateMap();
         PopulateTileshWithTracks(Board);
-
-        AppendtoBoard(10);
-
-     
-      
-     
-
     }
+    public void AddToBoard()
+    {
+        AppendtoBoard(10);
+    }
+
     public void GenerateMap()
     {
         for (int i = 0; i < BoardLength; i++)
@@ -62,7 +71,7 @@ public partial class GameGrid : Node3D
             {
                 Tile tileHolder = new Tile(i, TileType.End);
                 AddChild(tileHolder);
-                tileHolder.GlobalPosition = position;
+                tileHolder.GlobalPosition = position;   
                 LastCheckPointTile = tileHolder;
                 CurrentEndTile = tileHolder;
                 Board.Add(tileHolder);
@@ -74,7 +83,7 @@ public partial class GameGrid : Node3D
                 tileHolder.GlobalPosition = position;
                 Board.Add(tileHolder);
             }
-            
+
         }
     }
 
@@ -193,7 +202,7 @@ public partial class GameGrid : Node3D
         {
             var test = TrackPieces[i].GetLocalScene();
             TrackPiece holder = (TrackPiece)(TrackPieces[i].Instantiate(PackedScene.GenEditState.Disabled));
-            GD.PrintErr("Load index (" + i + "), Type [" + holder.PieceType + "]," + TrackPieces[i].ToString());
+            GD.Print("Load index (" + i + "), Type [" + holder.PieceType + "]," + TrackPieces[i].ToString());
             PreloadPieces.Add(holder);
         }
     }
