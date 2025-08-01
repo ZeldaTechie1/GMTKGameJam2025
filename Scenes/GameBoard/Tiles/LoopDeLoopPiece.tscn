@@ -10,7 +10,7 @@ data = PackedVector3Array(-4.8926, -1, -18.5028, -4.4935, -1, -18.5429, -5.0003,
 resource_local_to_scene = true
 size = Vector3(1, 0.5, 0.502)
 
-[node name="TrackPiece" instance=ExtResource("1_5qo2a")]
+[node name="Loop" instance=ExtResource("1_5qo2a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("2_nbcja")
 

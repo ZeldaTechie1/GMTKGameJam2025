@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=18 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="Texture2D" uid="uid://cp82rh5du6871" path="res://Textures/PrototypeTextures/PNG/Dark/texture_07.png" id="1_3ija4"]
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/Player/player.tscn" id="1_ep0r4"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://d0gch2n6wyxbb" path="res://Scenes/GameGrid/Modifiers/Slick.tscn" id="11_f7gih"]
 [ext_resource type="PackedScene" uid="uid://xjyjmtjf357b" path="res://Scenes/GameGrid/Modifiers/Launcher.tscn" id="12_spijo"]
 [ext_resource type="PackedScene" uid="uid://di5gpkrgo0sq2" path="res://Scenes/GameGrid/Modifiers/Bouncer.tscn" id="13_x5qdp"]
+[ext_resource type="PackedScene" uid="uid://c7b8e5uapag4t" path="res://Scenes/GameBoard/Tiles/Tumbler.tscn" id="14_35paj"]
+[ext_resource type="PackedScene" uid="uid://c15dk6jlt7ita" path="res://Scenes/GameBoard/Tiles/Rotater.tscn" id="15_r65o5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkipe"]
 albedo_texture = ExtResource("1_3ija4")
@@ -257,10 +259,10 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2485, 0.159833, -61.7147)
 
 [node name="TrackPiece2" parent="." instance=ExtResource("7_rntjc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2282, 0.140054, -81.719)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2282, 0.140054, -111.719)
 
 [node name="TrackPiece3" parent="." instance=ExtResource("8_varko")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2721, 0.12147, 18.5571)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2721, 0.12147, -11.4429)
 
 [node name="Launcher" parent="." instance=ExtResource("12_spijo")]
 transform = Transform3D(5, 0, 0, 0, 2.83448, 4.11895, 0, -4.11895, 2.83448, 5.32694, 10.0921, -28.3554)
@@ -288,5 +290,11 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 90, -76.9623, 0.500002, -68.35
 
 [node name="BaseArea" parent="." instance=ExtResource("13_x5qdp")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -92.5763, 0.499996, -29.3733)
+
+[node name="Rotater" parent="." instance=ExtResource("15_r65o5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -89.1052, 0.0573515, 40.724)
+
+[node name="Tumbler" parent="." instance=ExtResource("14_35paj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -81.6834, 3.57628e-07, 91.1857)
 
 [editable path="Player"]
