@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmc83r8wd13em"]
 
-[ext_resource type="Script" uid="uid://cchskq7nkfscg" path="res://Scenes/GameBoard/Tiles/TrackPiece.cs" id="1_lgybx"]
+[ext_resource type="Script" uid="uid://cchskq7nkfscg" path="res://Scenes/GameBoard/Scripts/TrackPiece.cs" id="1_lgybx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_487m1"]
 size = Vector3(1, 0.25, 0.5)
@@ -9,13 +9,11 @@ size = Vector3(1, 0.25, 0.5)
 resource_local_to_scene = true
 size = Vector3(1, 0.5, 0.502)
 
-[node name="TrackPiece" type="MeshInstance3D" node_paths=PackedStringArray("EntrancePoint1", "EntrancePoint2", "ObstacleSpawnPoints")]
+[node name="TrackPiece" type="MeshInstance3D" node_paths=PackedStringArray("ItemSpawnPoints")]
 transform = Transform3D(-2.18557e-06, 0, 50, 0, 1, 0, -50, 0, -2.18557e-06, 0, 0, 0)
 mesh = SubResource("BoxMesh_487m1")
 script = ExtResource("1_lgybx")
-EntrancePoint1 = NodePath("Entrance Point1")
-EntrancePoint2 = NodePath("Entrance Point2")
-ObstacleSpawnPoints = []
+ItemSpawnPoints = []
 
 [node name="Entrance Point1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)

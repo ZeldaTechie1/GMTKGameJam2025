@@ -12,6 +12,15 @@ public partial class Hand : Node3D
     [Export] int maxHandCount;
     [Export] int maxDraws;
     [Export] int currentDraws;
+    [Export] Camera3D OverViewCamera;
+
+    [Export] GameBoardManager GBManager;
+    // Mouse controls
+    Vector3 RayOrigin;
+    Vector3 RayEnd;
+    
+
+    public bool MouseInteraction = true;
 
     public override void _Ready()
     {
@@ -19,17 +28,51 @@ public partial class Hand : Node3D
         LevelManager.RoundFinished += RoundEnded;
     }
 
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+        if (MouseInteraction)
+        {
+            if (Input.IsActionJustPressed("Click") && LevelManager.currentState == LevelState.InRound)
+            {
+                var spaceState = GetWorld3D().DirectSpaceState;
+                Vector2 mousePosition = GetParent().GetViewport().GetMousePosition();
+                RayOrigin = OverViewCamera.ProjectRayOrigin(mousePosition);
+                RayEnd = OverViewCamera.ProjectRayNormal(mousePosition) * 2000;
+                PhysicsRayQueryParameters3D query = PhysicsRayQueryParameters3D.Create(RayOrigin, RayEnd);
+                var results = spaceState.IntersectRay(query);
+                if (results.Count > 0)
+                {
+                    //GD.Print("Hit at point: ", results["collider_id"]);
+                    var holder = (Node3D)results["collider"];
+
+                     GD.Print("Parent:"+ holder.Name);
+                }   
+                    
+
+            }
+        
+        }
+
+    }
+
+
     public override void _Process(double delta)
     {
-        if(Input.IsActionJustPressed("Draw") && LevelManager.currentState == LevelState.InRound)
+
+
+        if (Input.IsActionJustPressed("Draw") && LevelManager.currentState == LevelState.InRound)
         {
             Draw();
         }
 
-        if(Input.IsActionJustPressed("PickCard") && LevelManager.currentState == LevelState.InRound)
+        if (Input.IsActionJustPressed("PickCard") && LevelManager.currentState == LevelState.InRound)
         {
             TESTUseRandomCard();
         }
+
+
+
     }
 
     public void RoundStarted()

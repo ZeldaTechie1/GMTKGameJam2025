@@ -57,6 +57,7 @@ public partial class LevelManager : Node3D
 
     public void StartLevel()
     {
+        EmitGenerateBoard();
         StartRound();
     }
 
@@ -69,7 +70,6 @@ public partial class LevelManager : Node3D
     }
     public void EndRound()
     {
-        EmitGenerateBoard();
         OverviewCamera.Current = false;
         PlayerCamera.Current = true;
         EmitRoundFinished();

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c4ovbnws1k2h5"]
 
-[ext_resource type="Script" uid="uid://cchskq7nkfscg" path="res://Scenes/GameBoard/Tiles/TrackPiece.cs" id="1_jxa7s"]
+[ext_resource type="Script" uid="uid://cchskq7nkfscg" path="res://Scenes/GameBoard/Scripts/TrackPiece.cs" id="1_jxa7s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxa7s"]
 albedo_color = Color(0, 0.571471, 0.835868, 1)
@@ -22,15 +22,13 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_djk6s"]
 size = Vector3(1, 0.834473, 0.989349)
 
-[node name="TrackPiece" type="MeshInstance3D" node_paths=PackedStringArray("EntrancePoint1", "EntrancePoint2", "ObstacleSpawnPoints")]
+[node name="TrackPiece" type="MeshInstance3D" node_paths=PackedStringArray("ItemSpawnPoints")]
 transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_jxa7s")
 mesh = SubResource("BoxMesh_487m1")
 script = ExtResource("1_jxa7s")
 PieceType = 3
-EntrancePoint1 = NodePath("Entrance Point1")
-EntrancePoint2 = NodePath("Entrance Point2")
-ObstacleSpawnPoints = []
+ItemSpawnPoints = []
 
 [node name="Entrance Point1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
@@ -48,9 +46,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0.5)
 material_override = SubResource("StandardMaterial3D_pytwf")
 mesh = SubResource("CylinderMesh_ld3tj")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-collision_layer = 3
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0827637, 0.00538635)
 shape = SubResource("BoxShape3D_djk6s")

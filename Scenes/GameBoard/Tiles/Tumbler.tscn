@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dmc83r8wd13em" path="res://Scenes/GameBoard/Tiles/tile_track1.tscn" id="1_qrgdl"]
 [ext_resource type="ArrayMesh" uid="uid://nimflt5ng4th" path="res://Models/Meshes/Tumbler.obj" id="2_wdnqi"]
-[ext_resource type="Script" uid="uid://c2j616uax8rxi" path="res://Obstacle.cs" id="3_wdnqi"]
+[ext_resource type="Script" uid="uid://esgxv4cehgmc" path="res://Scenes/GameBoard/Obstacles/LevelItem.cs" id="3_wdnqi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e0mxm"]
 resource_local_to_scene = true
@@ -18,11 +18,10 @@ mesh = null
 [node name="CollisionShape3D" parent="RigidBody3D" index="0"]
 shape = SubResource("BoxShape3D_e0mxm")
 
-[node name="Node3D" type="Node3D" parent="." index="3" node_paths=PackedStringArray("ObstacleObject")]
+[node name="Node3D" type="Node3D" parent="." index="3" node_paths=PackedStringArray("LevelItemObject")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 script = ExtResource("3_wdnqi")
-ObstacleObject = NodePath(".")
-ObstacleActive = true
+LevelItemObject = NodePath(".")
 EnableSpin = true
 SpinSpeed = Vector3(0, 0, 50)
 
