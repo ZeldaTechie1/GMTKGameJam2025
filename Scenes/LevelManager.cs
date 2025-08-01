@@ -5,10 +5,10 @@ public partial class LevelManager : Node3D
 {
     [Export] Timer levelTimer;
     [Export] RichTextLabel timerText;
-    [Export] Area3D GoalArea;
     [Export] Camera3D OverviewCamera;
     [Export] Camera3D PlayerCamera;
 
+    [Export] public Area3D GoalArea;
     [Signal] public delegate void LevelStartedEventHandler();
     [Signal] public delegate void TimerEndedEventHandler();
     [Signal] public delegate void RoundStartedEventHandler();

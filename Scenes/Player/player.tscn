@@ -21,7 +21,7 @@ radius = 1.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_a3d8c"]
 radius = 0.3
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCamera", "Graphics")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCamera", "Graphics", "SpringArm")]
 collision_layer = 3
 floor_constant_speed = true
 floor_block_on_wall = false
@@ -31,6 +31,7 @@ script = ExtResource("1_a3d8c")
 Deceleration = 0.4
 PlayerCamera = NodePath("SpringArmPivot/Camera3D")
 Graphics = NodePath("Graphics")
+SpringArm = NodePath("SpringArmPivot")
 
 [node name="Graphics" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

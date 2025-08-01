@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 public partial class BasicPlayer : CharacterBody3D
 {
 	[Export] LevelManager levelManager;
+	[Export] GameBoardManager gameBoardManager;
 	[Export] public float CurrentSpeed = 0.0f;
 	[Export] public float Acceleration = 1.0f;
 	[Export] public float Deceleration = 0.5f;
@@ -13,6 +14,7 @@ public partial class BasicPlayer : CharacterBody3D
 
 	[Export] Camera3D PlayerCamera;
 	[Export] MeshInstance3D Graphics;
+	[Export] Node3D SpringArm;
 	bool wasOnFloor;
 	bool appliedModifier;
 	ModifierType currentModifier;
@@ -20,10 +22,20 @@ public partial class BasicPlayer : CharacterBody3D
 
 	public override void _Ready()
 	{
-
+        levelManager.RoundStarted += LevelManager_RoundStarted;
 	}
 
-	public override void _PhysicsProcess(double delta)
+    private void LevelManager_RoundStarted()
+    {
+        GlobalPosition = gameBoardManager.FirstStartTile.Track.GlobalPosition + Vector3.Up;
+		Vector3 lookAtPosition = gameBoardManager.CurrentEndTile.Track.GlobalPosition;
+		lookAtPosition.Y = GlobalPosition.Y;
+		Graphics.LookAt(lookAtPosition);
+		lookAtPosition.Y = SpringArm.GlobalPosition.Y;
+		SpringArm.LookAt(lookAtPosition);
+    }
+
+    public override void _PhysicsProcess(double delta)
 	{
 		if (levelManager.currentState != LevelState.InPlay)
 			return;

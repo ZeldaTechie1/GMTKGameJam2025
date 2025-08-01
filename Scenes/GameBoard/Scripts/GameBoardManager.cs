@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 public partial class GameBoardManager : Node3D
 {
@@ -143,8 +142,11 @@ public partial class GameBoardManager : Node3D
             {
                 t.Track = piece;
                 t.Track.Position = t.Position;
+                if(piece.PieceType == TrackPieceType.End)
+                {
+                    Level_Manager.GoalArea = piece.GetNode("Area3D") as Area3D;
+                }
             }
-
             else
             {
                 GD.PrintErr("ERROR!");
@@ -182,7 +184,7 @@ public partial class GameBoardManager : Node3D
             }
             else
             {
-                GD.PrintErr("PieceNotFound");
+                GD.PrintErr($"PieceNotFound - {needed}");
                 return null;
             }
         }
