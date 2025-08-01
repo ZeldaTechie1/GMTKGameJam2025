@@ -15,7 +15,7 @@ public partial class Tile : Node3D
     public TrackPiece Track;
 
     public int CellSize = 50;
-    public Node3D[] ObstacleSpawnPoints;
+
 
     public int TileID { get; set; }
 
@@ -66,6 +66,22 @@ public partial class Tile : Node3D
         Track.QueueFree();
     }
 
+    public void SpawnLevelItem(LevelItemSize size, LevelItemLocation location,PackedScene ItemToSpawn) 
+    {
+        if (Track != null)
+        {
+            ItemSpawnPoint spawnPoint =Track.GetRandomItemSpawnPoint(size, location);
+            if (spawnPoint != null)
+            {
+                var scene = (LevelItem)ItemToSpawn.Instantiate();
+                scene.Position = spawnPoint.Position;
+                Track.AddChild(scene);
+                
+            }
+          
+        }
+
+    }
 
 
 

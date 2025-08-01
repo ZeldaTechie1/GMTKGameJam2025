@@ -7,15 +7,26 @@
 resource_local_to_scene = true
 size = Vector3(1, 0.5, 0.502)
 
+<<<<<<< Updated upstream
 [node name="TrackPiece" instance=ExtResource("1_0niui")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = ExtResource("2_dtxx3")
+=======
+[node name="TrackPiece" node_paths=PackedStringArray("ItemSpawnPoints") instance=ExtResource("1_0niui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("2_dtxx3")
+ItemSpawnPoints = []
+>>>>>>> Stashed changes
 
 [node name="Entrance Point1" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
 
 [node name="Entrance Point2" parent="." index="1"]
+<<<<<<< Updated upstream
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+>>>>>>> Stashed changes
 
 [node name="CollisionShape3D" parent="RigidBody3D" index="0"]
 shape = SubResource("BoxShape3D_neeo5")

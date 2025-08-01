@@ -2,15 +2,19 @@ using Godot;
 using System;
 
 
-public partial class Obstacle : Node3D
+public partial class LevelItem : Node3D
 {
-    [ExportGroup("Basic Obstacle Settings")]
+    [ExportGroup("Basic Item Settings")]
     [Export]
-    Node3D ObstacleObject;
+    Node3D LevelItemObject;
     [Export]
-    ObstacleType ObstacleType_Type = ObstacleType.Small;
+    LevelItemSize ItemSize = LevelItemSize.Small;
+
     [Export]
-    bool ObstacleActive;
+    LevelItemType ItemType=LevelItemType.Aid;
+    
+    [Export]
+    bool ItemActive;
 
     [ExportGroup("Spin")]
     [Export]
@@ -52,9 +56,9 @@ public partial class Obstacle : Node3D
     Vector3 Origin;
     public override void _Ready()
     {
-        if (ObstacleObject != null)
+        if (LevelItemObject != null)
         {
-            Origin = ObstacleObject.Position;
+            Origin = LevelItemObject.Position;
         }
 
     }
@@ -81,11 +85,11 @@ public partial class Obstacle : Node3D
     {
         if (reverseSpin)
         {
-            ObstacleObject.RotationDegrees += SpinSpeed * (float)delta * -1;
+            LevelItemObject.RotationDegrees += SpinSpeed * (float)delta * -1;
         }
         else
         {
-            ObstacleObject.RotationDegrees += SpinSpeed * (float)delta;
+            LevelItemObject.RotationDegrees += SpinSpeed * (float)delta;
         }
 
     }
@@ -93,30 +97,30 @@ public partial class Obstacle : Node3D
     {
         Vector3 MoveSpeed = new Vector3(0, VerticalMoveSpeed, 0);
 
-        if (Math.Abs(Origin.DistanceTo(ObstacleObject.Position)) > MaxVerticalDistanceFromOrigin)
+        if (Math.Abs(Origin.DistanceTo(LevelItemObject.Position)) > MaxVerticalDistanceFromOrigin)
         {
             VerticalMoveSwap = !VerticalMoveSwap;
         }
 
         if (VerticalMoveSwap)
         {
-            ObstacleObject.Position += MoveSpeed * (float)delta;
+            LevelItemObject.Position += MoveSpeed * (float)delta;
         }
         else
         {
-            ObstacleObject.Position += MoveSpeed * (float)delta * -1;
+            LevelItemObject.Position += MoveSpeed * (float)delta * -1;
 
         }
 
     }
-        public void HorizontalMove(double delta)
+    public void HorizontalMove(double delta)
     {
 
         if (X_Axis == false && Z_Axis == false)
         {
             X_Axis = true;
         }
-        
+
 
         Vector3 MoveSpeed = new Vector3(0, 0, 0);
 
@@ -130,21 +134,21 @@ public partial class Obstacle : Node3D
         }
 
 
-        if (Math.Abs(Origin.DistanceTo(ObstacleObject.Position)) > MaxHorizontalDistanceFromOrigin)
+        if (Math.Abs(Origin.DistanceTo(LevelItemObject.Position)) > MaxHorizontalDistanceFromOrigin)
         {
             HorizontalMoveSwap = !HorizontalMoveSwap;
         }
 
         if (HorizontalMoveSwap)
         {
-            ObstacleObject.Position += MoveSpeed * (float)delta ;
+            LevelItemObject.Position += MoveSpeed * (float)delta;
         }
         else
         {
-            ObstacleObject.Position += MoveSpeed * (float)delta * -1;
+            LevelItemObject.Position += MoveSpeed * (float)delta * -1;
 
         }
-         
+
     }
 
 
@@ -153,7 +157,21 @@ public partial class Obstacle : Node3D
 
 
 }
-public enum ObstacleType
+public enum LevelItemType
+{
+    Obstacle,
+    Aid,
+    Default
+
+}
+public enum LevelItemLocation
+{
+    Floor,
+    Floating,
+    Default
+
+}
+public enum LevelItemSize
 {
     Small,
     Large,

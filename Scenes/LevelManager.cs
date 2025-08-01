@@ -57,6 +57,7 @@ public partial class LevelManager : Node3D
 
     public void StartLevel()
     {
+        EmitGenerateBoard();
         StartRound();
     }
 
