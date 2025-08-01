@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmhgj01yeau3x"]
+
+[ext_resource type="ArrayMesh" uid="uid://mxmk8kfwascm" path="res://Scenes/Props/BlenderModels/Floor.tres" id="1_5ir6o"]
+[ext_resource type="ArrayMesh" uid="uid://sxoxwnliehfn" path="res://Scenes/Props/BlenderModels/Spikes.tres" id="2_vnocw"]
+[ext_resource type="Script" uid="uid://ddp26yyll5ltn" path="res://Spikes.cs" id="3_y0jml"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ir6o"]
+albedo_color = Color(0.26, 0.26, 0.26, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnocw"]
+
+[node name="FloorSpikeTrap" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_5ir6o")
+mesh = ExtResource("1_5ir6o")
+
+[node name="Spikes" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.431813, 0)
+material_override = SubResource("StandardMaterial3D_vnocw")
+mesh = ExtResource("2_vnocw")
+script = ExtResource("3_y0jml")
+Active = true
+EjectionSpeed = Vector3(0, 3, 0)
+RetractionSpeed = Vector3(0, 0.5, 0)
