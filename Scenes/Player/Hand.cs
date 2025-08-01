@@ -46,7 +46,10 @@ public partial class Hand : Node3D
                     //GD.Print("Hit at point: ", results["collider_id"]);
                     var holder = (Node3D)results["collider"];
 
-                     GD.Print("Parent:"+ holder.Name);
+                    if (holder.GetParent().GetParent() is Tile)
+                    {
+                        GD.Print("YIPPIE!");
+                    }
                 }   
                     
 

@@ -20,16 +20,18 @@ public partial class GameBoardManager : Node3D
     [Export]
     PackedScene[] TrackPieces;
 
-    List<TrackPiece> PreloadPieces=new List<TrackPiece>();
+    List<TrackPiece> PreloadPieces = new List<TrackPiece>();
 
     List<Tile> Board = new List<Tile>();
-  
+
 
     public Tile FirstStartTile;
     public Tile LastCheckPointTile;
     public Tile CurrentEndTile;
+    public Tile SelectedTile;
 
-
+    [Export]
+    public MeshInstance3D Selecter;
 
     public override void _Ready()
     {
@@ -37,10 +39,8 @@ public partial class GameBoardManager : Node3D
         Level_Manager.AddToBoard += AddToBoard;
         base._Ready();
         LoadPieces();
-
-
-     
     }
+
     public void LevelStart()
     {
         GD.PrintErr("Board Generating");
@@ -71,7 +71,7 @@ public partial class GameBoardManager : Node3D
             {
                 Tile tileHolder = new Tile(i, TileType.End);
                 AddChild(tileHolder);
-                tileHolder.GlobalPosition = position;   
+                tileHolder.GlobalPosition = position;
                 LastCheckPointTile = tileHolder;
                 CurrentEndTile = tileHolder;
                 Board.Add(tileHolder);
@@ -130,7 +130,7 @@ public partial class GameBoardManager : Node3D
 
         BoardLength = NewBoardLength;
 
-        
+
     }
 
     public void PopulateTileshWithTracks(List<Tile> BoardSegment)
@@ -155,15 +155,16 @@ public partial class GameBoardManager : Node3D
 
 
     public TrackPiece GetTrackPiece(Tile t)
-    {   try
+    {
+        try
         {
             TrackPieceType needed = t.NeededPiece();
             List<int> possiblePieces = new List<int>();
-    
-            for(int i= 0; i < PreloadPieces.Count();i++)
+
+            for (int i = 0; i < PreloadPieces.Count(); i++)
             {
-               
-                if (PreloadPieces[i].PieceType== needed)
+
+                if (PreloadPieces[i].PieceType == needed)
                 {
                     possiblePieces.Add(i);
                 }
@@ -174,7 +175,7 @@ public partial class GameBoardManager : Node3D
 
             if (possiblePieces.Count() > 0)
             {
-                var scene =(TrackPiece) TrackPieces[possiblePieces[rand.Next(0, possiblePieces.Count())]].Instantiate();
+                var scene = (TrackPiece)TrackPieces[possiblePieces[rand.Next(0, possiblePieces.Count())]].Instantiate();
                 scene.Position = t.Position;
                 t.AddChild(scene);
                 return scene;
@@ -188,11 +189,11 @@ public partial class GameBoardManager : Node3D
         }
         catch (Exception ex)
         {
-            GD.PrintErr("Eror:"+ex.ToString());
+            GD.PrintErr("Eror:" + ex.ToString());
             return null;
         }
-      
-     
+
+
 
     }
 
@@ -206,5 +207,13 @@ public partial class GameBoardManager : Node3D
             PreloadPieces.Add(holder);
         }
     }
+
+    public void SelectTile(Tile tile)
+    {
+        SelectedTile = tile;
+        
+    }
+
+
 
 }
