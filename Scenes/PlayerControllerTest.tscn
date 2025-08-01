@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=11 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="Texture2D" uid="uid://cp82rh5du6871" path="res://Textures/PrototypeTextures/PNG/Dark/texture_07.png" id="1_3ija4"]
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/Player/player.tscn" id="1_ep0r4"]
 [ext_resource type="Script" uid="uid://b46t1q6jieqtm" path="res://Scenes/SignalTester.cs" id="2_am0fs"]
 [ext_resource type="PackedScene" uid="uid://d3ff2b7m68md6" path="res://Scenes/LevelManager.tscn" id="3_dkipe"]
 [ext_resource type="PackedScene" uid="uid://3ci47gsa67wp" path="res://Scenes/GameGrid/Tiles/game_grid.tscn" id="4_bw8hf"]
-[ext_resource type="PackedScene" uid="uid://3jh5jm5iba0m" path="res://Scenes/GameGrid/Obstacles/obstacle1.tscn" id="6_8o3bs"]
-[ext_resource type="PackedScene" uid="uid://bmhgj01yeau3x" path="res://Scenes/GameGrid/Obstacles/floor_spike_trap.tscn" id="7_kf4my"]
+[ext_resource type="PackedScene" uid="uid://dk0w4ypsectjr" path="res://Scenes/GameGrid/Tiles/LoopDeLoopPiece.tscn" id="6_8o3bs"]
+[ext_resource type="PackedScene" uid="uid://ccwr6mjfwj16d" path="res://Scenes/GameGrid/Tiles/LumpyPiece.tscn" id="7_rntjc"]
+[ext_resource type="PackedScene" uid="uid://b0w1x4nhy32y6" path="res://Scenes/GameGrid/Tiles/straightPiece.tscn" id="8_varko"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkipe"]
 albedo_texture = ExtResource("1_3ija4")
@@ -221,28 +222,40 @@ shape = SubResource("BoxShape3D_am0fs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12604, -0.352375, -3.99549)
 size = Vector3(7.21667, 1, 8.99292)
 
-[node name="Player" parent="." instance=ExtResource("1_ep0r4")]
+[node name="Player" parent="." node_paths=PackedStringArray("levelManager") instance=ExtResource("1_ep0r4")]
 floor_constant_speed = false
 floor_max_angle = 1.22173
+levelManager = NodePath("../LevelManager")
 Deceleration = 0.5
+
+[node name="SpringArmPivot" parent="Player" index="2" node_paths=PackedStringArray("levelManager")]
+levelManager = NodePath("../../LevelManager")
 
 [node name="Hand" parent="Player" index="4" node_paths=PackedStringArray("LevelManager")]
 LevelManager = NodePath("../../LevelManager")
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("GoalArea") instance=ExtResource("3_dkipe")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("GoalArea", "OverviewCamera", "PlayerCamera") instance=ExtResource("3_dkipe")]
 GoalArea = NodePath("../Environment/Area3D")
+OverviewCamera = NodePath("../Camera3D")
+PlayerCamera = NodePath("../Player/SpringArmPivot/Camera3D")
 
 [node name="GameGrid" parent="." instance=ExtResource("4_bw8hf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-CellSize = 10
+BoardLength = 0
+Margin = 1.5
+CellSize = 1
 
-[node name="Obstacle" parent="." instance=ExtResource("6_8o3bs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3772, 0.00728718, 0.698589)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, -37.2927, 25.184, -14.7984)
+current = true
 
-[node name="FloorSpikeTrap" parent="." instance=ExtResource("7_kf4my")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93919, 0, -4.40928)
+[node name="TrackPiece" parent="." instance=ExtResource("6_8o3bs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2485, 0.159833, -61.7147)
 
-[node name="FloorSpikeTrap2" parent="." instance=ExtResource("7_kf4my")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.219199, 1, -13.759)
+[node name="TrackPiece2" parent="." instance=ExtResource("7_rntjc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2282, 0.140054, -81.719)
+
+[node name="TrackPiece3" parent="." instance=ExtResource("8_varko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2721, 0.12147, 18.5571)
 
 [editable path="Player"]
