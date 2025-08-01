@@ -15,8 +15,6 @@ public partial class Tile : Node3D
     public TrackPiece Track;
 
     public int CellSize = 50;
-
-    [Export]
     public Node3D[] ObstacleSpawnPoints;
 
     public int TileID { get; set; }

@@ -14,6 +14,9 @@ public partial class TrackPiece : MeshInstance3D
     [Export]
     Node3D EntrancePoint2;
 
+    [Export]
+    public Node3D[] ObstacleSpawnPoints;
+
     public int CellSize;
 
    

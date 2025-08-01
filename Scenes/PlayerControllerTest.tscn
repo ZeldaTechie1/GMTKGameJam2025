@@ -242,4 +242,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3772, 0.00728718, 0.69858
 [node name="FloorSpikeTrap" parent="." instance=ExtResource("7_kf4my")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93919, 0, -4.40928)
 
+[node name="FloorSpikeTrap2" parent="." instance=ExtResource("7_kf4my")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.219199, 1, -13.759)
+
 [editable path="Player"]

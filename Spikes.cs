@@ -68,10 +68,4 @@ public partial class Spikes : MeshInstance3D
     }
 
 }
-public enum ObstacleType
-{
-    Small,
-    Large,
-    Medium
 
-}

@@ -13,9 +13,11 @@ script = ExtResource("1_nl1y7")
 ObstacleObject = NodePath("Wooden_Log_01")
 EnableSpin = true
 SpinSpeed = Vector3(0, 2000, 0)
-EnableBounce = true
-BounceSpeed = Vector3(0, 1, 0)
-MaxDistanceFromOrigin = 10.0
+VerticalMoveSpeed = 1.0
+MaxVerticalDistanceFromOrigin = 10.0
+EnableHorizontalMovement = true
+HorizontalMoveSpeed = 10.0
+X_Axis = true
 
 [node name="Wooden_Log_01" parent="." instance=ExtResource("2_ih7cn")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

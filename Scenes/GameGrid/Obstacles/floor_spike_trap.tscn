@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmhgj01yeau3x"]
+[gd_scene load_steps=7 format=3 uid="uid://bmhgj01yeau3x"]
 
 [ext_resource type="ArrayMesh" uid="uid://mxmk8kfwascm" path="res://Scenes/Props/BlenderModels/Floor.tres" id="1_5ir6o"]
+[ext_resource type="Script" uid="uid://c2j616uax8rxi" path="res://Obstacle.cs" id="1_vnocw"]
 [ext_resource type="ArrayMesh" uid="uid://sxoxwnliehfn" path="res://Scenes/Props/BlenderModels/Spikes.tres" id="2_vnocw"]
 [ext_resource type="Script" uid="uid://ddp26yyll5ltn" path="res://Spikes.cs" id="3_y0jml"]
 
@@ -9,7 +10,13 @@ albedo_color = Color(0.26, 0.26, 0.26, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnocw"]
 
-[node name="FloorSpikeTrap" type="Node3D"]
+[node name="FloorSpikeTrap" type="Node3D" node_paths=PackedStringArray("ObstacleObject")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_vnocw")
+ObstacleObject = NodePath("Floor")
+EnableHorizontalMovement = true
+HorizontalMoveSpeed = 10.0
+MaxHorizontalDistanceFromOrigin = 20.0
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_5ir6o")
