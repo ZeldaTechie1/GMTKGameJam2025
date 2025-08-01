@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=9 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="Texture2D" uid="uid://cp82rh5du6871" path="res://Textures/PrototypeTextures/PNG/Dark/texture_07.png" id="1_3ija4"]
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/Player/player.tscn" id="1_ep0r4"]
 [ext_resource type="Script" uid="uid://b46t1q6jieqtm" path="res://Scenes/SignalTester.cs" id="2_am0fs"]
 [ext_resource type="PackedScene" uid="uid://d3ff2b7m68md6" path="res://Scenes/LevelManager.tscn" id="3_dkipe"]
 [ext_resource type="PackedScene" uid="uid://3ci47gsa67wp" path="res://Scenes/GameGrid/Tiles/game_grid.tscn" id="4_bw8hf"]
+[ext_resource type="PackedScene" uid="uid://dk0w4ypsectjr" path="res://Scenes/GameGrid/Tiles/LoopDeLoopPiece.tscn" id="6_8o3bs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkipe"]
 albedo_texture = ExtResource("1_3ija4")
@@ -240,14 +241,16 @@ OverviewCamera = NodePath("../Camera3D")
 PlayerCamera = NodePath("../Player/SpringArmPivot/Camera3D")
 
 [node name="GameGrid" parent="." instance=ExtResource("4_bw8hf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.416, 4.33153, 0)
-BoardLength = 10
-CellSize = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+BoardLength = 0
 Margin = 1.5
+CellSize = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, -37.2927, 25.184, -14.7984)
 current = true
+
+[node name="TrackPiece" parent="." instance=ExtResource("6_8o3bs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2485, 0.159833, -61.7147)
 
 [editable path="Player"]

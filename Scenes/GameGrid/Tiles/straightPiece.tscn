@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0w1x4nhy32y6"]
+
+[ext_resource type="PackedScene" uid="uid://dmc83r8wd13em" path="res://Scenes/GameGrid/Tiles/tile_track1.tscn" id="1_0niui"]
+[ext_resource type="ArrayMesh" uid="uid://cijjltci7t2b5" path="res://Models/Meshes/StraightTrack.obj" id="2_dtxx3"]
+
+[node name="TrackPiece" instance=ExtResource("1_0niui")]
+mesh = ExtResource("2_dtxx3")
+
+[node name="Entrance Point1" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Entrance Point2" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
