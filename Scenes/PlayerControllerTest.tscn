@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=16 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="Texture2D" uid="uid://cp82rh5du6871" path="res://Textures/PrototypeTextures/PNG/Dark/texture_07.png" id="1_3ija4"]
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/Player/player.tscn" id="1_ep0r4"]
@@ -8,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://dk0w4ypsectjr" path="res://Scenes/GameGrid/Tiles/LoopDeLoopPiece.tscn" id="6_8o3bs"]
 [ext_resource type="PackedScene" uid="uid://ccwr6mjfwj16d" path="res://Scenes/GameGrid/Tiles/LumpyPiece.tscn" id="7_rntjc"]
 [ext_resource type="PackedScene" uid="uid://b0w1x4nhy32y6" path="res://Scenes/GameGrid/Tiles/straightPiece.tscn" id="8_varko"]
+[ext_resource type="PackedScene" uid="uid://b3dqph5fo320d" path="res://Scenes/GameGrid/Modifiers/SpeedUp.tscn" id="9_varko"]
+[ext_resource type="PackedScene" uid="uid://b13624wehrv5k" path="res://Scenes/GameGrid/Modifiers/SlowDown.tscn" id="10_62pdt"]
+[ext_resource type="PackedScene" uid="uid://d0gch2n6wyxbb" path="res://Scenes/GameGrid/Modifiers/Slick.tscn" id="11_f7gih"]
+[ext_resource type="PackedScene" uid="uid://xjyjmtjf357b" path="res://Scenes/GameGrid/Modifiers/Launcher.tscn" id="12_spijo"]
+[ext_resource type="PackedScene" uid="uid://di5gpkrgo0sq2" path="res://Scenes/GameGrid/Modifiers/Bouncer.tscn" id="13_x5qdp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkipe"]
 albedo_texture = ExtResource("1_3ija4")
@@ -243,7 +248,6 @@ PlayerCamera = NodePath("../Player/SpringArmPivot/Camera3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 BoardLength = 0
 Margin = 1.5
-CellSize = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, -37.2927, 25.184, -14.7984)
@@ -257,5 +261,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2282, 0.140054, -81.719)
 
 [node name="TrackPiece3" parent="." instance=ExtResource("8_varko")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2721, 0.12147, 18.5571)
+
+[node name="Launcher" parent="." instance=ExtResource("12_spijo")]
+transform = Transform3D(5, 0, 0, 0, 2.83448, 4.11895, 0, -4.11895, 2.83448, 5.32694, 10.0921, -28.3554)
+
+[node name="Launcher2" parent="." instance=ExtResource("12_spijo")]
+transform = Transform3D(5, 0, 0, 0, 3.24498, -3.80396, 0, 3.80396, 3.24498, 5.32694, 21.141, -60.7312)
+
+[node name="Launcher3" parent="." instance=ExtResource("12_spijo")]
+transform = Transform3D(3.5499, -3.49765, -0.405814, 1.41539, 1.94511, -4.38329, 3.22411, 2.99717, 2.3711, 5.32694, 33.8022, -45.889)
+
+[node name="SpeedUp" parent="." instance=ExtResource("9_varko")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -47.5959, 0.499998, -27.6015)
+
+[node name="SpeedUp2" parent="." instance=ExtResource("9_varko")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -28.7973, 0.499998, -26.9781)
+
+[node name="SpeedUp3" parent="." instance=ExtResource("9_varko")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -28.7973, 0.499998, -17.0237)
+
+[node name="Slow" parent="." instance=ExtResource("10_62pdt")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -61.0325, 0.499998, -28.3388)
+
+[node name="Slick" parent="." instance=ExtResource("11_f7gih")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 90, -76.9623, 0.500002, -68.3595)
+
+[node name="BaseArea" parent="." instance=ExtResource("13_x5qdp")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -92.5763, 0.499996, -29.3733)
 
 [editable path="Player"]

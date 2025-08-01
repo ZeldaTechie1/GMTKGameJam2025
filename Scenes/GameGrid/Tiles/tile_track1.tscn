@@ -5,11 +5,12 @@
 [sub_resource type="BoxMesh" id="BoxMesh_487m1"]
 size = Vector3(1, 0.25, 0.5)
 
-[node name="TrackPiece" type="MeshInstance3D" node_paths=PackedStringArray("EntrancePoint1", "EntrancePoint2")]
+[node name="TrackPiece" type="MeshInstance3D" node_paths=PackedStringArray("EntrancePoint1", "EntrancePoint2", "ObstacleSpawnPoints")]
 mesh = SubResource("BoxMesh_487m1")
 script = ExtResource("1_lgybx")
 EntrancePoint1 = NodePath("Entrance Point1")
 EntrancePoint2 = NodePath("Entrance Point2")
+ObstacleSpawnPoints = []
 
 [node name="Entrance Point1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)

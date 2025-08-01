@@ -17,6 +17,7 @@ public partial class LevelManager : Node3D
     [Signal] public delegate void PlayEndedEventHandler();
     [Signal] public delegate void PlayerFailedEventHandler();
     [Signal] public delegate void PlayerSucceededEventHandler();
+    [Signal] public delegate void PlayerDeathEventHandler();
 
     public LevelState currentState;
 
@@ -92,14 +93,24 @@ public partial class LevelManager : Node3D
     {
         levelTimer.Stop();
         EmitTimerEnded();
-        EmitPlayerFailed();
-        EndPlay();
+        PlayerFail();
     }
 
     public void GoalReached()
     {
         levelTimer.Stop();
         EmitPlayerSucceeded();
+        EndPlay();
+    }
+
+    public void PlayerDead()
+    {
+        PlayerFail();
+    }
+
+    public void PlayerFail()
+    {
+        EmitPlayerFailed();
         EndPlay();
     }
 
@@ -137,6 +148,11 @@ public partial class LevelManager : Node3D
     private void EmitPlayerSucceeded()
     {
         EmitSignal(SignalName.PlayerSucceeded);
+    }
+
+    private void EmitPlayerDeath()
+    {
+        EmitSignal(SignalName.PlayerDeath);
     }
 
 }
