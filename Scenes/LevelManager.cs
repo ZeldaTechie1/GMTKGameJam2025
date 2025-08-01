@@ -18,6 +18,8 @@ public partial class LevelManager : Node3D
     [Signal] public delegate void PlayerFailedEventHandler();
     [Signal] public delegate void PlayerSucceededEventHandler();
     [Signal] public delegate void PlayerDeathEventHandler();
+    [Signal] public delegate void GenerateBoardEventHandler();
+    [Signal] public delegate void AddToBoardEventHandler();
 
     public LevelState currentState;
 
@@ -29,7 +31,7 @@ public partial class LevelManager : Node3D
 
     public override void _Process(double delta)
     {
-        if(!levelTimer.IsStopped())
+        if (!levelTimer.IsStopped())
         {
             int minutes = Mathf.FloorToInt(levelTimer.TimeLeft / 60);
             int seconds = Mathf.FloorToInt(levelTimer.TimeLeft % 60);
@@ -37,7 +39,7 @@ public partial class LevelManager : Node3D
             timerText.Text = $"{minutes}:{seconds}:{millisecs}";
         }
 
-        if(Input.IsActionJustPressed("StartPlay"))
+        if (Input.IsActionJustPressed("StartPlay"))
         {
             if (currentState == LevelState.InRound)
             {
@@ -67,6 +69,7 @@ public partial class LevelManager : Node3D
     }
     public void EndRound()
     {
+        EmitGenerateBoard();
         OverviewCamera.Current = false;
         PlayerCamera.Current = true;
         EmitRoundFinished();
@@ -153,6 +156,14 @@ public partial class LevelManager : Node3D
     private void EmitPlayerDeath()
     {
         EmitSignal(SignalName.PlayerDeath);
+    }
+    private void EmitGenerateBoard()
+    {
+        EmitSignal(SignalName.GenerateBoard);
+    }
+    private void EmitAddToBoard()
+    {
+        EmitSignal(SignalName.AddToBoard);
     }
 
 }
