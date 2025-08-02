@@ -1,0 +1,139 @@
+[gd_scene load_steps=18 format=3 uid="uid://vk64ldo75glj"]
+
+[ext_resource type="Script" uid="uid://7gnu6pw5gypc" path="res://Scenes/SlideHolder.cs" id="1_d6567"]
+[ext_resource type="ArrayMesh" uid="uid://nfwgboedgc1w" path="res://Models/Meshes/Visor.obj" id="1_map6f"]
+[ext_resource type="Texture2D" uid="uid://bo3cgncxgc3kr" path="res://Textures/testSlide1.png" id="2_ch2se"]
+[ext_resource type="Resource" uid="uid://tkqugklers7i" path="res://Dialogue/Tutorial.dialogue" id="2_jbvax"]
+[ext_resource type="Texture2D" uid="uid://bl8vgfqmd2i85" path="res://Textures/placeholderSlide.png" id="3_map6f"]
+[ext_resource type="Texture2D" uid="uid://djucs2i1t1iam" path="res://Textures/slide5.png" id="5_u2gab"]
+[ext_resource type="Texture2D" uid="uid://dy5aebyk7ck33" path="res://Textures/slide6.png" id="6_ls7or"]
+[ext_resource type="Texture2D" uid="uid://ccfj102eh13qn" path="res://Textures/slide8.png" id="7_5v4vo"]
+[ext_resource type="Texture2D" uid="uid://by7v5gtvn4qke" path="res://Textures/slide9.png" id="8_ls7or"]
+[ext_resource type="Texture2D" uid="uid://cfi2g85tyxctn" path="res://Textures/slide10.png" id="8_pujgt"]
+[ext_resource type="AudioStream" uid="uid://b2e31hw8pnotv" path="res://Sounds/Music/Childrens Adventure Anthem Main.wav" id="11_5v4vo"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hp5wx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gnu7h"]
+albedo_color = Color(1, 0.403443, 0.375046, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tt6wg"]
+material = SubResource("StandardMaterial3D_gnu7h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74byh"]
+albedo_color = Color(0.365274, 0.329011, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_map6f"]
+albedo_color = Color(0.399575, 0.995572, 0.467816, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gnu7h"]
+
+[node name="TutorialScene" type="Node3D"]
+
+[node name="LifeGuard" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.702569, -0.106724, 0.703567, 0.0752857, 0.994289, 0.0756448, -0.707622, -0.000177047, 0.706591, -1.21474, 1, 0)
+mesh = SubResource("CapsuleMesh_hp5wx")
+
+[node name="Glasses" type="MeshInstance3D" parent="LifeGuard"]
+transform = Transform3D(0.673059, 0, 0, 0, -2.12396e-09, -0.31194, 0, 0.0485905, -1.36353e-08, 0, 0.540026, 0.464327)
+mesh = SubResource("CylinderMesh_tt6wg")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LifeGuard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.162084, 0)
+radius = 0.554688
+height = 0.180054
+sides = 24
+material = SubResource("StandardMaterial3D_74byh")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="LifeGuard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366094, 0)
+radius = 0.523926
+height = 0.588074
+sides = 24
+material = SubResource("StandardMaterial3D_74byh")
+
+[node name="Visor" type="MeshInstance3D" parent="LifeGuard"]
+transform = Transform3D(0.284, -2.13186e-09, 2.98023e-08, -1.30603e-09, 0.284, 1.00408e-09, -2.98023e-08, 1.81171e-09, 0.284, -0.00128005, 0.917045, 0.0697681)
+visible = false
+mesh = ExtResource("1_map6f")
+surface_material_override/0 = SubResource("StandardMaterial3D_map6f")
+
+[node name="LifeGuard2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.705995, 0.0408902, 0.707035, -0.029018, 0.999164, -0.0288099, -0.707622, -0.000177074, 0.706591, -1.21474, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_gnu7h")
+
+[node name="Glasses" type="MeshInstance3D" parent="LifeGuard2"]
+transform = Transform3D(0.673059, 0, 0, 0, -2.12396e-09, -0.31194, 0, 0.0485905, -1.36353e-08, 0, 0.540026, 0.464327)
+mesh = SubResource("CylinderMesh_tt6wg")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LifeGuard2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.162084, 0)
+radius = 0.554688
+height = 0.180054
+sides = 24
+material = SubResource("StandardMaterial3D_74byh")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="LifeGuard2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366094, 0)
+radius = 0.523926
+height = 0.588074
+sides = 24
+material = SubResource("StandardMaterial3D_74byh")
+
+[node name="Visor" type="MeshInstance3D" parent="LifeGuard2"]
+transform = Transform3D(0.284, -2.13186e-09, 2.98023e-08, -1.30603e-09, 0.284, 1.00408e-09, -2.98023e-08, 1.81171e-09, 0.284, -0.00128005, 0.917045, 0.0697681)
+visible = false
+mesh = ExtResource("1_map6f")
+surface_material_override/0 = SubResource("StandardMaterial3D_map6f")
+
+[node name="SlideHolder" type="Control" parent="." node_paths=PackedStringArray("textureRect", "lifeguards")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d6567")
+DialogueResource = ExtResource("2_jbvax")
+textureRect = NodePath("TextureRect")
+slides = Array[Texture2D]([ExtResource("3_map6f"), ExtResource("3_map6f"), ExtResource("3_map6f"), ExtResource("3_map6f"), ExtResource("5_u2gab"), ExtResource("6_ls7or"), ExtResource("6_ls7or"), ExtResource("7_5v4vo"), ExtResource("7_5v4vo"), ExtResource("8_ls7or"), ExtResource("8_pujgt"), ExtResource("8_pujgt")])
+lifeguards = [NodePath("../LifeGuard"), NodePath("../LifeGuard2")]
+
+[node name="TextureRect" type="TextureRect" parent="SlideHolder"]
+show_behind_parent = true
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ch2se")
+expand_mode = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SlideHolder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SlideHolder/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SlideHolder/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.392868, 1.17866, 6.93263)
+fov = 23.6
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.69724, -0.509431, 0.504318, 0, 0.703531, 0.710664, -0.716838, -0.495504, 0.49053, 0, 0, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_5v4vo")
+autoplay = true
