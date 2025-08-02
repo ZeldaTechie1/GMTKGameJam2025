@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=21 format=3 uid="uid://cticu3sm2yxh6"]
 
-[ext_resource type="Texture2D" uid="uid://cp82rh5du6871" path="res://Textures/PrototypeTextures/PNG/Dark/texture_07.png" id="1_3ija4"]
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/DeckManager/player.tscn" id="1_ep0r4"]
 [ext_resource type="Script" uid="uid://b46t1q6jieqtm" path="res://Scenes/SignalTester.cs" id="2_am0fs"]
 [ext_resource type="PackedScene" uid="uid://covltxgev3y2g" path="res://Scenes/DeckManager/CardManager.tscn" id="3_6hkg8"]
 [ext_resource type="PackedScene" uid="uid://d3ff2b7m68md6" path="res://Scenes/LevelManager.tscn" id="3_dkipe"]
-[ext_resource type="PackedScene" uid="uid://buqjsk2a0flx8" path="res://Scenes/DeckManager/CardV2.tscn" id="5_nisgd"]
+[ext_resource type="PackedScene" uid="uid://dwf7eswity88h" path="res://AidCard.tscn" id="4_6hkg8"]
+[ext_resource type="Script" uid="uid://drb2gvxtjbite" path="res://Scenes/ItemSpawner.cs" id="5_6hkg8"]
 [ext_resource type="PackedScene" uid="uid://dmc83r8wd13em" path="res://Scenes/GameBoard/Tiles/tile_track1.tscn" id="5_x5qdp"]
 [ext_resource type="PackedScene" uid="uid://dmavjk8leao74" path="res://Scenes/GameBoard/Tiles/CheckpointTrack.tscn" id="6_35paj"]
 [ext_resource type="PackedScene" uid="uid://c7b8e5uapag4t" path="res://Scenes/GameBoard/Tiles/Tumbler.tscn" id="7_kf4my"]
@@ -15,56 +15,23 @@
 [ext_resource type="PackedScene" uid="uid://ccwr6mjfwj16d" path="res://Scenes/GameBoard/Tiles/LumpyPiece.tscn" id="9_l4he1"]
 [ext_resource type="PackedScene" uid="uid://ptsvuuf6jhya" path="res://Scenes/GameBoard/Tiles/starter_track.tscn" id="10_cn6qb"]
 [ext_resource type="Script" uid="uid://cl1t03w1383as" path="res://Scenes/BuilderCamera.cs" id="13_35paj"]
-[ext_resource type="Script" uid="uid://c4c055gwxr05m" path="res://Scenes/ObstacleSpawner.cs" id="14_35paj"]
 [ext_resource type="PackedScene" uid="uid://b5o15i4pusbsv" path="res://Scenes/GameBoard/Obstacles/BackwardsLauncher.tscn" id="15_cn6qb"]
 [ext_resource type="PackedScene" uid="uid://cmrsgshyq6dm7" path="res://Scenes/GameBoard/Obstacles/floating_Spikes.tscn" id="16_s0rc4"]
 [ext_resource type="PackedScene" uid="uid://o7j5acrdkk32" path="res://Scenes/GameBoard/Obstacles/floor_spikes.tscn" id="17_6hkg8"]
 [ext_resource type="PackedScene" uid="uid://c4htxkxsnexlo" path="res://Scenes/GameBoard/Obstacles/oil_slick.tscn" id="18_nisgd"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkipe"]
-albedo_texture = ExtResource("1_3ija4")
-uv1_scale = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
-uv2_triplanar = true
-uv2_world_triplanar = true
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_am0fs"]
-size = Vector3(7.20435, 7.24658, 9.02222)
+[ext_resource type="PackedScene" uid="uid://bagql2wevfq2m" path="res://kill_box.tscn" id="21_nisgd"]
 
 [node name="PlayerControllerTest" type="Node3D"]
 
 [node name="Environment" type="Node3D" parent="."]
-
-[node name="Floor" type="CSGBox3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0.511)
-material_override = SubResource("StandardMaterial3D_dkipe")
-use_collision = true
-size = Vector3(500, 1, 500)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 0.573219, 0.819402, 0, -0.819402, 0.573219, 0, 0, 0)
-
-[node name="Slope" type="CSGBox3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 0.708007, -0.706205, 0, 0.706205, 0.708007, 4.40439, 0.586254, -19.2997)
-use_collision = true
-size = Vector3(5.38208, 0.00299365, 14.9893)
+visible = false
 
 [node name="SignalTester" type="Node3D" parent="Environment" node_paths=PackedStringArray("levelManager")]
 script = ExtResource("2_am0fs")
 levelManager = NodePath("../../LevelManager")
 
-[node name="Area3D" type="Area3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8604, 0, -28.9589)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.10217, 3.12329, -4.01111)
-shape = SubResource("BoxShape3D_am0fs")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12604, -0.352375, -3.99549)
-size = Vector3(7.21667, 1, 8.99292)
-
-[node name="CardManager" parent="." instance=ExtResource("3_6hkg8")]
+[node name="CardManager" parent="." node_paths=PackedStringArray("Item_Spawner") instance=ExtResource("3_6hkg8")]
+Item_Spawner = NodePath("../ItemSpawner")
 
 [node name="Player" parent="." node_paths=PackedStringArray("levelManager", "gameBoardManager") instance=ExtResource("1_ep0r4")]
 floor_constant_speed = false
@@ -77,7 +44,7 @@ Deceleration = 0.5
 levelManager = NodePath("../../LevelManager")
 
 [node name="Deck" parent="Player" index="3"]
-deck = Array[PackedScene]([ExtResource("5_nisgd"), ExtResource("5_nisgd"), ExtResource("5_nisgd"), ExtResource("5_nisgd"), ExtResource("5_nisgd"), ExtResource("5_nisgd"), ExtResource("5_nisgd"), ExtResource("5_nisgd"), ExtResource("5_nisgd"), ExtResource("5_nisgd")])
+deck = Array[PackedScene]([ExtResource("4_6hkg8"), ExtResource("4_6hkg8"), ExtResource("4_6hkg8"), ExtResource("4_6hkg8"), ExtResource("4_6hkg8")])
 
 [node name="Hand" parent="Player" index="4" node_paths=PackedStringArray("LevelManager", "OverViewCamera", "GBManager", "Card_Manager")]
 LevelManager = NodePath("../../LevelManager")
@@ -85,11 +52,12 @@ OverViewCamera = NodePath("../../Overview")
 GBManager = NodePath("../../GameBoard")
 Card_Manager = NodePath("../../CardManager")
 
-[node name="ObstacleSpawner" type="Node3D" parent="." node_paths=PackedStringArray("levelManager", "gameBoardManager")]
-script = ExtResource("14_35paj")
+[node name="ItemSpawner" type="Node3D" parent="." node_paths=PackedStringArray("levelManager", "gameBoardManager")]
+script = ExtResource("5_6hkg8")
 levelManager = NodePath("../LevelManager")
 gameBoardManager = NodePath("../GameBoard")
 obstacles = Array[PackedScene]([ExtResource("15_cn6qb"), ExtResource("16_s0rc4"), ExtResource("17_6hkg8"), ExtResource("18_nisgd")])
+aid = Array[PackedScene]([ExtResource("15_cn6qb"), ExtResource("16_s0rc4"), ExtResource("17_6hkg8"), ExtResource("18_nisgd")])
 
 [node name="GameBoard" parent="." node_paths=PackedStringArray("Level_Manager") instance=ExtResource("8_rntjc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -104,11 +72,16 @@ script = ExtResource("13_35paj")
 levelManager = NodePath("../LevelManager")
 gameBoardManager = NodePath("../GameBoard")
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("OverviewCamera", "PlayerCamera", "GBManager", "GoalArea") instance=ExtResource("3_dkipe")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("OverviewCamera", "PlayerCamera", "GBManager") instance=ExtResource("3_dkipe")]
 OverviewCamera = NodePath("../Overview")
 PlayerCamera = NodePath("../Player/SpringArmPivot/Camera3D")
-maxRounds = 10
 GBManager = NodePath("../GameBoard")
-GoalArea = NodePath("../Environment/Area3D")
+maxRounds = 3
+
+[node name="KillBox" parent="." instance=ExtResource("21_nisgd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.573219, 0.819402, 0, -0.819402, 0.573219, 0, 0, 0)
 
 [editable path="Player"]

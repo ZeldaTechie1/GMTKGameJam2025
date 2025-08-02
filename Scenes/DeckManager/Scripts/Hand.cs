@@ -40,18 +40,25 @@ public partial class Hand : Node3D
     {   Tile tile = LevelManager.GBManager.SelectedTile;
         if (tile != null)
         {
-            currentHand[CardID].ActivateCard(tile);
-
-            for (int i = 0; i < currentHand.Count; i++)
+            if (currentHand[CardID].ActivateCard(tile))
             {
-                if (currentHand[i].CardID == CardID)
+                for (int i = 0; i < currentHand.Count; i++)
                 {
-                    currentHand.RemoveAt(i);
-                    currentHandContainer.GetChild(i).QueueFree();
-                    UpdateCardIDS();
-                    break;
+                    if (currentHand[i].CardID == CardID)
+                    {
+                        currentHand.RemoveAt(i);
+                        currentHandContainer.GetChild(i).QueueFree();
+                        UpdateCardIDS();
+                        break;
+                    }
                 }
             }
+            else
+            {
+                GD.Print("NO DICE HOMIE!");
+            }
+
+           
         }
 
       

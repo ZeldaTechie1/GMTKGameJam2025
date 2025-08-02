@@ -35,6 +35,7 @@ public partial class GameBoardManager : Node3D
     [Export]
     CardManager Card_Manager;
 
+
     public List<Tile> GetBoard()
     {
         return Board;
@@ -63,7 +64,7 @@ public partial class GameBoardManager : Node3D
     {
         for (int i = 0; i < BoardLength; i++)
         {
-            Vector3 position = this.GlobalPosition + new Vector3(0, 0, i * (CellSize ));
+            Vector3 position = this.GlobalPosition + new Vector3(0, 0, i * (CellSize));
             //DebugDraw3D.DrawArrow(position, position + new Vector3(0, 100, 0), new Color(225, 0, 0,1),1,false,60);
             GD.Print("Index:" + i + "Position:" + position);
             if (i == 0)
@@ -105,7 +106,7 @@ public partial class GameBoardManager : Node3D
         for (int i = CheckpointStart; i < NewBoardLength; i++)
         {
 
-            Vector3 position = GlobalPosition + new Vector3(0, 0, i * (CellSize * Margin));
+            Vector3 position = this.GlobalPosition + new Vector3(0, 0, i * CellSize);
             if (i == CheckpointStart)
             {
                 Board[CheckpointStart].ClearTrack();
@@ -151,7 +152,7 @@ public partial class GameBoardManager : Node3D
             {
                 t.Track = piece;
                 t.Track.GlobalPosition = t.GlobalPosition;
-                if(piece.PieceType == TrackPieceType.End)
+                if (piece.PieceType == TrackPieceType.End)
                 {
                     Level_Manager.GoalArea = piece.GetNode("Area3D") as Area3D;
                 }
@@ -187,7 +188,7 @@ public partial class GameBoardManager : Node3D
             if (possiblePieces.Count() > 0)
             {
                 var scene = (TrackPiece)TrackPieces[possiblePieces[rand.Next(0, possiblePieces.Count())]].Instantiate();
-                scene.Position = t.Position;
+                scene.Position = t.GlobalPosition;
                 t.AddChild(scene);
                 return scene;
 
@@ -218,14 +219,45 @@ public partial class GameBoardManager : Node3D
             PreloadPieces.Add(holder);
         }
     }
+    public Tile GetRandomTileForItemSpawn(LevelItemLocation itemLocation, LevelItemSize itemSize)
+    {
+        List<Tile> validTiles = new List<Tile>();
+    
+        foreach (Tile tile in GetBoard())
+        {
+            if (tile.Tile_Type == TileType.Empty || tile.Tile_Type == TileType.Start || tile.Tile_Type == TileType.End)
+                continue;
+
+            if (tile.Track.ItemSpawnPoints.Count() == 0)
+                continue;
+
+            validTiles.Add(tile);
+        }
+        foreach (Tile tile in validTiles)
+        {
+            if (tile.Track.GetRandomItemSpawnPoint(itemSize,itemLocation) == null)
+            {
+                validTiles.Remove(tile);
+            }
+        }
+
+        if (validTiles.Count > 0)
+        {
+            Random rand = new Random();
+            return validTiles[rand.Next(0,validTiles.Count)];
+        }
+        return null;
+    }
 
     public void SelectTile(Tile tile)
     {
         SelectedTile = tile;
         Selector.Position = tile.Position;
-         GD.Print("Index:" + tile.TileID + "Position:" + tile.GlobalPosition);
-        
+        GD.Print("Index:" + tile.TileID + "Position:" + tile.GlobalPosition);
+
     }
+
+  
 
 
 

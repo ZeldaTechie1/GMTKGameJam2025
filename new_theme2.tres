@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://chkg6astjph2q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bc1fg"]
+bg_color = Color(0.99, 0, 0.0164997, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7eh4"]
+bg_color = Color(0, 0, 0, 1)
+
+[resource]
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/h_separation = 0
+Button/font_sizes/font_size = 17
+Button/styles/normal = SubResource("StyleBoxFlat_bc1fg")
+Panel/styles/panel = SubResource("StyleBoxFlat_i7eh4")
+VBoxContainer/constants/separation = 0

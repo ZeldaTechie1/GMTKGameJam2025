@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://dt38ple8v0tf5" path="res://Scenes/Player/Scripts/BasicPlayer.cs" id="1_a3d8c"]
 [ext_resource type="Script" uid="uid://dew2oewo5dold" path="res://Scenes/Player/Scripts/CameraRotate.cs" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://diiukeqsw3gqh" path="res://Scenes/Player/Scripts/CameraFollow.cs" id="3_xpcdj"]
-[ext_resource type="Script" uid="uid://niro6ve3eqif" path="res://Scenes/DeckManager/Deck.cs" id="4_mtuoh"]
+[ext_resource type="Script" uid="uid://niro6ve3eqif" path="res://Scenes/DeckManager/Scripts/Deck.cs" id="4_mtuoh"]
 [ext_resource type="PackedScene" uid="uid://hwcv6b7ghlma" path="res://Scenes/DeckManager/Card.tscn" id="5_dd0ac"]
-[ext_resource type="Script" uid="uid://dhx0qqeu46y7w" path="res://Scenes/DeckManager/Hand.cs" id="5_htcer"]
+[ext_resource type="Script" uid="uid://ctt4sktx7t0yh" path="res://Scenes/DeckManager/Scripts/Hand.cs" id="5_htcer"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
