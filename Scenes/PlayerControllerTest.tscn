@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b46t1q6jieqtm" path="res://Scenes/SignalTester.cs" id="2_am0fs"]
 [ext_resource type="PackedScene" uid="uid://covltxgev3y2g" path="res://Scenes/DeckManager/CardManager.tscn" id="3_6hkg8"]
 [ext_resource type="PackedScene" uid="uid://d3ff2b7m68md6" path="res://Scenes/LevelManager.tscn" id="3_dkipe"]
-[ext_resource type="PackedScene" uid="uid://dwf7eswity88h" path="res://AidCard.tscn" id="4_6hkg8"]
+[ext_resource type="PackedScene" uid="uid://r12dhmtiu6u6" path="res://Scenes/DeckManager/Cards/card_speed_ring.tscn" id="4_ogjpr"]
 [ext_resource type="Script" uid="uid://drb2gvxtjbite" path="res://Scenes/ItemSpawner.cs" id="5_6hkg8"]
 [ext_resource type="PackedScene" uid="uid://dmc83r8wd13em" path="res://Scenes/GameBoard/Tiles/tile_track1.tscn" id="5_x5qdp"]
 [ext_resource type="PackedScene" uid="uid://dmavjk8leao74" path="res://Scenes/GameBoard/Tiles/CheckpointTrack.tscn" id="6_35paj"]
@@ -53,7 +53,7 @@ Deceleration = 0.5
 levelManager = NodePath("../../LevelManager")
 
 [node name="Deck" parent="Player" index="3"]
-deck = Array[PackedScene]([ExtResource("4_6hkg8"), ExtResource("4_6hkg8"), ExtResource("4_6hkg8"), ExtResource("4_6hkg8"), ExtResource("4_6hkg8")])
+deck = Array[PackedScene]([ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr")])
 
 [node name="Hand" parent="Player" index="4" node_paths=PackedStringArray("LevelManager", "OverViewCamera", "GBManager", "Card_Manager")]
 LevelManager = NodePath("../../LevelManager")
@@ -85,7 +85,7 @@ gameBoardManager = NodePath("../GameBoard")
 [node name="AudioController" type="Node3D" parent="." node_paths=PackedStringArray("levelManager", "musicPlayers", "cardManager", "playCardSound", "drawCardSound")]
 script = ExtResource("23_eep7h")
 levelManager = NodePath("../LevelManager")
-musicPlayers = [NodePath("../RoundMusic"), NodePath("../PlayMusic")]
+musicPlayers = []
 cardManager = NodePath("../CardManager")
 playCardSound = NodePath("../CardHoverSound")
 drawCardSound = NodePath("../CardDrawSound")

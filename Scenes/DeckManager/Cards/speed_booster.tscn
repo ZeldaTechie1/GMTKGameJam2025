@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd8un36yk76qb"]
+
+[ext_resource type="PackedScene" uid="uid://dwf7eswity88h" path="res://Scenes/DeckManager/Cards/AidCard.tscn" id="1_f5t3g"]
+[ext_resource type="PackedScene" uid="uid://c66mmil0hv177" path="res://Scenes/GameBoard/Aid/Speed Booster.tscn" id="2_6oiqe"]
+
+[node name="Speed Booster" instance=ExtResource("1_f5t3g")]
+AidItem = ExtResource("2_6oiqe")
+Obstacle = null
+
+[node name="Name" parent="Panel/BoxContainer" index="0"]
+tooltip_text = "A super fast patch of slide!"
+text = "SPEED BOOSTER!!!"
+
+[node name="Play Card" parent="Panel/BoxContainer" index="1"]
+tooltip_text = "A super fast patch of slide!"

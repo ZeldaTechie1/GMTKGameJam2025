@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c66mmil0hv177"]
+
+[ext_resource type="Script" uid="uid://esgxv4cehgmc" path="res://Scenes/GameBoard/Obstacles/LevelItem.cs" id="1_pol1v"]
+[ext_resource type="PackedScene" uid="uid://b3dqph5fo320d" path="res://Scenes/GameGrid/Modifiers/SpeedUp.tscn" id="2_ur4fl"]
+
+[node name="SpeedBooster" type="Node3D" node_paths=PackedStringArray("LevelItemObject")]
+script = ExtResource("1_pol1v")
+LevelItemObject = NodePath("SpeedUp")
+ItemLocation = 0
+ItemActive = true
+
+[node name="SpeedUp" parent="." instance=ExtResource("2_ur4fl")]
+LaunchPower = 5.0

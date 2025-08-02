@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://r12dhmtiu6u6"]
+
+[ext_resource type="PackedScene" uid="uid://dwf7eswity88h" path="res://Scenes/DeckManager/Cards/AidCard.tscn" id="1_apmmy"]
+[ext_resource type="PackedScene" uid="uid://c6pbg8dl6xxni" path="res://Scenes/GameBoard/Aid/Speed Ring.tscn" id="2_m5jhx"]
+
+[node name="Card_SpeedRing" instance=ExtResource("1_apmmy")]
+AidItem = ExtResource("2_m5jhx")
+Obstacle = null
+
+[node name="Name" parent="Panel/BoxContainer" index="0"]
+tooltip_text = "ADDS A RING TO THE TRACK THAT MAKES YOU GO SUPER FAST!
+"
+text = "Speed Ring"
