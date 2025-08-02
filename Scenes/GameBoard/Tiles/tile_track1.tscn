@@ -1,13 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmc83r8wd13em"]
+[gd_scene load_steps=4 format=3 uid="uid://dmc83r8wd13em"]
 
 [ext_resource type="Script" uid="uid://cchskq7nkfscg" path="res://Scenes/GameBoard/Scripts/TrackPiece.cs" id="1_lgybx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_487m1"]
 size = Vector3(50, 0.25, 50)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_m6pr6"]
-resource_local_to_scene = true
-size = Vector3(1, 0.998108, 0.502)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m6pr6"]
 data = PackedVector3Array(-0.5, 0.125, 0.25, 0.5, 0.125, 0.25, -0.5, -0.125, 0.25, 0.5, 0.125, 0.25, 0.5, -0.125, 0.25, -0.5, -0.125, 0.25, 0.5, 0.125, -0.25, -0.5, 0.125, -0.25, 0.5, -0.125, -0.25, -0.5, 0.125, -0.25, -0.5, -0.125, -0.25, 0.5, -0.125, -0.25, 0.5, 0.125, 0.25, 0.5, 0.125, -0.25, 0.5, -0.125, 0.25, 0.5, 0.125, -0.25, 0.5, -0.125, -0.25, 0.5, -0.125, 0.25, -0.5, 0.125, -0.25, -0.5, 0.125, 0.25, -0.5, -0.125, -0.25, -0.5, 0.125, 0.25, -0.5, -0.125, 0.25, -0.5, -0.125, -0.25, 0.5, 0.125, 0.25, -0.5, 0.125, 0.25, 0.5, 0.125, -0.25, -0.5, 0.125, 0.25, -0.5, 0.125, -0.25, 0.5, 0.125, -0.25, -0.5, -0.125, 0.25, 0.5, -0.125, 0.25, -0.5, -0.125, -0.25, 0.5, -0.125, 0.25, 0.5, -0.125, -0.25, -0.5, -0.125, -0.25)
@@ -16,20 +12,6 @@ data = PackedVector3Array(-0.5, 0.125, 0.25, 0.5, 0.125, 0.25, -0.5, -0.125, 0.2
 mesh = SubResource("BoxMesh_487m1")
 script = ExtResource("1_lgybx")
 ItemSpawnPoints = []
-
-[node name="Entrance Point1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
-
-[node name="Entrance Point2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-disable_mode = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10623e-16, 0.000335665, 0.0010376)
-shape = SubResource("BoxShape3D_m6pr6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
