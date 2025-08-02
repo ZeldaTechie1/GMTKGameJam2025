@@ -59,11 +59,12 @@ gameBoardManager = NodePath("../GameBoard")
 obstacles = Array[PackedScene]([ExtResource("15_cn6qb"), ExtResource("16_s0rc4"), ExtResource("17_6hkg8"), ExtResource("18_nisgd")])
 aid = Array[PackedScene]([ExtResource("15_cn6qb"), ExtResource("16_s0rc4"), ExtResource("17_6hkg8"), ExtResource("18_nisgd")])
 
-[node name="GameBoard" parent="." node_paths=PackedStringArray("Level_Manager") instance=ExtResource("8_rntjc")]
+[node name="GameBoard" parent="." node_paths=PackedStringArray("Level_Manager", "Card_Manager") instance=ExtResource("8_rntjc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 Level_Manager = NodePath("../LevelManager")
 CellSize = 50
 TrackPieces = Array[PackedScene]([ExtResource("5_x5qdp"), ExtResource("6_35paj"), ExtResource("7_r65o5"), ExtResource("8_8xrjm"), ExtResource("9_l4he1"), ExtResource("10_cn6qb"), ExtResource("7_kf4my")])
+Card_Manager = NodePath("../CardManager")
 
 [node name="Overview" type="Camera3D" parent="." node_paths=PackedStringArray("levelManager", "gameBoardManager")]
 transform = Transform3D(-4.37114e-08, 0.707107, -0.707107, 0, 0.707107, 0.707107, 1, 3.09086e-08, -3.09086e-08, -70, 70, 174.23)
@@ -72,10 +73,9 @@ script = ExtResource("13_35paj")
 levelManager = NodePath("../LevelManager")
 gameBoardManager = NodePath("../GameBoard")
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("OverviewCamera", "PlayerCamera", "GBManager") instance=ExtResource("3_dkipe")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("OverviewCamera", "PlayerCamera") instance=ExtResource("3_dkipe")]
 OverviewCamera = NodePath("../Overview")
 PlayerCamera = NodePath("../Player/SpringArmPivot/Camera3D")
-GBManager = NodePath("../GameBoard")
 maxRounds = 3
 
 [node name="KillBox" parent="." instance=ExtResource("21_nisgd")]
