@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhwqra5epulou"]
+
+[ext_resource type="PackedScene" uid="uid://dwf7eswity88h" path="res://Scenes/DeckManager/Cards/AidCard.tscn" id="1_87nc7"]
+[ext_resource type="PackedScene" uid="uid://c66mmil0hv177" path="res://Scenes/GameBoard/Aid/Speed Booster.tscn" id="2_1bn8k"]
+
+[node name="Spring Mat" instance=ExtResource("1_87nc7")]
+AidItem = ExtResource("2_1bn8k")
+Obstacle = null
+
+[node name="Name" parent="Panel/BoxContainer" index="0"]
+tooltip_text = "A springy piece of slide that will bounce you up into the air."
+text = "Spring mat"
+
+[node name="Play Card" parent="Panel/BoxContainer" index="1"]
+tooltip_text = "A springy piece of slide that will bounce you up into the air
+."

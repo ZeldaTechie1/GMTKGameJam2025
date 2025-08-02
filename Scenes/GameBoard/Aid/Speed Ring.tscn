@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6pbg8dl6xxni"]
+
+[ext_resource type="Script" uid="uid://esgxv4cehgmc" path="res://Scenes/GameBoard/Obstacles/LevelItem.cs" id="1_bwpqw"]
+[ext_resource type="PackedScene" uid="uid://xjyjmtjf357b" path="res://Scenes/GameGrid/Modifiers/Launcher.tscn" id="2_nmh6a"]
+
+[node name="SpeedRing" type="Node3D" node_paths=PackedStringArray("LevelItemObject")]
+script = ExtResource("1_bwpqw")
+LevelItemObject = NodePath("Launcher")
+ItemSize = 2
+ItemLocation = 1
+ItemActive = true
+
+[node name="Launcher" parent="." instance=ExtResource("2_nmh6a")]
+transform = Transform3D(-5, 4.37114e-07, 1.91069e-14, 0, -2.18557e-07, 5, 4.37114e-07, 5, 2.18557e-07, 0, 0, 0)
