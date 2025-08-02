@@ -31,9 +31,10 @@ public partial class Card : Node
         GD.Print("Card#" + CardID + " Card Name");
     }
 
-    public void ActivateCard()
+    public void ActivateCard(Tile tile)
     {
-         GD.Print("Card#" + CardID + "Activated");
+        
+         GD.Print("Card#" + CardID + "Activated on Tile at:"+tile.GlobalPosition);
     }
     
 }

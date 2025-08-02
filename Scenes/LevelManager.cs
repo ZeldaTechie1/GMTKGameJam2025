@@ -10,6 +10,8 @@ public partial class LevelManager : Node3D
     [Export] int maxRounds;
     [Export] public int currentRound { get; private set; }
 
+    [Export] public GameBoardManager GBManager;
+
     [Export] public Area3D GoalArea;
     [Signal] public delegate void LevelStartedEventHandler();
     [Signal] public delegate void TimerEndedEventHandler();

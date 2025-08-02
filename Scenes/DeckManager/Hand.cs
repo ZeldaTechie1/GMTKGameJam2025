@@ -37,19 +37,23 @@ public partial class Hand : Node3D
     }
 
     private void PlayCard(int CardID)
-    {
-        currentHand[CardID].ActivateCard();
-
-        for (int i = 0; i < currentHand.Count; i++)
+    {   Tile tile = LevelManager.GBManager.SelectedTile;
+        if (tile != null)
         {
-            if (currentHand[i].CardID == CardID)
+            currentHand[CardID].ActivateCard(tile);
+
+            for (int i = 0; i < currentHand.Count; i++)
             {
-                currentHand.RemoveAt(i);
-                currentHandContainer.GetChild(i).QueueFree();
-                UpdateCardIDS();
-                break;
+                if (currentHand[i].CardID == CardID)
+                {
+                    currentHand.RemoveAt(i);
+                    currentHandContainer.GetChild(i).QueueFree();
+                    UpdateCardIDS();
+                    break;
+                }
             }
         }
+
       
 
     }

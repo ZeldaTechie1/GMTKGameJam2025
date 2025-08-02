@@ -31,6 +31,10 @@ public partial class GameBoardManager : Node3D
     [Export]
     public Node3D Selector;
 
+    [ExportCategory("Card Manager")]
+    [Export]
+    CardManager Card_Manager;
+
     public List<Tile> GetBoard()
     {
         return Board;

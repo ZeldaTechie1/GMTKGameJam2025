@@ -104,10 +104,11 @@ script = ExtResource("13_35paj")
 levelManager = NodePath("../LevelManager")
 gameBoardManager = NodePath("../GameBoard")
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("OverviewCamera", "PlayerCamera", "GoalArea") instance=ExtResource("3_dkipe")]
+[node name="LevelManager" parent="." node_paths=PackedStringArray("OverviewCamera", "PlayerCamera", "GBManager", "GoalArea") instance=ExtResource("3_dkipe")]
 OverviewCamera = NodePath("../Overview")
 PlayerCamera = NodePath("../Player/SpringArmPivot/Camera3D")
 maxRounds = 10
+GBManager = NodePath("../GameBoard")
 GoalArea = NodePath("../Environment/Area3D")
 
 [editable path="Player"]
