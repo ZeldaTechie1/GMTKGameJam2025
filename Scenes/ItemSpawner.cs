@@ -218,187 +218,16 @@ public partial class ItemSpawner : Node3D
         return null;
     }
 
-    public bool CardSpawn(Tile tile, PackedScene Aid, PackedScene Obstacle = null, bool randomAid = false, bool getRandomObstacle = false, bool EffectsRandomTile = false, bool DrawBackToRandomTile = false)
+    public bool CardSpawn(Tile tile, PackedScene Aid, PackedScene Obstacle = null, bool getRandomObstacle = false, bool EffectsRandomTile = false, bool DrawBackToRandomTile = false)
     {
         LevelItem AIDPoint;
         LevelItem ObstaclePoint;
 
-        if (randomAid)
-        {
-            if (getRandomObstacle || Obstacle == null)
-            {
-                AIDPoint = SpawnAid(GetRandomAid(), tile, EffectsRandomTile);
-                ObstaclePoint = SpawnObstacle(GetRandomObstacle(), tile, DrawBackToRandomTile);
-                if (AIDPoint != null && ObstaclePoint != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    if (AIDPoint != null)
-                    {
-                        GD.Print("Aid");
-                        AIDPoint.QueueFree();
-                    }
-                    if(ObstaclePoint!=null)
-                    {
-                        GD.Print("Obstacle");
-                        ObstaclePoint.QueueFree();
-                    }
-                    return false;
-                }
-            }
-            if (getRandomObstacle && Obstacle == null)
-            {
-                AIDPoint = SpawnAid(GetRandomAid(), tile, EffectsRandomTile);
-                ObstaclePoint = SpawnObstacle(GetRandomObstacle(), tile, DrawBackToRandomTile);
-                if (AIDPoint != null && ObstaclePoint != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    if (AIDPoint != null)
-                    {
-                        GD.Print("Aid");
-                        AIDPoint.QueueFree();
-                    }
-                    if(ObstaclePoint!=null)
-                    {
-                        GD.Print("Obstacle");
-                        ObstaclePoint.QueueFree();
-                    }
-                    return false;
-                }
 
-            }
-            else if (Obstacle != null)
-            {
-                AIDPoint = SpawnAid(GetRandomAid(), tile, EffectsRandomTile);
-                ObstaclePoint = SpawnObstacle(Obstacle, tile, DrawBackToRandomTile);
-                if (AIDPoint != null && ObstaclePoint != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    if (AIDPoint != null)
-                    {
-                        AIDPoint.QueueFree();
-                    }
-                    if(ObstaclePoint!=null)
-                    {
-                        ObstaclePoint.QueueFree();
-                    }
-                    return false;
-                }
-            }
-            else
-            {
-                AIDPoint = SpawnAid(GetRandomAid(), tile, EffectsRandomTile);
-                if (AIDPoint != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-        }
-        if (!randomAid && Aid == null)
+        if (Aid != null)
         {
 
-            if (getRandomObstacle || Obstacle == null)
-            {
-                AIDPoint = SpawnAid(GetRandomAid(), tile, EffectsRandomTile);
-                ObstaclePoint = SpawnObstacle(GetRandomObstacle(), tile, DrawBackToRandomTile);
-                if (AIDPoint != null && ObstaclePoint != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    if (AIDPoint != null)
-                    {
-                        GD.Print("Aid");
-                        AIDPoint.QueueFree();
-                    }
-                    if(ObstaclePoint!=null)
-                    {
-                        GD.Print("Obstacle");
-                        ObstaclePoint.QueueFree();
-                    }
-                    return false;
-                }
-            }
-            if (getRandomObstacle && Obstacle == null)
-            {
-                AIDPoint = SpawnAid(GetRandomAid(), tile, EffectsRandomTile);
-                ObstaclePoint = SpawnObstacle(GetRandomObstacle(), tile, DrawBackToRandomTile);
-                if (AIDPoint != null && ObstaclePoint != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    if (AIDPoint != null)
-                    {
-                        GD.Print("Aid");
-                        AIDPoint.QueueFree();
-                    }
-                    if(ObstaclePoint!=null)
-                    {
-                        GD.Print("Obstacle");
-                        ObstaclePoint.QueueFree();
-                    }
-                    return false;
-                }
-
-            }
-            else if (Obstacle != null)
-            {
-                AIDPoint = SpawnAid(GetRandomAid(), tile, EffectsRandomTile);
-                ObstaclePoint = SpawnObstacle(Obstacle, tile, DrawBackToRandomTile);
-                if (AIDPoint != null && ObstaclePoint != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    if (AIDPoint != null)
-                    {
-                        GD.Print("Aid");
-                        AIDPoint.QueueFree();
-                    }
-                    if(ObstaclePoint!=null)
-                    {
-                        GD.Print("Obstacle");
-                        ObstaclePoint.QueueFree();
-                    }
-                    return false;
-                }
-            }
-            else
-            {
-                AIDPoint = SpawnAid(GetRandomAid(), tile, EffectsRandomTile);
-                if (AIDPoint != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    AIDPoint.QueueFree();
-
-                    return false;
-                }
-            }
-        }
-        else
-        {
-
-            if (getRandomObstacle || Obstacle == null)
+            if (getRandomObstacle )
             {
                 AIDPoint = SpawnAid(Aid, tile, EffectsRandomTile);
                 ObstaclePoint = SpawnObstacle(GetRandomObstacle(), tile, DrawBackToRandomTile);
@@ -413,7 +242,7 @@ public partial class ItemSpawner : Node3D
                         GD.Print("Aid");
                         AIDPoint.QueueFree();
                     }
-                    if(ObstaclePoint!=null)
+                    if (ObstaclePoint != null)
                     {
                         GD.Print("Obstacle");
                         ObstaclePoint.QueueFree();
@@ -421,33 +250,9 @@ public partial class ItemSpawner : Node3D
                     return false;
                 }
             }
-            else if (getRandomObstacle && Obstacle == null)
+            else if(Obstacle != null)
             {
-                AIDPoint = SpawnAid(GetRandomAid(), tile, EffectsRandomTile);
-                ObstaclePoint = SpawnObstacle(GetRandomObstacle(), tile, DrawBackToRandomTile);
-                if (AIDPoint != null && ObstaclePoint != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    if (AIDPoint != null)
-                    {
-                        GD.Print("Aid");
-                        AIDPoint.QueueFree();
-                    }
-                    if(ObstaclePoint!=null)
-                    {
-                        GD.Print("Obstacle");
-                        ObstaclePoint.QueueFree();
-                    }
-                    return false;
-                }
-
-            }
-            else if (Obstacle != null)
-            {
-                AIDPoint = SpawnAid(GetRandomAid(), tile, EffectsRandomTile);
+                AIDPoint = SpawnAid(Aid, tile, EffectsRandomTile);
                 ObstaclePoint = SpawnObstacle(Obstacle, tile, DrawBackToRandomTile);
                 if (AIDPoint != null && ObstaclePoint != null)
                 {
@@ -460,7 +265,7 @@ public partial class ItemSpawner : Node3D
                         GD.Print("Aid");
                         AIDPoint.QueueFree();
                     }
-                    if(ObstaclePoint!=null)
+                    if (ObstaclePoint != null)
                     {
                         GD.Print("Obstacle");
                         ObstaclePoint.QueueFree();
@@ -468,9 +273,10 @@ public partial class ItemSpawner : Node3D
                     return false;
                 }
             }
+
             else
             {
-                AIDPoint = SpawnAid(GetRandomAid(), tile, EffectsRandomTile);
+                AIDPoint = SpawnAid(Aid, tile, EffectsRandomTile);
                 if (AIDPoint != null)
                 {
                     return true;
@@ -480,6 +286,10 @@ public partial class ItemSpawner : Node3D
                     return false;
                 }
             }
+        }
+        else
+        {
+            GD.PrintErr("SUCK MY ASS!");
         }
 
         return false;

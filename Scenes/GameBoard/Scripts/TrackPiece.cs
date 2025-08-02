@@ -38,10 +38,12 @@ public partial class TrackPiece : Node3D
 		Random rand = new Random();
 		if (PossiblePoints.Count > 0)
 		{
-			return PossiblePoints[rand.Next(0, PossiblePoints.Count)];
+			int x = rand.Next(0, PossiblePoints.Count);
+			return PossiblePoints[x];
 		}
 		else
 		{
+			GD.Print("FUUUUUUUUUK!");
 			return null;
 		}
 	}
