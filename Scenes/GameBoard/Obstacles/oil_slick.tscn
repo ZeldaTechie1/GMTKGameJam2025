@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4htxkxsnexlo"]
+
+[ext_resource type="PackedScene" uid="uid://ddgcnu2swyubw" path="res://Scenes/GameBoard/Obstacles/LevelItem.tscn" id="1_fimvj"]
+[ext_resource type="PackedScene" uid="uid://d0gch2n6wyxbb" path="res://Scenes/GameGrid/Modifiers/Slick.tscn" id="2_uafm8"]
+
+[node name="OilSlick" instance=ExtResource("1_fimvj")]
+ItemSize = 2
+ItemLocation = 0
+
+[node name="Slick" parent="." index="0" instance=ExtResource("2_uafm8")]
+transform = Transform3D(1.9426, 0, 0, 0, 10, -1.69407e-21, 0, 0, 2.06378, 0, -0.462323, 4.92749e-15)

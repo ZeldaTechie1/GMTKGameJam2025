@@ -8,10 +8,13 @@ public partial class LevelItem : Node3D
     [Export]
     Node3D LevelItemObject;
     [Export]
-    LevelItemSize ItemSize = LevelItemSize.Small;
+    public LevelItemSize ItemSize = LevelItemSize.Small;
 
     [Export]
-    LevelItemType ItemType=LevelItemType.Aid;
+    public LevelItemType ItemType=LevelItemType.Aid;
+
+    [Export]
+    public LevelItemLocation ItemLocation = LevelItemLocation.Default;
     
     [Export]
     bool ItemActive;

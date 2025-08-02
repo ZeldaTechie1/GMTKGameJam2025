@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=21 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="Texture2D" uid="uid://cp82rh5du6871" path="res://Textures/PrototypeTextures/PNG/Dark/texture_07.png" id="1_3ija4"]
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/Player/player.tscn" id="1_ep0r4"]
@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://ptsvuuf6jhya" path="res://Scenes/GameBoard/Tiles/starter_track.tscn" id="10_cn6qb"]
 [ext_resource type="Script" uid="uid://cl1t03w1383as" path="res://Scenes/BuilderCamera.cs" id="13_35paj"]
 [ext_resource type="Script" uid="uid://c4c055gwxr05m" path="res://Scenes/ObstacleSpawner.cs" id="14_35paj"]
+[ext_resource type="PackedScene" uid="uid://b5o15i4pusbsv" path="res://Scenes/GameBoard/Obstacles/BackwardsLauncher.tscn" id="15_cn6qb"]
+[ext_resource type="PackedScene" uid="uid://cmrsgshyq6dm7" path="res://Scenes/GameBoard/Obstacles/floating_Spikes.tscn" id="16_s0rc4"]
+[ext_resource type="PackedScene" uid="uid://o7j5acrdkk32" path="res://Scenes/GameBoard/Obstacles/floor_spikes.tscn" id="17_6hkg8"]
+[ext_resource type="PackedScene" uid="uid://c4htxkxsnexlo" path="res://Scenes/GameBoard/Obstacles/oil_slick.tscn" id="18_nisgd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkipe"]
 albedo_texture = ExtResource("1_3ija4")
@@ -75,6 +79,12 @@ maxDraws = 0
 OverViewCamera = NodePath("../../Overview")
 GBManager = NodePath("../../GameBoard")
 
+[node name="ObstacleSpawner" type="Node3D" parent="." node_paths=PackedStringArray("levelManager", "gameBoardManager")]
+script = ExtResource("14_35paj")
+levelManager = NodePath("../LevelManager")
+gameBoardManager = NodePath("../GameBoard")
+obstacles = Array[PackedScene]([ExtResource("15_cn6qb"), ExtResource("16_s0rc4"), ExtResource("17_6hkg8"), ExtResource("18_nisgd")])
+
 [node name="GameBoard" parent="." node_paths=PackedStringArray("Level_Manager") instance=ExtResource("8_rntjc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 Level_Manager = NodePath("../LevelManager")
@@ -93,9 +103,5 @@ OverviewCamera = NodePath("../Overview")
 PlayerCamera = NodePath("../Player/SpringArmPivot/Camera3D")
 maxRounds = 10
 GoalArea = NodePath("../Environment/Area3D")
-
-[node name="ObstacleSpawner" type="Node3D" parent="." node_paths=PackedStringArray("levelManager")]
-script = ExtResource("14_35paj")
-levelManager = NodePath("../LevelManager")
 
 [editable path="Player"]
