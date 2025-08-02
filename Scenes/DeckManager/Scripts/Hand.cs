@@ -37,7 +37,7 @@ public partial class Hand : Node3D
     }
 
     private void PlayCard(int CardID)
-    {   Tile tile = LevelManager.GBManager.SelectedTile;
+    {   Tile tile = GBManager.SelectedTile;
         if (tile != null)
         {
             if (currentHand[CardID].ActivateCard(tile))

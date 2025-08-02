@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dwf7eswity88h"]
 
 [ext_resource type="Script" uid="uid://dtirg37bmk5ol" path="res://Scenes/DeckManager/Scripts/AIDCard.cs" id="1_1m6qr"]
-[ext_resource type="PackedScene" uid="uid://cmrsgshyq6dm7" path="res://Scenes/GameBoard/Obstacles/floating_Spikes.tscn" id="2_aukqw"]
+[ext_resource type="PackedScene" uid="uid://o7j5acrdkk32" path="res://Scenes/GameBoard/Obstacles/floor_spikes.tscn" id="2_1m6qr"]
 [ext_resource type="PackedScene" uid="uid://b5o15i4pusbsv" path="res://Scenes/GameBoard/Obstacles/BackwardsLauncher.tscn" id="3_e2cke"]
 [ext_resource type="Theme" uid="uid://chkg6astjph2q" path="res://new_theme2.tres" id="4_xv073"]
 [ext_resource type="Theme" uid="uid://d0rv0q06l65ek" path="res://new_theme.tres" id="5_6ea6u"]
@@ -22,9 +22,8 @@ offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1m6qr")
-AidItem = ExtResource("2_aukqw")
+AidItem = ExtResource("2_1m6qr")
 Obstacle = ExtResource("3_e2cke")
-CardDrawback = true
 NameButton = NodePath("Panel/BoxContainer/Name")
 PlayCard = NodePath("Panel/BoxContainer/Play Card")
 

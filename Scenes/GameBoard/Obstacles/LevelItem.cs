@@ -53,6 +53,7 @@ public partial class LevelItem : Node3D
 
 
     bool HorizontalMoveSwap = true;
+    bool HCMS = true;
 
 
 
@@ -137,19 +138,21 @@ public partial class LevelItem : Node3D
         }
 
 
-        if (Math.Abs(Origin.DistanceTo(LevelItemObject.Position)) > MaxHorizontalDistanceFromOrigin)
+        if (Math.Abs(Origin.DistanceTo(LevelItemObject.Position)) > MaxHorizontalDistanceFromOrigin && HCMS == true)
         {
             HorizontalMoveSwap = !HorizontalMoveSwap;
+            HCMS = false;
         }
 
         if (HorizontalMoveSwap)
         {
             LevelItemObject.Position += MoveSpeed * (float)delta;
+            HCMS = true;
         }
         else
         {
             LevelItemObject.Position += MoveSpeed * (float)delta * -1;
-
+            HCMS = true;
         }
 
     }
