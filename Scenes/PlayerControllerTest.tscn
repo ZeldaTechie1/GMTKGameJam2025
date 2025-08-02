@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=26 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/DeckManager/player.tscn" id="1_ep0r4"]
 [ext_resource type="Script" uid="uid://b46t1q6jieqtm" path="res://Scenes/SignalTester.cs" id="2_am0fs"]
@@ -19,7 +19,12 @@
 [ext_resource type="PackedScene" uid="uid://cmrsgshyq6dm7" path="res://Scenes/GameBoard/Obstacles/floating_Spikes.tscn" id="16_s0rc4"]
 [ext_resource type="PackedScene" uid="uid://o7j5acrdkk32" path="res://Scenes/GameBoard/Obstacles/floor_spikes.tscn" id="17_6hkg8"]
 [ext_resource type="PackedScene" uid="uid://c4htxkxsnexlo" path="res://Scenes/GameBoard/Obstacles/oil_slick.tscn" id="18_nisgd"]
+[ext_resource type="AudioStream" uid="uid://cix2psaudhm70" path="res://Sounds/Music/Childrens Vol2 Duck Party Main.wav" id="21_kfvvt"]
 [ext_resource type="PackedScene" uid="uid://bagql2wevfq2m" path="res://kill_box.tscn" id="21_nisgd"]
+[ext_resource type="AudioStream" uid="uid://cg28ydh4foa61" path="res://Sounds/Music/80s Waterbed Retiree Main.wav" id="22_eep7h"]
+[ext_resource type="Script" uid="uid://iw2d0u5tj6op" path="res://Scenes/AudioController.cs" id="23_eep7h"]
+[ext_resource type="AudioStream" uid="uid://we2i3l8j4dc7" path="res://Sounds/FX/CardDrawSound.wav" id="24_ogjpr"]
+[ext_resource type="AudioStream" uid="uid://d2urscudhwdlu" path="res://Sounds/FX/CardHoverSound.wav" id="25_i3yb2"]
 
 [node name="PlayerControllerTest" type="Node3D"]
 
@@ -73,9 +78,18 @@ script = ExtResource("13_35paj")
 levelManager = NodePath("../LevelManager")
 gameBoardManager = NodePath("../GameBoard")
 
-[node name="LevelManager" parent="." node_paths=PackedStringArray("OverviewCamera", "PlayerCamera") instance=ExtResource("3_dkipe")]
+[node name="AudioController" type="Node3D" parent="." node_paths=PackedStringArray("levelManager", "musicPlayers", "cardManager", "playCardSound", "drawCardSound")]
+script = ExtResource("23_eep7h")
+levelManager = NodePath("../LevelManager")
+musicPlayers = [NodePath("../RoundMusic"), NodePath("../PlayMusic")]
+cardManager = NodePath("../CardManager")
+playCardSound = NodePath("../CardHoverSound")
+drawCardSound = NodePath("../CardDrawSound")
+
+[node name="LevelManager" parent="." node_paths=PackedStringArray("OverviewCamera", "PlayerCamera", "GBManager") instance=ExtResource("3_dkipe")]
 OverviewCamera = NodePath("../Overview")
 PlayerCamera = NodePath("../Player/SpringArmPivot/Camera3D")
+GBManager = NodePath("../GameBoard")
 maxRounds = 3
 
 [node name="KillBox" parent="." instance=ExtResource("21_nisgd")]
@@ -83,5 +97,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.573219, 0.819402, 0, -0.819402, 0.573219, 0, 0, 0)
+
+[node name="PlayMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_kfvvt")
+volume_db = -10.0
+autoplay = true
+
+[node name="RoundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_eep7h")
+volume_db = -10.0
+autoplay = true
+
+[node name="CardDrawSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_ogjpr")
+volume_db = -10.0
+
+[node name="CardHoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_i3yb2")
+volume_db = -10.0
 
 [editable path="Player"]

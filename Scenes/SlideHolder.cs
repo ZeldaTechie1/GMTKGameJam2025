@@ -30,7 +30,7 @@ public partial class SlideHolder : Control
 
     public void NextSlide()
     {
-        if (currentSlide >= slides.Length)
+        if (currentSlide >= slides.Length - 1)
         {
             GetTree().ChangeSceneToFile("res://Scenes/PlayerControllerTest.tscn");
             return;

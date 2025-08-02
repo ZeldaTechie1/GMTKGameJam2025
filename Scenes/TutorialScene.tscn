@@ -97,7 +97,7 @@ grow_vertical = 2
 script = ExtResource("1_d6567")
 DialogueResource = ExtResource("2_jbvax")
 textureRect = NodePath("TextureRect")
-slides = Array[Texture2D]([ExtResource("3_map6f"), ExtResource("3_map6f"), ExtResource("3_map6f"), ExtResource("3_map6f"), ExtResource("5_u2gab"), ExtResource("6_ls7or"), ExtResource("6_ls7or"), ExtResource("7_5v4vo"), ExtResource("7_5v4vo"), ExtResource("8_ls7or"), ExtResource("8_pujgt"), ExtResource("8_pujgt")])
+slides = Array[Texture2D]([ExtResource("3_map6f"), ExtResource("3_map6f"), ExtResource("3_map6f"), ExtResource("3_map6f"), ExtResource("5_u2gab"), ExtResource("6_ls7or"), ExtResource("6_ls7or"), ExtResource("7_5v4vo"), ExtResource("7_5v4vo"), ExtResource("8_ls7or"), ExtResource("8_pujgt"), ExtResource("8_pujgt"), ExtResource("8_pujgt")])
 lifeguards = [NodePath("../LifeGuard"), NodePath("../LifeGuard2")]
 
 [node name="TextureRect" type="TextureRect" parent="SlideHolder"]
