@@ -20,25 +20,37 @@ public partial class BasicPlayer : CharacterBody3D
 	ModifierType currentModifier;
 	Vector3 LaunchDirection;
 
+	bool canMove = true;
+
 	public override void _Ready()
 	{
-        levelManager.RoundStarted += LevelManager_RoundStarted;
+		levelManager.RoundStarted += LevelManager_RoundStarted;
+
 	}
 
-    private void LevelManager_RoundStarted()
-    {
-        GlobalPosition = gameBoardManager.FirstStartTile.Track.GlobalPosition + Vector3.Up;
+	private void LevelManager_RoundStarted()
+	{
+		GlobalPosition = gameBoardManager.FirstStartTile.Track.GlobalPosition + Vector3.Up;
 		Vector3 lookAtPosition = gameBoardManager.CurrentEndTile.Track.GlobalPosition;
 		lookAtPosition.Y = GlobalPosition.Y;
 		Graphics.LookAt(lookAtPosition);
 		lookAtPosition.Y = SpringArm.GlobalPosition.Y;
 		SpringArm.LookAt(lookAtPosition);
+		canMove = false;
     }
 
     public override void _PhysicsProcess(double delta)
 	{
 		if (levelManager.currentState != LevelState.InPlay)
 			return;
+
+		if (!canMove)
+		{
+			this.Velocity = new Vector3(0, 1, 0);
+			MoveAndSlide();
+			canMove = true;
+			return;
+		}
 
 		Vector3 velocity = GetRealVelocity();
 

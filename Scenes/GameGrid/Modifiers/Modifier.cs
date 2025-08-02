@@ -26,7 +26,6 @@ public partial class Modifier : Area3D
 
     private void OnBodyEntered(Node3D body)
     {
-        GD.Print("entered");
         if(body is BasicPlayer player)
         {
             player.AffectPlayer(modifierType, true,Basis.Y * LaunchPower);

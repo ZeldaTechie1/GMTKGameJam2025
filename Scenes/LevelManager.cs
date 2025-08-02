@@ -7,8 +7,13 @@ public partial class LevelManager : Node3D
     [Export] RichTextLabel timerText;
     [Export] Camera3D OverviewCamera;
     [Export] Camera3D PlayerCamera;
-    [Export] int maxRounds;
+    
     [Export] public int currentRound { get; private set; }
+
+    [Export] public GameBoardManager GBManager;
+    [Export] int maxRounds;
+    [Export] public int MaxBlinds = 3;
+    int currentBilnd;
 
     [Export] public Area3D GoalArea;
     [Signal] public delegate void LevelStartedEventHandler();
@@ -114,6 +119,11 @@ public partial class LevelManager : Node3D
         levelTimer.Stop();
         EmitPlayerSucceeded();
         EndPlay();
+        if (currentBilnd < MaxBlinds)
+        {
+            EmitAddToBoard();
+            currentBilnd++;
+        }
     }
 
     public void PlayerDead()

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bagql2wevfq2m"]
+
+[ext_resource type="Script" uid="uid://jblepadonsf3" path="res://Scenes/GameGrid/Modifiers/Modifier.cs" id="1_wyvvk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uow2p"]
+albedo_color = Color(0, 0.556097, 0.897584, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8pbpc"]
+size = Vector2(20000, 20000)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_42jto"]
+
+[node name="KillBox" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_wyvvk")
+modifierType = 6
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+material_override = SubResource("StandardMaterial3D_uow2p")
+mesh = SubResource("PlaneMesh_8pbpc")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("WorldBoundaryShape3D_42jto")

@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://buqjsk2a0flx8"]
+[gd_scene load_steps=7 format=3 uid="uid://dseaniuec30gu"]
 
-[ext_resource type="Script" uid="uid://c6r6t15j3p3tf" path="res://Scenes/DeckManager/Scripts/Card.cs" id="1_x3w4s"]
-[ext_resource type="Theme" uid="uid://d0rv0q06l65ek" path="res://new_theme.tres" id="2_4sr7t"]
-[ext_resource type="Theme" uid="uid://chkg6astjph2q" path="res://new_theme2.tres" id="2_cr545"]
-[ext_resource type="Texture2D" uid="uid://dbha8sfbpj8ou" path="res://Textures/PrototypeTextures/PNG/Dark/texture_12.png" id="3_cr545"]
+[ext_resource type="Script" uid="uid://dtirg37bmk5ol" path="res://Scenes/DeckManager/Scripts/AIDCard.cs" id="1_ee4bf"]
+[ext_resource type="PackedScene" uid="uid://cmrsgshyq6dm7" path="res://Scenes/GameBoard/Obstacles/floating_Spikes.tscn" id="2_fj5cn"]
+[ext_resource type="Theme" uid="uid://chkg6astjph2q" path="res://new_theme2.tres" id="2_kbped"]
+[ext_resource type="Theme" uid="uid://d0rv0q06l65ek" path="res://new_theme.tres" id="3_fj5cn"]
+[ext_resource type="PackedScene" uid="uid://b5o15i4pusbsv" path="res://Scenes/GameBoard/Obstacles/BackwardsLauncher.tscn" id="3_iy58a"]
+[ext_resource type="Texture2D" uid="uid://dbha8sfbpj8ou" path="res://Textures/PrototypeTextures/PNG/Dark/texture_12.png" id="4_iy58a"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("NameButton", "PlayCard")]
+[node name="Aid Card Test" type="Control" node_paths=PackedStringArray("NameButton", "PlayCard")]
 custom_minimum_size = Vector2(200, 250)
 layout_mode = 3
 anchors_preset = 8
@@ -19,7 +21,10 @@ offset_right = 100.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_x3w4s")
+script = ExtResource("1_ee4bf")
+AidItem = ExtResource("2_fj5cn")
+Obstacle = ExtResource("3_iy58a")
+CardDrawback = true
 NameButton = NodePath("Panel/BoxContainer/Name")
 PlayCard = NodePath("Panel/BoxContainer/Play Card")
 
@@ -28,7 +33,7 @@ custom_minimum_size = Vector2(200, 250)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme = ExtResource("2_cr545")
+theme = ExtResource("2_kbped")
 
 [node name="BoxContainer" type="BoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(200, 250)
@@ -50,7 +55,7 @@ vertical = true
 custom_minimum_size = Vector2(180, 20)
 layout_mode = 2
 tooltip_text = "well fuck idk "
-theme = ExtResource("2_4sr7t")
+theme = ExtResource("3_fj5cn")
 text = "Card Name"
 
 [node name="Play Card" type="TextureButton" parent="Panel/BoxContainer"]
@@ -58,7 +63,7 @@ custom_minimum_size = Vector2(190, 220)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource("3_cr545")
+texture_normal = ExtResource("4_iy58a")
 ignore_texture_size = true
 stretch_mode = 0
 
