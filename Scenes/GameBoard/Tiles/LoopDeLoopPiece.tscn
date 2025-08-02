@@ -19,18 +19,28 @@ shape = SubResource("ConcavePolygonShape3D_nbcja")
 
 [node name="Item Spawn point" parent="ItemPoints" index="0" instance=ExtResource("3_b3hv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95528, 1.77638, 0)
+PointSize = 0
+PointLocation = 0
 
 [node name="Item Spawn point2" parent="ItemPoints" index="1" instance=ExtResource("3_b3hv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5814, 0.107945, -13.0203)
+PointSize = 0
+PointLocation = 0
 
 [node name="Item Spawn point3" parent="ItemPoints" index="2" instance=ExtResource("3_b3hv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0286956, -22.368)
+PointSize = 0
+PointLocation = 0
 
 [node name="Item Spawn point4" parent="ItemPoints" index="3" instance=ExtResource("3_b3hv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.96667, 0.0448915, 10)
+PointSize = 0
+PointLocation = 0
 
 [node name="Item Spawn point5" parent="ItemPoints" index="4" instance=ExtResource("3_b3hv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0867558, 20)
+PointSize = 0
+PointLocation = 0
 
 [node name="Item Spawn point6" parent="ItemPoints" index="5" instance=ExtResource("3_b3hv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97102, -4.67061)
@@ -39,8 +49,10 @@ PointLocation = 1
 
 [node name="Item Spawn point8" parent="ItemPoints" index="6" instance=ExtResource("3_b3hv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.36372, -20)
+PointSize = 0
 PointLocation = 1
 
 [node name="Item Spawn point10" parent="ItemPoints" index="7" instance=ExtResource("3_b3hv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.02538, 20)
+PointSize = 0
 PointLocation = 1
