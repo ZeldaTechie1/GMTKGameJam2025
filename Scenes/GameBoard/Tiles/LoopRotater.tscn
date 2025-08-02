@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://by2l0kiby00u5"]
+
+[ext_resource type="PackedScene" uid="uid://dk0w4ypsectjr" path="res://Scenes/GameBoard/Tiles/LoopDeLoopPiece.tscn" id="1_meus4"]
+[ext_resource type="PackedScene" uid="uid://ddgcnu2swyubw" path="res://Scenes/GameBoard/Obstacles/LevelItem.tscn" id="2_6xbda"]
+
+[node name="Loop" instance=ExtResource("1_meus4")]
+
+[node name="LevelItem" parent="." index="3" node_paths=PackedStringArray("LevelItemObject") instance=ExtResource("2_6xbda")]
+LevelItemObject = NodePath("..")
+EnableSpin = true
+SpinSpeed = Vector3(0, 20, 0)

@@ -16,7 +16,7 @@ albedo_color = Color(0.171174, 1, 0.378381, 1)
 size = Vector3(0.555, 1.385, 0.345)
 
 [node name="Launcher" instance=ExtResource("1_hvmvl")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+transform = Transform3D(-2.18557e-07, -2.18557e-07, -5, -5, 0, 2.18557e-07, 0, 5, -2.18557e-07, 0, 0, 0)
 modifierType = 4
 LaunchPower = 10.0
 

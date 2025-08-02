@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=30 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/DeckManager/player.tscn" id="1_ep0r4"]
 [ext_resource type="Script" uid="uid://b46t1q6jieqtm" path="res://Scenes/SignalTester.cs" id="2_am0fs"]
@@ -18,7 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://b5o15i4pusbsv" path="res://Scenes/GameBoard/Obstacles/BackwardsLauncher.tscn" id="15_cn6qb"]
 [ext_resource type="PackedScene" uid="uid://cmrsgshyq6dm7" path="res://Scenes/GameBoard/Obstacles/floating_Spikes.tscn" id="16_s0rc4"]
 [ext_resource type="PackedScene" uid="uid://o7j5acrdkk32" path="res://Scenes/GameBoard/Obstacles/floor_spikes.tscn" id="17_6hkg8"]
+[ext_resource type="PackedScene" uid="uid://df2q0jnmactw6" path="res://Scenes/GameBoard/Tiles/Rotater.tscn" id="18_i3yb2"]
 [ext_resource type="PackedScene" uid="uid://c4htxkxsnexlo" path="res://Scenes/GameBoard/Obstacles/oil_slick.tscn" id="18_nisgd"]
+[ext_resource type="PackedScene" uid="uid://dtj8xbwotvk65" path="res://Scenes/GameBoard/Tiles/Mover.tscn" id="19_ilurv"]
+[ext_resource type="PackedScene" uid="uid://cjh1jpv1qg86c" path="res://Scenes/GameBoard/Tiles/LoopMoover.tscn" id="20_14gqc"]
+[ext_resource type="PackedScene" uid="uid://by2l0kiby00u5" path="res://Scenes/GameBoard/Tiles/LoopRotater.tscn" id="21_dld5r"]
 [ext_resource type="AudioStream" uid="uid://cix2psaudhm70" path="res://Sounds/Music/Childrens Vol2 Duck Party Main.wav" id="21_kfvvt"]
 [ext_resource type="PackedScene" uid="uid://bagql2wevfq2m" path="res://kill_box.tscn" id="21_nisgd"]
 [ext_resource type="AudioStream" uid="uid://cg28ydh4foa61" path="res://Sounds/Music/80s Waterbed Retiree Main.wav" id="22_eep7h"]
@@ -68,7 +72,7 @@ aid = Array[PackedScene]([ExtResource("15_cn6qb"), ExtResource("16_s0rc4"), ExtR
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 Level_Manager = NodePath("../LevelManager")
 CellSize = 50
-TrackPieces = Array[PackedScene]([ExtResource("5_x5qdp"), ExtResource("6_35paj"), ExtResource("7_r65o5"), ExtResource("8_8xrjm"), ExtResource("9_l4he1"), ExtResource("10_cn6qb"), ExtResource("7_kf4my")])
+TrackPieces = Array[PackedScene]([ExtResource("5_x5qdp"), ExtResource("6_35paj"), ExtResource("7_r65o5"), ExtResource("8_8xrjm"), ExtResource("9_l4he1"), ExtResource("10_cn6qb"), ExtResource("7_kf4my"), ExtResource("18_i3yb2"), ExtResource("19_ilurv"), ExtResource("20_14gqc"), ExtResource("21_dld5r")])
 Card_Manager = NodePath("../CardManager")
 
 [node name="Overview" type="Camera3D" parent="." node_paths=PackedStringArray("levelManager", "gameBoardManager")]
@@ -93,7 +97,7 @@ GBManager = NodePath("../GameBoard")
 maxRounds = 3
 
 [node name="KillBox" parent="." instance=ExtResource("21_nisgd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -27.022, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.573219, 0.819402, 0, -0.819402, 0.573219, 0, 0, 0)

@@ -1,12 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://b13624wehrv5k"]
+[gd_scene load_steps=6 format=3 uid="uid://b13624wehrv5k"]
 
 [ext_resource type="PackedScene" uid="uid://bktyn28yv4cbw" path="res://Scenes/GameGrid/Modifiers/BaseModifier.tscn" id="1_q7ofw"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_q7ofw"]
+size = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_lq5ku"]
+offsets = PackedFloat32Array(0, 0.398714, 1)
+colors = PackedColorArray(0, 0, 0, 0.372549, 0.878431, 0.00574541, 0, 0.0941176, 1, 0.0670332, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m0dih"]
+gradient = SubResource("Gradient_lq5ku")
+fill = 2
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0.858974)
+repeat = 2
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7ofw"]
-albedo_color = Color(1, 0.269822, 0.269822, 1)
+transparency = 1
+albedo_texture = SubResource("GradientTexture2D_m0dih")
 
 [node name="Slow" instance=ExtResource("1_q7ofw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 modifierType = 2
 
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.274414, 0)
+
 [node name="Visual" parent="." index="1"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
+mesh = SubResource("PlaneMesh_q7ofw")
 surface_material_override/0 = SubResource("StandardMaterial3D_q7ofw")

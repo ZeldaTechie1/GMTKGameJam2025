@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtj8xbwotvk65"]
+
+[ext_resource type="PackedScene" uid="uid://df2q0jnmactw6" path="res://Scenes/GameBoard/Tiles/Rotater.tscn" id="1_c18lf"]
+
+[node name="TrackPiece" instance=ExtResource("1_c18lf")]
+
+[node name="Node3D" parent="." index="3"]
+EnableSpin = false
+EnableHorizontalMovement = true
+HorizontalMoveSpeed = 4.0
+MaxHorizontalDistanceFromOrigin = 20.0

@@ -1,13 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://di5gpkrgo0sq2"]
+[gd_scene load_steps=7 format=3 uid="uid://di5gpkrgo0sq2"]
 
 [ext_resource type="PackedScene" uid="uid://bktyn28yv4cbw" path="res://Scenes/GameGrid/Modifiers/BaseModifier.tscn" id="1_p25w0"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p25w0"]
+height = 0.0723877
+radius = 0.455566
+
+[sub_resource type="TorusMesh" id="TorusMesh_p25w0"]
+inner_radius = 0.493
+outer_radius = 0.459
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p25w0"]
 albedo_color = Color(0.144868, 0.206453, 1, 1)
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_p25w0"]
+top_radius = 0.45
+bottom_radius = 0.25
+height = 0.001
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n55qw"]
+albedo_color = Color(0.269186, 0.269186, 0.269186, 1)
+
 [node name="BaseArea" instance=ExtResource("1_p25w0")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 modifierType = 5
 LaunchPower = 5.0
 
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0215454, 0)
+shape = SubResource("CylinderShape3D_p25w0")
+
 [node name="Visual" parent="." index="1"]
+mesh = SubResource("TorusMesh_p25w0")
 surface_material_override/0 = SubResource("StandardMaterial3D_p25w0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual" index="0"]
+mesh = SubResource("CylinderMesh_p25w0")
+surface_material_override/0 = SubResource("StandardMaterial3D_n55qw")

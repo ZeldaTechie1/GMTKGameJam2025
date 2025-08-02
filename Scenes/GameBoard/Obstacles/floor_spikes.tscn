@@ -1,14 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://o7j5acrdkk32"]
+[gd_scene load_steps=9 format=3 uid="uid://o7j5acrdkk32"]
 
 [ext_resource type="PackedScene" uid="uid://ddgcnu2swyubw" path="res://Scenes/GameBoard/Obstacles/LevelItem.tscn" id="1_a5m11"]
 [ext_resource type="ArrayMesh" uid="uid://mxmk8kfwascm" path="res://Scenes/Props/BlenderModels/Floor.tres" id="2_ylw4s"]
 [ext_resource type="ArrayMesh" uid="uid://sxoxwnliehfn" path="res://Scenes/Props/BlenderModels/Spikes.tres" id="3_n6in0"]
 [ext_resource type="Script" uid="uid://ddp26yyll5ltn" path="res://Spikes.cs" id="4_hd7er"]
+[ext_resource type="PackedScene" uid="uid://tb4f3wv1isnr" path="res://Scenes/GameGrid/Modifiers/DeathZone.tscn" id="5_n6in0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpgmh"]
 albedo_color = Color(0.26, 0.26, 0.26, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86o6n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6in0"]
+size = Vector3(2.03809, 0.504395, 2.01172)
 
 [node name="FloorSpikes" instance=ExtResource("1_a5m11")]
 ItemLocation = 0
@@ -25,3 +29,20 @@ script = ExtResource("4_hd7er")
 Active = true
 EjectionSpeed = Vector3(0, 3, 0)
 RetractionSpeed = Vector3(0, 0.5, 0)
+
+[node name="Area3D" parent="Floor/Spikes" index="0" instance=ExtResource("5_n6in0")]
+transform = Transform3D(1.98, 0, 0, 0, 1.98, 0, 0, 0, 1.98, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="Floor/Spikes/Area3D" index="0"]
+transform = Transform3D(0.999997, 0, 0, 0, 0.999997, 6.77626e-21, 0, -6.77626e-21, 0.999997, 0, 0.492737, 8.47033e-22)
+
+[node name="Visual" parent="Floor/Spikes/Area3D" index="1"]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247803, 0)
+shape = SubResource("BoxShape3D_n6in0")
+
+[editable path="Floor/Spikes/Area3D"]

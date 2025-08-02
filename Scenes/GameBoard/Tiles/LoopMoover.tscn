@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjh1jpv1qg86c"]
+
+[ext_resource type="PackedScene" uid="uid://by2l0kiby00u5" path="res://Scenes/GameBoard/Tiles/LoopRotater.tscn" id="1_3ydv8"]
+
+[node name="Loop" instance=ExtResource("1_3ydv8")]
+
+[node name="LevelItem" parent="." index="3"]
+EnableSpin = false
+HorizontalMoveSpeed = 4.0
