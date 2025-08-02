@@ -1,11 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=17 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="Texture2D" uid="uid://cp82rh5du6871" path="res://Textures/PrototypeTextures/PNG/Dark/texture_07.png" id="1_3ija4"]
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/Player/player.tscn" id="1_ep0r4"]
 [ext_resource type="Script" uid="uid://b46t1q6jieqtm" path="res://Scenes/SignalTester.cs" id="2_am0fs"]
 [ext_resource type="PackedScene" uid="uid://d3ff2b7m68md6" path="res://Scenes/LevelManager.tscn" id="3_dkipe"]
+[ext_resource type="PackedScene" uid="uid://dmc83r8wd13em" path="res://Scenes/GameBoard/Tiles/tile_track1.tscn" id="5_x5qdp"]
+[ext_resource type="PackedScene" uid="uid://dmavjk8leao74" path="res://Scenes/GameBoard/Tiles/CheckpointTrack.tscn" id="6_35paj"]
+[ext_resource type="PackedScene" uid="uid://c7b8e5uapag4t" path="res://Scenes/GameBoard/Tiles/Tumbler.tscn" id="7_kf4my"]
+[ext_resource type="PackedScene" uid="uid://ca0ikr4k3yf2j" path="res://Scenes/GameBoard/Tiles/EndTrack.tscn" id="7_r65o5"]
+[ext_resource type="PackedScene" uid="uid://dk0w4ypsectjr" path="res://Scenes/GameBoard/Tiles/LoopDeLoopPiece.tscn" id="8_8xrjm"]
 [ext_resource type="PackedScene" uid="uid://3ci47gsa67wp" path="res://Scenes/GameBoard/Tiles/GameBoard.tscn" id="8_rntjc"]
+[ext_resource type="PackedScene" uid="uid://ccwr6mjfwj16d" path="res://Scenes/GameBoard/Tiles/LumpyPiece.tscn" id="9_l4he1"]
+[ext_resource type="PackedScene" uid="uid://ptsvuuf6jhya" path="res://Scenes/GameBoard/Tiles/starter_track.tscn" id="10_cn6qb"]
 [ext_resource type="Script" uid="uid://cl1t03w1383as" path="res://Scenes/BuilderCamera.cs" id="13_35paj"]
+[ext_resource type="Script" uid="uid://c4c055gwxr05m" path="res://Scenes/ObstacleSpawner.cs" id="14_35paj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkipe"]
 albedo_texture = ExtResource("1_3ija4")
@@ -71,6 +79,7 @@ GBManager = NodePath("../../GameBoard")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 Level_Manager = NodePath("../LevelManager")
 CellSize = 50
+TrackPieces = Array[PackedScene]([ExtResource("5_x5qdp"), ExtResource("6_35paj"), ExtResource("7_r65o5"), ExtResource("8_8xrjm"), ExtResource("9_l4he1"), ExtResource("10_cn6qb"), ExtResource("7_kf4my")])
 
 [node name="Overview" type="Camera3D" parent="." node_paths=PackedStringArray("levelManager", "gameBoardManager")]
 transform = Transform3D(-4.37114e-08, 0.707107, -0.707107, 0, 0.707107, 0.707107, 1, 3.09086e-08, -3.09086e-08, -70, 70, 174.23)
@@ -82,6 +91,11 @@ gameBoardManager = NodePath("../GameBoard")
 [node name="LevelManager" parent="." node_paths=PackedStringArray("OverviewCamera", "PlayerCamera", "GoalArea") instance=ExtResource("3_dkipe")]
 OverviewCamera = NodePath("../Overview")
 PlayerCamera = NodePath("../Player/SpringArmPivot/Camera3D")
+maxRounds = 10
 GoalArea = NodePath("../Environment/Area3D")
+
+[node name="ObstacleSpawner" type="Node3D" parent="." node_paths=PackedStringArray("levelManager")]
+script = ExtResource("14_35paj")
+levelManager = NodePath("../LevelManager")
 
 [editable path="Player"]

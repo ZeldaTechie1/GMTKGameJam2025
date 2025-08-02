@@ -4,3 +4,5 @@
 
 [node name="Item Spawn point" type="Node3D"]
 script = ExtResource("1_0jvnr")
+
+[node name="Marker3D" type="Marker3D" parent="."]
