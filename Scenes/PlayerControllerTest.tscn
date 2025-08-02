@@ -72,10 +72,8 @@ Deceleration = 0.5
 [node name="SpringArmPivot" parent="Player" index="2" node_paths=PackedStringArray("levelManager")]
 levelManager = NodePath("../../LevelManager")
 
-[node name="Hand" parent="Player" index="4" node_paths=PackedStringArray("LevelManager", "currentHand", "OverViewCamera", "GBManager")]
+[node name="Hand" parent="Player" index="4" node_paths=PackedStringArray("LevelManager", "OverViewCamera", "GBManager")]
 LevelManager = NodePath("../../LevelManager")
-currentHand = [null, null]
-maxDraws = 0
 OverViewCamera = NodePath("../../Overview")
 GBManager = NodePath("../../GameBoard")
 
