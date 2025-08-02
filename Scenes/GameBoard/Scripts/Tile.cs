@@ -1,9 +1,4 @@
 using Godot;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Dynamic;
-using System.Reflection.Metadata.Ecma335;
 
 public partial class Tile : Node3D
 {
@@ -23,8 +18,6 @@ public partial class Tile : Node3D
         TileID = TID;
         Tile_Type = type;
     }
-
-
 
     public TrackPieceType NeededPiece()
     {

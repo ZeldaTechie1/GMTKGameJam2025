@@ -7,6 +7,8 @@ public partial class LevelManager : Node3D
     [Export] RichTextLabel timerText;
     [Export] Camera3D OverviewCamera;
     [Export] Camera3D PlayerCamera;
+    [Export] int maxRounds;
+    [Export] public int currentRound { get; private set; }
 
     [Export] public Area3D GoalArea;
     [Signal] public delegate void LevelStartedEventHandler();
@@ -18,6 +20,7 @@ public partial class LevelManager : Node3D
     [Signal] public delegate void PlayerFailedEventHandler();
     [Signal] public delegate void PlayerSucceededEventHandler();
     [Signal] public delegate void PlayerDeathEventHandler();
+    [Signal] public delegate void GameOverEventHandler();
     [Signal] public delegate void GenerateBoardEventHandler();
     [Signal] public delegate void AddToBoardEventHandler();
 
@@ -63,6 +66,13 @@ public partial class LevelManager : Node3D
 
     public void StartRound()
     {
+        if (currentRound > maxRounds)
+        {
+            GameIsOver();
+            GD.Print("Waahoo");
+            return;
+        }
+        currentRound++;
         currentState = LevelState.InRound;
         OverviewCamera.Current = true;
         PlayerCamera.Current = false;
@@ -117,6 +127,11 @@ public partial class LevelManager : Node3D
         EndPlay();
     }
 
+    public void GameIsOver()
+    {
+        EmitGameOver();
+    }
+
     private void EmitTimerEnded()
     {
         EmitSignal(SignalName.TimerEnded);
@@ -166,6 +181,10 @@ public partial class LevelManager : Node3D
         EmitSignal(SignalName.AddToBoard);
     }
 
+    private void EmitGameOver()
+    {
+        EmitSignal(SignalName.GameOver);
+    }
 }
 
 public enum LevelState

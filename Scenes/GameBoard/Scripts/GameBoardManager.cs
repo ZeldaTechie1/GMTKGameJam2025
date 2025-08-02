@@ -23,7 +23,6 @@ public partial class GameBoardManager : Node3D
 
     List<Tile> Board = new List<Tile>();
 
-
     public Tile FirstStartTile;
     public Tile LastCheckPointTile;
     public Tile CurrentEndTile;
@@ -31,6 +30,11 @@ public partial class GameBoardManager : Node3D
 
     [Export]
     public Node3D Selector;
+
+    public List<Tile> GetBoard()
+    {
+        return Board;
+    }
 
     public override void _Ready()
     {
