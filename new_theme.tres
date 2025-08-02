@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://d0rv0q06l65ek"]
+
+[ext_resource type="StyleBox" uid="uid://x4a5jdm26qxu" path="res://new_style_box_flat.tres" id="1_amlv4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7eh4"]
+bg_color = Color(0, 0, 0, 1)
+
+[resource]
+Button/constants/h_separation = 0
+Button/styles/normal = ExtResource("1_amlv4")
+Panel/styles/panel = SubResource("StyleBoxFlat_i7eh4")
+VBoxContainer/constants/separation = 0

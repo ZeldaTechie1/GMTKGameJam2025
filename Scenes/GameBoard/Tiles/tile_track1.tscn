@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmc83r8wd13em"]
+[gd_scene load_steps=5 format=3 uid="uid://dmc83r8wd13em"]
 
 [ext_resource type="Script" uid="uid://cchskq7nkfscg" path="res://Scenes/GameBoard/Scripts/TrackPiece.cs" id="1_lgybx"]
 

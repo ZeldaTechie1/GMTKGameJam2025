@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://covltxgev3y2g"]
+
+[ext_resource type="Script" uid="uid://dxdi36x4aiu55" path="res://Scenes/DeckManager/CardManager.cs" id="1_0386i"]
+
+[node name="CardManager" type="Node"]
+script = ExtResource("1_0386i")

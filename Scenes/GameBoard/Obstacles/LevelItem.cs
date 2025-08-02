@@ -169,7 +169,6 @@ public enum LevelItemLocation
     Floor,
     Floating,
     Default
-
 }
 public enum LevelItemSize
 {

@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://buqjsk2a0flx8"]
+
+[ext_resource type="Script" uid="uid://c6r6t15j3p3tf" path="res://Scenes/DeckManager/Card.cs" id="1_x3w4s"]
+[ext_resource type="Theme" uid="uid://d0rv0q06l65ek" path="res://new_theme.tres" id="2_4sr7t"]
+[ext_resource type="Texture2D" uid="uid://dbha8sfbpj8ou" path="res://Textures/PrototypeTextures/PNG/Dark/texture_12.png" id="3_cr545"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("NameButton", "PlayCard")]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -10.0
+offset_right = 100.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x3w4s")
+NameButton = NodePath("Panel/BoxContainer/Name")
+PlayCard = NodePath("Panel/BoxContainer/Play Card")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_4sr7t")
+
+[node name="BoxContainer" type="BoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -127.0
+offset_right = 90.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Name" type="Button" parent="Panel/BoxContainer"]
+custom_minimum_size = Vector2(180, 20)
+layout_mode = 2
+tooltip_text = "well fuck idk "
+text = "Card Name"
+
+[node name="Play Card" type="TextureButton" parent="Panel/BoxContainer"]
+custom_minimum_size = Vector2(190, 220)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_cr545")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="Panel/BoxContainer/Name" to="." method="NamePressed"]
+[connection signal="pressed" from="Panel/BoxContainer/Play Card" to="." method="PlayCard"]

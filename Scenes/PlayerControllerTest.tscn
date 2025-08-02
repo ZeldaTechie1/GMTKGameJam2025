@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=19 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="Texture2D" uid="uid://cp82rh5du6871" path="res://Textures/PrototypeTextures/PNG/Dark/texture_07.png" id="1_3ija4"]
-[ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/Player/player.tscn" id="1_ep0r4"]
+[ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/DeckManager/player.tscn" id="1_ep0r4"]
 [ext_resource type="Script" uid="uid://b46t1q6jieqtm" path="res://Scenes/SignalTester.cs" id="2_am0fs"]
+[ext_resource type="PackedScene" uid="uid://covltxgev3y2g" path="res://Scenes/DeckManager/CardManager.tscn" id="3_8xrjm"]
 [ext_resource type="PackedScene" uid="uid://d3ff2b7m68md6" path="res://Scenes/LevelManager.tscn" id="3_dkipe"]
+[ext_resource type="PackedScene" uid="uid://buqjsk2a0flx8" path="res://Scenes/DeckManager/CardV2.tscn" id="5_l4he1"]
 [ext_resource type="PackedScene" uid="uid://dmc83r8wd13em" path="res://Scenes/GameBoard/Tiles/tile_track1.tscn" id="5_x5qdp"]
 [ext_resource type="PackedScene" uid="uid://dmavjk8leao74" path="res://Scenes/GameBoard/Tiles/CheckpointTrack.tscn" id="6_35paj"]
 [ext_resource type="PackedScene" uid="uid://c7b8e5uapag4t" path="res://Scenes/GameBoard/Tiles/Tumbler.tscn" id="7_kf4my"]
@@ -58,6 +60,8 @@ shape = SubResource("BoxShape3D_am0fs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12604, -0.352375, -3.99549)
 size = Vector3(7.21667, 1, 8.99292)
 
+[node name="CardManager" parent="." instance=ExtResource("3_8xrjm")]
+
 [node name="Player" parent="." node_paths=PackedStringArray("levelManager", "gameBoardManager") instance=ExtResource("1_ep0r4")]
 floor_constant_speed = false
 floor_max_angle = 1.22173
@@ -68,10 +72,14 @@ Deceleration = 0.5
 [node name="SpringArmPivot" parent="Player" index="2" node_paths=PackedStringArray("levelManager")]
 levelManager = NodePath("../../LevelManager")
 
-[node name="Hand" parent="Player" index="4" node_paths=PackedStringArray("LevelManager", "OverViewCamera", "GBManager")]
+[node name="Deck" parent="Player" index="3"]
+deck = Array[PackedScene]([ExtResource("5_l4he1"), ExtResource("5_l4he1"), ExtResource("5_l4he1"), ExtResource("5_l4he1"), ExtResource("5_l4he1"), ExtResource("5_l4he1"), ExtResource("5_l4he1"), ExtResource("5_l4he1"), ExtResource("5_l4he1"), ExtResource("5_l4he1"), ExtResource("5_l4he1")])
+
+[node name="Hand" parent="Player" index="4" node_paths=PackedStringArray("LevelManager", "OverViewCamera", "GBManager", "Card_Manager")]
 LevelManager = NodePath("../../LevelManager")
 OverViewCamera = NodePath("../../Overview")
 GBManager = NodePath("../../GameBoard")
+Card_Manager = NodePath("../../CardManager")
 
 [node name="GameBoard" parent="." node_paths=PackedStringArray("Level_Manager") instance=ExtResource("8_rntjc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
