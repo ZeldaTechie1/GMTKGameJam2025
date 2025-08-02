@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5o15i4pusbsv"]
+
+[ext_resource type="PackedScene" uid="uid://ddgcnu2swyubw" path="res://Scenes/GameBoard/Obstacles/LevelItem.tscn" id="1_dpenq"]
+[ext_resource type="PackedScene" uid="uid://xjyjmtjf357b" path="res://Scenes/GameGrid/Modifiers/Launcher.tscn" id="2_4i55v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1il7"]
+albedo_color = Color(1, 0.256669, 0.256669, 1)
+
+[node name="BackwardLauncher" instance=ExtResource("1_dpenq")]
+ItemSize = 2
+ItemLocation = 1
+
+[node name="Launcher" parent="." index="0" instance=ExtResource("2_4i55v")]
+transform = Transform3D(-5, 4.37114e-07, -1.91069e-14, -4.6588e-21, -2.18557e-07, -5, -4.37114e-07, -5, 2.18557e-07, 0, 0, 0)
+
+[node name="Visual" parent="Launcher" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_q1il7")
+
+[node name="CSGMesh3D" parent="Launcher/Visual" index="0"]
+material = SubResource("StandardMaterial3D_q1il7")
+
+[node name="CSGMesh3D2" parent="Launcher/Visual" index="1"]
+material = SubResource("StandardMaterial3D_q1il7")
+
+[node name="CSGMesh3D3" parent="Launcher/Visual" index="2"]
+material = SubResource("StandardMaterial3D_q1il7")
+
+[node name="CSGMesh3D4" parent="Launcher/Visual" index="3"]
+material = SubResource("StandardMaterial3D_q1il7")
+
+[editable path="Launcher"]

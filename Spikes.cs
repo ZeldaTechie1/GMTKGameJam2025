@@ -38,10 +38,8 @@ public partial class Spikes : MeshInstance3D
             Vector3 rescale = this.Scale + EjectionSpeed * (float)delta;
             if (rescale.X > StartingScale.X || rescale.Y > StartingScale.Y || rescale.Z > StartingScale.Z)
             {
-                GD.Print("Scale:" + this.Scale + "|Rescale:" + rescale);
                 this.Scale = StartingScale;
                 Retracted = false;
-                GD.Print("Swap");
             }
             else
             {
@@ -56,7 +54,6 @@ public partial class Spikes : MeshInstance3D
             {
 
                 Retracted = true;
-                GD.Print("Swap");
             }
             else
             {

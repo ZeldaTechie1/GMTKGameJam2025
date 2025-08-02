@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmrsgshyq6dm7"]
+
+[ext_resource type="PackedScene" uid="uid://ddgcnu2swyubw" path="res://Scenes/GameBoard/Obstacles/LevelItem.tscn" id="1_4i6sm"]
+[ext_resource type="ArrayMesh" uid="uid://mxmk8kfwascm" path="res://Scenes/Props/BlenderModels/Floor.tres" id="2_sv61a"]
+[ext_resource type="ArrayMesh" uid="uid://sxoxwnliehfn" path="res://Scenes/Props/BlenderModels/Spikes.tres" id="3_76r2e"]
+[ext_resource type="Script" uid="uid://ddp26yyll5ltn" path="res://Spikes.cs" id="4_lq22s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpgmh"]
+albedo_color = Color(0.26, 0.26, 0.26, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86o6n"]
+
+[node name="FloatingSpikes" instance=ExtResource("1_4i6sm")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 4.6588e-22, -4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+ItemLocation = 1
+
+[node name="Floor" type="MeshInstance3D" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_lpgmh")
+mesh = ExtResource("2_sv61a")
+
+[node name="Spikes" type="MeshInstance3D" parent="Floor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.431813, 0)
+material_override = SubResource("StandardMaterial3D_86o6n")
+mesh = ExtResource("3_76r2e")
+script = ExtResource("4_lq22s")
+Active = true
+EjectionSpeed = Vector3(0, 3, 0)
+RetractionSpeed = Vector3(0, 0.5, 0)

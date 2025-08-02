@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddgcnu2swyubw"]
+
+[ext_resource type="Script" uid="uid://esgxv4cehgmc" path="res://Scenes/GameBoard/Obstacles/LevelItem.cs" id="1_swd3c"]
+
+[node name="LevelItem" type="Node3D" node_paths=PackedStringArray("LevelItemObject")]
+transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, 0, 0, 0)
+script = ExtResource("1_swd3c")
+LevelItemObject = NodePath(".")
+ItemType = 0
+ItemActive = true
+EnableHorizontalMovement = true
+HorizontalMoveSpeed = 10.0
+MaxHorizontalDistanceFromOrigin = 20.0
