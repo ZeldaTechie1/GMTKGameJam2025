@@ -28,10 +28,6 @@ settings/addon_root_folder="res://addons/debug_draw_3d"
 runtime/advanced/uses_dotnet=true
 runtime/balloon_path="res://Scenes/Balloon.tscn"
 
-[display]
-
-window/size/mode=3
-
 [dotnet]
 
 project/assembly_name="GMTKGameJam2025"

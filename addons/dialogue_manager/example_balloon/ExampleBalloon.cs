@@ -1,5 +1,7 @@
 using Godot;
 using Godot.Collections;
+using System;
+using System.Collections.Generic;
 
 namespace DialogueManagerRuntime
 {
@@ -9,6 +11,7 @@ namespace DialogueManagerRuntime
     [Export] public string SkipAction = "ui_cancel";
 
     [Signal] public delegate void NextDialogueEventHandler();
+    [Export]AudioStreamPlayer[] speechSounds;
     Control balloon;
     RichTextLabel characterLabel;
     RichTextLabel dialogueLabel;
@@ -218,7 +221,18 @@ namespace DialogueManagerRuntime
       MutationCooldown.Start(0.1f);
     }
 
+    public void _on_dialogue_label_spoke(string letter, int index, float speed)
+    {   
+            GD.Print(letter);
+            if (speechSounds.Length == 0)
+                return;
 
-    #endregion
-  }
+            int randSound = Random.Shared.Next(0,speechSounds.Length);
+            speechSounds[randSound].PitchScale = (float)((Random.Shared.NextDouble() * .5f) + 1.25f);
+            speechSounds[randSound].Play();
+    }
+        #endregion
+    }
+
+    
 }

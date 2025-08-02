@@ -1,8 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://buhxvcu2huhk8"]
+[gd_scene load_steps=14 format=3 uid="uid://buhxvcu2huhk8"]
 
 [ext_resource type="Script" uid="uid://5b3w40kwakl3" path="res://addons/dialogue_manager/example_balloon/ExampleBalloon.cs" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="AudioStream" uid="uid://d08lgyreln5i" path="res://Sounds/FX/talkingASound.wav" id="2_y55i2"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="AudioStream" uid="uid://bkdqex6yiryxd" path="res://Sounds/FX/talkingESound.wav" id="3_o6xmg"]
+[ext_resource type="AudioStream" uid="uid://dja6n2drlxgdl" path="res://Sounds/FX/talkingISound.wav" id="4_v5cnw"]
+[ext_resource type="AudioStream" uid="uid://cn54me87gihfd" path="res://Sounds/FX/talkingOSound.wav" id="5_qmncv"]
+[ext_resource type="AudioStream" uid="uid://cpnefaqat8t2i" path="res://Sounds/FX/talkingUSound.wav" id="6_gxa4g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -63,9 +68,30 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
-[node name="ExampleBalloon" type="CanvasLayer"]
+[node name="ExampleBalloon" type="CanvasLayer" node_paths=PackedStringArray("speechSounds")]
 layer = 100
 script = ExtResource("1_36de5")
+speechSounds = [NodePath("TalkingASound"), NodePath("TalkingESound"), NodePath("TalkingISound"), NodePath("TalkingOSound"), NodePath("TalkingUSound")]
+
+[node name="TalkingASound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_y55i2")
+volume_db = -10.0
+
+[node name="TalkingESound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_o6xmg")
+volume_db = -10.0
+
+[node name="TalkingISound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v5cnw")
+volume_db = -10.0
+
+[node name="TalkingOSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qmncv")
+volume_db = -10.0
+
+[node name="TalkingUSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gxa4g")
+volume_db = -10.0
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -139,4 +165,5 @@ layout_mode = 2
 text = "Response example"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="spoke" from="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
