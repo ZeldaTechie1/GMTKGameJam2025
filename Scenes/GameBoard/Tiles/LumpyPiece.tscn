@@ -10,7 +10,7 @@ data = PackedVector3Array(5.0003, -0.4706, 23.5822, 4.5993, -0.4706, 23.5822, 5.
 [node name="LumpyPiece" node_paths=PackedStringArray("ItemSpawnPoints") instance=ExtResource("1_pamds")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0, 0)
 mesh = ExtResource("2_tp75b")
-ItemSpawnPoints = [NodePath("ItemPoints/Item Spawn point6"), NodePath("ItemPoints/Item Spawn point7"), NodePath("ItemPoints/Item Spawn point8"), NodePath("ItemPoints/Item Spawn point9"), NodePath("ItemPoints/Item Spawn point10")]
+ItemSpawnPoints = [NodePath("ItemPoints/Item Spawn point6"), NodePath("ItemPoints/Item Spawn point7"), NodePath("ItemPoints/Item Spawn point8"), NodePath("ItemPoints/Item Spawn point9"), NodePath("ItemPoints/Item Spawn point10"), NodePath("ItemPoints/Item Spawn point11"), NodePath("ItemPoints/Item Spawn point12"), NodePath("ItemPoints/Item Spawn point13"), NodePath("ItemPoints/Item Spawn point14"), NodePath("ItemPoints/Item Spawn point15"), NodePath("ItemPoints/Item Spawn point16"), NodePath("ItemPoints/Item Spawn point17"), NodePath("ItemPoints/Item Spawn point18"), NodePath("ItemPoints/Item Spawn point19"), NodePath("ItemPoints/Item Spawn point20")]
 
 [node name="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_cq46f")

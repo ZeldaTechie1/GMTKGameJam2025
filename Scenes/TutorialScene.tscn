@@ -1,10 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://vk64ldo75glj"]
+[gd_scene load_steps=24 format=3 uid="uid://vk64ldo75glj"]
 
 [ext_resource type="Script" uid="uid://7gnu6pw5gypc" path="res://Scenes/SlideHolder.cs" id="1_d6567"]
 [ext_resource type="ArrayMesh" uid="uid://nfwgboedgc1w" path="res://Models/Meshes/Visor.obj" id="1_map6f"]
 [ext_resource type="Texture2D" uid="uid://bo3cgncxgc3kr" path="res://Textures/testSlide1.png" id="2_ch2se"]
 [ext_resource type="Resource" uid="uid://tkqugklers7i" path="res://Dialogue/Tutorial.dialogue" id="2_jbvax"]
+[ext_resource type="ArrayMesh" uid="uid://ren0vj3frdy6" path="res://Models/Meshes/WhistleLanyard.obj" id="2_pujgt"]
 [ext_resource type="Texture2D" uid="uid://bl8vgfqmd2i85" path="res://Textures/placeholderSlide.png" id="3_map6f"]
+[ext_resource type="ArrayMesh" uid="uid://gmngnrpnlc60" path="res://Models/Meshes/whistle.obj" id="3_xkm2r"]
 [ext_resource type="Texture2D" uid="uid://djucs2i1t1iam" path="res://Textures/slide5.png" id="5_u2gab"]
 [ext_resource type="Texture2D" uid="uid://dy5aebyk7ck33" path="res://Textures/slide6.png" id="6_ls7or"]
 [ext_resource type="Texture2D" uid="uid://ccfj102eh13qn" path="res://Textures/slide8.png" id="7_5v4vo"]
@@ -31,6 +33,12 @@ albedo_color = Color(1, 0.0655029, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_map6f"]
 albedo_color = Color(0.399575, 0.995572, 0.467816, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkm2r"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrv55"]
+albedo_color = Color(0.520366, 0.119873, 0.119873, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gnu7h"]
 
@@ -74,6 +82,15 @@ visible = false
 mesh = ExtResource("1_map6f")
 surface_material_override/0 = SubResource("StandardMaterial3D_map6f")
 
+[node name="Lanyard" type="MeshInstance3D" parent="LifeGuard"]
+transform = Transform3D(0.425271, -1.57379e-08, 1.49012e-08, 5.49335e-09, 0.425271, 1.41154e-09, 1.49012e-08, -3.52156e-09, 0.425271, 0, 0, 0)
+mesh = ExtResource("2_pujgt")
+surface_material_override/0 = SubResource("StandardMaterial3D_xkm2r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LifeGuard/Lanyard"]
+mesh = ExtResource("3_xkm2r")
+surface_material_override/0 = SubResource("StandardMaterial3D_hrv55")
+
 [node name="LifeGuard2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.705995, 0.0408902, 0.707035, -0.029018, 0.999164, -0.0288099, -0.707622, -0.000177074, 0.706591, -1.21474, 1, 0)
 visible = false
@@ -113,6 +130,15 @@ visible = false
 mesh = ExtResource("1_map6f")
 surface_material_override/0 = SubResource("StandardMaterial3D_map6f")
 
+[node name="Lanyard" type="MeshInstance3D" parent="LifeGuard2"]
+transform = Transform3D(0.425271, -1.57379e-08, 1.49012e-08, 5.49335e-09, 0.425271, 1.41154e-09, 1.49012e-08, -3.52156e-09, 0.425271, 0, 0, 0)
+mesh = ExtResource("2_pujgt")
+surface_material_override/0 = SubResource("StandardMaterial3D_xkm2r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LifeGuard2/Lanyard"]
+mesh = ExtResource("3_xkm2r")
+surface_material_override/0 = SubResource("StandardMaterial3D_hrv55")
+
 [node name="SlideHolder" type="Control" parent="." node_paths=PackedStringArray("textureRect", "lifeguards")]
 layout_mode = 3
 anchors_preset = 15
@@ -150,7 +176,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SlideHolder/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1152, 648)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SlideHolder/SubViewportContainer/SubViewport"]

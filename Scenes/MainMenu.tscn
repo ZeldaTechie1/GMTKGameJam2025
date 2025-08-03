@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://bhq63ycrrer6d" path="res://MainMenuTheme.tres" id="1_tt5f1"]
 [ext_resource type="AudioStream" uid="uid://cg28ydh4foa61" path="res://Sounds/Music/80s Waterbed Retiree Main.wav" id="3_8saeu"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("playButton")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("playButton", "exitButton", "skipButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_853f1")
 playButton = NodePath("Button")
+exitButton = NodePath("Button2")
+skipButton = NodePath("Button3")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -37,13 +39,39 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 448.0
-offset_top = 412.0
-offset_right = -423.0
-offset_bottom = -171.0
+offset_left = 811.0
+offset_top = 617.0
+offset_right = -786.0
+offset_bottom = -376.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 811.0
+offset_top = 729.0
+offset_right = -786.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Skip Tutorial"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 811.0
+offset_top = 841.0
+offset_right = -786.0
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit Game"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_8saeu")

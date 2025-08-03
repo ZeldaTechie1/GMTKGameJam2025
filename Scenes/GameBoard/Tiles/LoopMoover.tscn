@@ -2,8 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://by2l0kiby00u5" path="res://Scenes/GameBoard/Tiles/LoopRotater.tscn" id="1_3ydv8"]
 
-[node name="Loop" node_paths=PackedStringArray("ItemSpawnPoints") instance=ExtResource("1_3ydv8")]
-ItemSpawnPoints = [NodePath("ItemPoints/Item Spawn point"), NodePath("ItemPoints/Item Spawn point2"), NodePath("ItemPoints/Item Spawn point3"), NodePath("ItemPoints/Item Spawn point4"), NodePath("ItemPoints/Item Spawn point5"), NodePath("ItemPoints/Item Spawn point6"), NodePath("ItemPoints/Item Spawn point8"), NodePath("ItemPoints/Item Spawn point10")]
+[node name="Loop" instance=ExtResource("1_3ydv8")]
 
 [node name="LevelItem" parent="." index="3"]
 EnableSpin = false

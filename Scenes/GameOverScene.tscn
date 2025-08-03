@@ -1,11 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://dmfbte8nqnoh0"]
+[gd_scene load_steps=29 format=3 uid="uid://dmfbte8nqnoh0"]
 
 [ext_resource type="ArrayMesh" uid="uid://nfwgboedgc1w" path="res://Models/Meshes/Visor.obj" id="1_a74uc"]
 [ext_resource type="Script" uid="uid://b52adp31p3mjv" path="res://Scenes/GameFinish.cs" id="1_gv64c"]
 [ext_resource type="Texture2D" uid="uid://bqg24nm6ao4wl" path="res://Textures/Clouds.png" id="2_bv81r"]
 [ext_resource type="AudioStream" uid="uid://b2e31hw8pnotv" path="res://Sounds/Music/Childrens Adventure Anthem Main.wav" id="3_bv81r"]
 [ext_resource type="Texture2D" uid="uid://bbv10ql6g3021" path="res://Textures/BetterLuckNextTime.png" id="3_gv64c"]
+[ext_resource type="ArrayMesh" uid="uid://ren0vj3frdy6" path="res://Models/Meshes/WhistleLanyard.obj" id="3_jvt4f"]
 [ext_resource type="Texture2D" uid="uid://cwcnpa2nuu8v7" path="res://Textures/Twin.png" id="4_bv81r"]
+[ext_resource type="ArrayMesh" uid="uid://gmngnrpnlc60" path="res://Models/Meshes/whistle.obj" id="4_m3uyw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gv64c"]
 
@@ -28,6 +30,12 @@ albedo_color = Color(1, 0.0655029, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cofyd"]
 albedo_color = Color(0.4, 0.996078, 0.466667, 0.196078)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eftn2"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hefjp"]
+albedo_color = Color(0.520366, 0.119873, 0.119873, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cofyd"]
 
@@ -57,6 +65,14 @@ albedo_color = Color(1, 0.0666667, 0, 0.196078)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odd1w"]
 transparency = 1
 albedo_color = Color(0.4, 0.996078, 0.466667, 0.196078)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7dml"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.196078)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4sani"]
+transparency = 1
+albedo_color = Color(0.521569, 0.121569, 0.121569, 0.196078)
 
 [node name="GameOverScene" type="Node3D" node_paths=PackedStringArray("exitButton", "mainMenuButton")]
 script = ExtResource("1_gv64c")
@@ -100,6 +116,15 @@ material = SubResource("StandardMaterial3D_7n5gh")
 transform = Transform3D(0.284, -2.13186e-09, 2.98023e-08, -1.30603e-09, 0.284, 1.00408e-09, -2.98023e-08, 1.81171e-09, 0.284, -0.00128005, 0.917045, 0.0697681)
 mesh = ExtResource("1_a74uc")
 surface_material_override/0 = SubResource("StandardMaterial3D_cofyd")
+
+[node name="Lanyard" type="MeshInstance3D" parent="LifeGuard"]
+transform = Transform3D(0.425271, -1.57379e-08, 1.49012e-08, 5.49335e-09, 0.425271, 1.41154e-09, 1.49012e-08, -3.52156e-09, 0.425271, 0, 0, 0)
+mesh = ExtResource("3_jvt4f")
+surface_material_override/0 = SubResource("StandardMaterial3D_eftn2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LifeGuard/Lanyard"]
+mesh = ExtResource("4_m3uyw")
+surface_material_override/0 = SubResource("StandardMaterial3D_hefjp")
 
 [node name="LifeGuard2" type="MeshInstance3D" parent="."]
 transform = Transform3D(6.66903, 0, -3.31648, 0, 7.44816, 0, 3.31649, 0, 6.66903, 4.46763, -0.536828, -27.4949)
@@ -146,6 +171,15 @@ transform = Transform3D(0.284, -2.13186e-09, 2.98023e-08, -1.30603e-09, 0.284, 1
 layers = 2
 mesh = ExtResource("1_a74uc")
 surface_material_override/0 = SubResource("StandardMaterial3D_odd1w")
+
+[node name="Lanyard" type="MeshInstance3D" parent="LifeGuard2"]
+transform = Transform3D(0.425271, -1.57379e-08, 1.49012e-08, 5.49335e-09, 0.425271, 1.41154e-09, 1.49012e-08, -3.52156e-09, 0.425271, 0, 0, 0)
+mesh = ExtResource("3_jvt4f")
+surface_material_override/0 = SubResource("StandardMaterial3D_i7dml")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LifeGuard2/Lanyard"]
+mesh = ExtResource("4_m3uyw")
+surface_material_override/0 = SubResource("StandardMaterial3D_4sani")
 
 [node name="SlideHolder" type="Control" parent="."]
 layout_mode = 3
