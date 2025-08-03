@@ -8,6 +8,7 @@ public partial class LevelManager : Node3D
     [Export] Camera3D OverviewCamera;
     [Export] Camera3D PlayerCamera;
     [Export] Button playButton;
+    [Export] Button leaveGameButton;
     
     [Export] public int playsFailed { get; private set; }
 
@@ -37,6 +38,12 @@ public partial class LevelManager : Node3D
         Input.MouseMode = Input.MouseModeEnum.Visible;
         StartLevel();
         playButton.ButtonUp += FlipNSlideButtonPressed;
+        leaveGameButton.ButtonUp += LeaveGame_ButtonUp;
+    }
+
+    private void LeaveGame_ButtonUp()
+    {
+        GetTree().Quit();
     }
 
     public override void _Process(double delta)

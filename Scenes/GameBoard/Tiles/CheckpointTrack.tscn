@@ -1,9 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmavjk8leao74"]
 
+[ext_resource type="Material" uid="uid://0m6q8o81j3y4" path="res://Scenes/GameBoard/Tiles/PissYellow.tres" id="1_r6t41"]
 [ext_resource type="Script" uid="uid://cchskq7nkfscg" path="res://Scenes/GameBoard/Scripts/TrackPiece.cs" id="1_rwyao"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxa7s"]
-albedo_color = Color(0.679516, 0.502827, 1.92523e-07, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_487m1"]
 size = Vector3(1, 0.25, 1)
@@ -12,7 +10,7 @@ size = Vector3(1, 0.25, 1)
 
 [node name="TrackPiece" type="MeshInstance3D" node_paths=PackedStringArray("ItemSpawnPoints")]
 transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_jxa7s")
+material_override = ExtResource("1_r6t41")
 mesh = SubResource("BoxMesh_487m1")
 script = ExtResource("1_rwyao")
 PieceType = 4

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bagql2wevfq2m"]
 
 [ext_resource type="Script" uid="uid://jblepadonsf3" path="res://Scenes/GameGrid/Modifiers/Modifier.cs" id="1_wyvvk"]
-[ext_resource type="Shader" uid="uid://du2w32aewqotk" path="res://kill_box.gdshader" id="2_uow2p"]
+[ext_resource type="Shader" path="res://kill_box.gdshader" id="2_uow2p"]
 [ext_resource type="Texture2D" uid="uid://nv0et0ny5mj" path="res://Textures/Water-Texture..png" id="3_8pbpc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_42jto"]

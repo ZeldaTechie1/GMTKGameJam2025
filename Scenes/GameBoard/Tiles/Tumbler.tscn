@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7b8e5uapag4t"]
+[gd_scene load_steps=7 format=3 uid="uid://c7b8e5uapag4t"]
 
 [ext_resource type="PackedScene" uid="uid://dmc83r8wd13em" path="res://Scenes/GameBoard/Tiles/tile_track1.tscn" id="1_qrgdl"]
 [ext_resource type="ArrayMesh" uid="uid://nimflt5ng4th" path="res://Models/Meshes/Tumbler.obj" id="2_wdnqi"]
+[ext_resource type="Material" uid="uid://0m6q8o81j3y4" path="res://Scenes/GameBoard/Tiles/PissYellow.tres" id="3_5fpjw"]
 [ext_resource type="Script" uid="uid://esgxv4cehgmc" path="res://Scenes/GameBoard/Obstacles/LevelItem.cs" id="3_wdnqi"]
 [ext_resource type="PackedScene" uid="uid://0pu8isihwh16" path="res://item_spawn_point.tscn" id="4_e0mxm"]
 
@@ -25,6 +26,7 @@ SpinSpeed = Vector3(0, 0, 20)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+material_override = ExtResource("3_5fpjw")
 mesh = ExtResource("2_wdnqi")
 skeleton = NodePath("../..")
 
