@@ -9,6 +9,7 @@ public partial class MainMenu : Control
 
     public override void _Ready()
     {
+        DisplayServer.WindowSetSize(new Vector2I(1280, 720));
         playButton.ButtonDown += PlayButton_ButtonDown;
         exitButton.ButtonDown += ExitButton_ButtonDown;
         skipButton.ButtonDown += SkipButton_ButtonDown;
