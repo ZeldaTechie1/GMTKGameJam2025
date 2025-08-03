@@ -9,7 +9,7 @@ data = PackedVector3Array(5.0003, -1, 24, 4.5993, -1, 24, 5.0003, -1, 25, 5.0003
 
 [node name="TrackPiece" node_paths=PackedStringArray("ItemSpawnPoints") instance=ExtResource("1_0niui")]
 mesh = ExtResource("2_dtxx3")
-ItemSpawnPoints = [NodePath("ItemPoints/Item Spawn point"), NodePath("ItemPoints/Item Spawn point2"), NodePath("ItemPoints/Item Spawn point3"), NodePath("ItemPoints/Item Spawn point4"), NodePath("ItemPoints/Item Spawn point5"), NodePath("ItemPoints/Item Spawn point6"), NodePath("ItemPoints/Item Spawn point7"), NodePath("ItemPoints/Item Spawn point8"), NodePath("ItemPoints/Item Spawn point9"), NodePath("ItemPoints/Item Spawn point10")]
+ItemSpawnPoints = [NodePath("ItemPoints/Item Spawn point"), NodePath("ItemPoints/Item Spawn point2"), NodePath("ItemPoints/Item Spawn point3"), NodePath("ItemPoints/Item Spawn point4"), NodePath("ItemPoints/Item Spawn point5"), NodePath("ItemPoints/Item Spawn point6"), NodePath("ItemPoints/Item Spawn point7"), NodePath("ItemPoints/Item Spawn point8"), NodePath("ItemPoints/Item Spawn point9"), NodePath("ItemPoints/Item Spawn point10"), NodePath("ItemPoints/Item Spawn point11"), NodePath("ItemPoints/Item Spawn point12"), NodePath("ItemPoints/Item Spawn point13"), NodePath("ItemPoints/Item Spawn point14"), NodePath("ItemPoints/Item Spawn point15"), NodePath("ItemPoints/Item Spawn point16"), NodePath("ItemPoints/Item Spawn point17"), NodePath("ItemPoints/Item Spawn point18"), NodePath("ItemPoints/Item Spawn point19"), NodePath("ItemPoints/Item Spawn point20"), NodePath("ItemPoints/Item Spawn point21"), NodePath("ItemPoints/Item Spawn point22"), NodePath("ItemPoints/Item Spawn point23"), NodePath("ItemPoints/Item Spawn point24"), NodePath("ItemPoints/Item Spawn point25"), NodePath("ItemPoints/Item Spawn point26"), NodePath("ItemPoints/Item Spawn point27"), NodePath("ItemPoints/Item Spawn point28"), NodePath("ItemPoints/Item Spawn point29"), NodePath("ItemPoints/Item Spawn point30")]
 
 [node name="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_neeo5")
@@ -40,27 +40,125 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 PointSize = 0
 PointLocation = 0
 
-[node name="Item Spawn point6" parent="ItemPoints" index="5" instance=ExtResource("3_dm36p")]
+[node name="Item Spawn point11" parent="ItemPoints" index="5" instance=ExtResource("3_dm36p")]
+PointSize = 1
+PointLocation = 0
+
+[node name="Item Spawn point12" parent="ItemPoints" index="6" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+PointSize = 1
+PointLocation = 0
+
+[node name="Item Spawn point13" parent="ItemPoints" index="7" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+PointSize = 1
+PointLocation = 0
+
+[node name="Item Spawn point14" parent="ItemPoints" index="8" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+PointSize = 1
+PointLocation = 0
+
+[node name="Item Spawn point15" parent="ItemPoints" index="9" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+PointSize = 1
+PointLocation = 0
+
+[node name="Item Spawn point16" parent="ItemPoints" index="10" instance=ExtResource("3_dm36p")]
+PointSize = 2
+PointLocation = 0
+
+[node name="Item Spawn point17" parent="ItemPoints" index="11" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+PointSize = 2
+PointLocation = 0
+
+[node name="Item Spawn point18" parent="ItemPoints" index="12" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+PointSize = 2
+PointLocation = 0
+
+[node name="Item Spawn point19" parent="ItemPoints" index="13" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+PointSize = 2
+PointLocation = 0
+
+[node name="Item Spawn point20" parent="ItemPoints" index="14" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+PointSize = 2
+PointLocation = 0
+
+[node name="Item Spawn point6" parent="ItemPoints" index="15" instance=ExtResource("3_dm36p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 PointSize = 0
 PointLocation = 1
 
-[node name="Item Spawn point7" parent="ItemPoints" index="6" instance=ExtResource("3_dm36p")]
+[node name="Item Spawn point7" parent="ItemPoints" index="16" instance=ExtResource("3_dm36p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -10)
 PointSize = 0
 PointLocation = 1
 
-[node name="Item Spawn point8" parent="ItemPoints" index="7" instance=ExtResource("3_dm36p")]
+[node name="Item Spawn point8" parent="ItemPoints" index="17" instance=ExtResource("3_dm36p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -20)
 PointSize = 0
 PointLocation = 1
 
-[node name="Item Spawn point9" parent="ItemPoints" index="8" instance=ExtResource("3_dm36p")]
+[node name="Item Spawn point9" parent="ItemPoints" index="18" instance=ExtResource("3_dm36p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 10)
 PointSize = 0
 PointLocation = 1
 
-[node name="Item Spawn point10" parent="ItemPoints" index="9" instance=ExtResource("3_dm36p")]
+[node name="Item Spawn point10" parent="ItemPoints" index="19" instance=ExtResource("3_dm36p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 20)
 PointSize = 0
+PointLocation = 1
+
+[node name="Item Spawn point21" parent="ItemPoints" index="20" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+PointSize = 1
+PointLocation = 1
+
+[node name="Item Spawn point22" parent="ItemPoints" index="21" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -10)
+PointSize = 1
+PointLocation = 1
+
+[node name="Item Spawn point23" parent="ItemPoints" index="22" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -20)
+PointSize = 1
+PointLocation = 1
+
+[node name="Item Spawn point24" parent="ItemPoints" index="23" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 10)
+PointSize = 1
+PointLocation = 1
+
+[node name="Item Spawn point25" parent="ItemPoints" index="24" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 20)
+PointSize = 1
+PointLocation = 1
+
+[node name="Item Spawn point26" parent="ItemPoints" index="25" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+PointSize = 2
+PointLocation = 1
+
+[node name="Item Spawn point27" parent="ItemPoints" index="26" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -10)
+PointSize = 2
+PointLocation = 1
+
+[node name="Item Spawn point28" parent="ItemPoints" index="27" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -20)
+PointSize = 2
+PointLocation = 1
+
+[node name="Item Spawn point29" parent="ItemPoints" index="28" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 10)
+PointSize = 2
+PointLocation = 1
+
+[node name="Item Spawn point30" parent="ItemPoints" index="29" instance=ExtResource("3_dm36p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 20)
+PointSize = 2
 PointLocation = 1

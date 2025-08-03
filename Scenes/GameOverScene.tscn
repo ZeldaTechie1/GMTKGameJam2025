@@ -1,0 +1,252 @@
+[gd_scene load_steps=22 format=3 uid="uid://dmfbte8nqnoh0"]
+
+[ext_resource type="ArrayMesh" uid="uid://nfwgboedgc1w" path="res://Models/Meshes/Visor.obj" id="1_a74uc"]
+[ext_resource type="Texture2D" uid="uid://bqg24nm6ao4wl" path="res://Textures/Clouds.png" id="2_bv81r"]
+[ext_resource type="AudioStream" uid="uid://b2e31hw8pnotv" path="res://Sounds/Music/Childrens Adventure Anthem Main.wav" id="3_bv81r"]
+[ext_resource type="Texture2D" uid="uid://bbv10ql6g3021" path="res://Textures/BetterLuckNextTime.png" id="3_gv64c"]
+[ext_resource type="Texture2D" uid="uid://cwcnpa2nuu8v7" path="res://Textures/Twin.png" id="4_bv81r"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gv64c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a74uc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gnu7h"]
+albedo_color = Color(0.948052, 0.373408, 0.0687589, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jlaih"]
+material = SubResource("StandardMaterial3D_gnu7h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvt4f"]
+albedo_color = Color(0.948052, 0.373408, 0.0687589, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m3uyw"]
+top_radius = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n5gh"]
+albedo_color = Color(1, 0.0655029, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cofyd"]
+albedo_color = Color(0.4, 0.996078, 0.466667, 0.196078)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cofyd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gg0ms"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.196078)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv81r"]
+transparency = 1
+albedo_color = Color(0.94902, 0.372549, 0.0705882, 0.623529)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gv64c"]
+material = SubResource("StandardMaterial3D_bv81r")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3uyw"]
+transparency = 1
+albedo_color = Color(0.94902, 0.372549, 0.0705882, 0.196078)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv64c"]
+transparency = 1
+albedo_color = Color(1, 0.0666667, 0, 0.196078)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlaih"]
+transparency = 1
+albedo_color = Color(1, 0.0666667, 0, 0.196078)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odd1w"]
+transparency = 1
+albedo_color = Color(0.4, 0.996078, 0.466667, 0.196078)
+
+[node name="GameOverScene" type="Node3D"]
+
+[node name="LifeGuard" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.727785, 0, 0.685805, 0, 1, 0, -0.685806, 0, 0.727785, -0.811443, 1, 7.87657)
+mesh = SubResource("CapsuleMesh_gv64c")
+surface_material_override/0 = SubResource("StandardMaterial3D_a74uc")
+
+[node name="Glasses" type="MeshInstance3D" parent="LifeGuard"]
+transform = Transform3D(1.1628, 0, 0, 0, -2.12396e-09, -0.31194, 0, 0.0485905, -1.36353e-08, 0, 0.540026, 0.464327)
+mesh = SubResource("CylinderMesh_jlaih")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="LifeGuard/Glasses"]
+transform = Transform3D(-0.15069, 7.19746e-07, 0, -1.31737e-08, -8.23293, 0, 0, 0, 0.365339, -0.424335, -7.45121, -1.12874e-09)
+material_override = SubResource("StandardMaterial3D_jvt4f")
+mesh = SubResource("CylinderMesh_m3uyw")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="LifeGuard/Glasses"]
+transform = Transform3D(-0.15069, 7.19746e-07, 0, -1.31737e-08, -8.23293, 0, 0, 0, 0.365339, 0.423591, -7.45121, 2.40497e-08)
+material_override = SubResource("StandardMaterial3D_jvt4f")
+mesh = SubResource("CylinderMesh_m3uyw")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LifeGuard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.162084, 0)
+radius = 0.554688
+height = 0.180054
+sides = 24
+material = SubResource("StandardMaterial3D_7n5gh")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="LifeGuard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366094, 0)
+radius = 0.523926
+height = 0.588074
+sides = 24
+material = SubResource("StandardMaterial3D_7n5gh")
+
+[node name="Visor" type="MeshInstance3D" parent="LifeGuard"]
+transform = Transform3D(0.284, -2.13186e-09, 2.98023e-08, -1.30603e-09, 0.284, 1.00408e-09, -2.98023e-08, 1.81171e-09, 0.284, -0.00128005, 0.917045, 0.0697681)
+mesh = ExtResource("1_a74uc")
+surface_material_override/0 = SubResource("StandardMaterial3D_cofyd")
+
+[node name="LifeGuard2" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.66903, 0, -3.31648, 0, 7.44816, 0, 3.31649, 0, 6.66903, 4.46763, -0.536828, -27.4949)
+layers = 2
+mesh = SubResource("CapsuleMesh_cofyd")
+surface_material_override/0 = SubResource("StandardMaterial3D_gg0ms")
+
+[node name="Glasses" type="MeshInstance3D" parent="LifeGuard2"]
+transform = Transform3D(1.1628, 0, 0, 0, -2.12396e-09, -0.31194, 0, 0.0485905, -1.36353e-08, 0, 0.540026, 0.464327)
+layers = 2
+mesh = SubResource("CylinderMesh_gv64c")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="LifeGuard2/Glasses"]
+transform = Transform3D(-0.15069, 7.19746e-07, 0, -1.31737e-08, -8.23293, 0, 0, 0, 0.365339, -0.424335, -7.45121, -1.12874e-09)
+visible = false
+layers = 2
+material_override = SubResource("StandardMaterial3D_m3uyw")
+mesh = SubResource("CylinderMesh_m3uyw")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="LifeGuard2/Glasses"]
+transform = Transform3D(-0.15069, 7.19746e-07, 0, -1.31737e-08, -8.23293, 0, 0, 0, 0.365339, 0.423591, -7.45121, 2.40497e-08)
+layers = 2
+material_override = SubResource("StandardMaterial3D_m3uyw")
+mesh = SubResource("CylinderMesh_m3uyw")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LifeGuard2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.162084, 0)
+layers = 2
+radius = 0.554688
+height = 0.180054
+sides = 24
+material = SubResource("StandardMaterial3D_gv64c")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="LifeGuard2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.366094, 0)
+layers = 2
+radius = 0.523926
+height = 0.588074
+sides = 24
+material = SubResource("StandardMaterial3D_jlaih")
+
+[node name="Visor" type="MeshInstance3D" parent="LifeGuard2"]
+transform = Transform3D(0.284, -2.13186e-09, 2.98023e-08, -1.30603e-09, 0.284, 1.00408e-09, -2.98023e-08, 1.81171e-09, 0.284, -0.00128005, 0.917045, 0.0697681)
+layers = 2
+mesh = ExtResource("1_a74uc")
+surface_material_override/0 = SubResource("StandardMaterial3D_odd1w")
+
+[node name="SlideHolder" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SlideHolder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SlideHolder/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SlideHolder/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.392868, 1.17866, 19.3825)
+fov = 12.1
+
+[node name="TextureRect" type="TextureRect" parent="SlideHolder"]
+show_behind_parent = true
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bv81r")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="SlideHolder/TextureRect"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 385.0
+offset_top = 173.0
+offset_right = -14.0
+offset_bottom = -161.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_gv64c")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="SlideHolder/TextureRect"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1059.0
+offset_top = 609.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_bv81r")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="SlideHolder"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -258.0
+offset_top = -77.0
+offset_right = -50.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Exit Game"
+
+[node name="Button2" type="Button" parent="SlideHolder"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 49.0
+offset_top = -77.0
+offset_right = 257.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Main Menu
+"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.69724, -0.509431, 0.504318, 0, 0.703531, 0.710664, -0.716838, -0.495504, 0.49053, 0, 0, 0)
+layers = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bv81r")
+volume_db = -10.0
+autoplay = true

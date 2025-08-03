@@ -11,6 +11,12 @@ public partial class CardManager : Node
     [Signal] public delegate void DiscardCardEventHandler(int CardID);
 
     [Export] public ItemSpawner Item_Spawner;
+    [Export] TextureButton drawCardButton;
+
+    public override void _Ready()
+    {
+        drawCardButton.ButtonUp += ()=> EmitDrawCard();
+    }
 
     public void EmitPlayCard(int CardID)
     {

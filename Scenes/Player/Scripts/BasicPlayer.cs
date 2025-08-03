@@ -74,14 +74,12 @@ public partial class BasicPlayer : CharacterBody3D
 			direction = -Graphics.Basis.Z;
 		}
 
-		DebugDraw3D.DrawArrowRay(GlobalPosition + (Vector3.ModelTop * 2), floorNormal, 1, Colors.Blue);
 
 		if (IsOnFloor())
 		{
 			direction = direction.Slide(floorNormal);
 		}
 
-		DebugDraw3D.DrawArrowRay(GlobalPosition + (Vector3.ModelTop * 2), direction, 1);
 		Vector3 lookAtDirection = direction + Graphics.GlobalPosition;
 
 		if (IsOnFloor())
@@ -138,13 +136,11 @@ public partial class BasicPlayer : CharacterBody3D
         Velocity = velocity;
 		
 		CurrentSpeed = velocity.Length();
-		DebugDraw3D.DrawArrowRay(GlobalPosition + (Vector3.ModelTop * 2), velocity, velocity.Length() * (float)delta, Colors.Red, is_absolute_size: true);
 		MoveAndSlide();
 	}
 
 	public void AffectPlayer(ModifierType modifierType, bool isEntering, Vector3 launchDirection)
 	{
-        GD.Print("Squaw");
 		if (isEntering)
 		{
 			currentModifier = modifierType;

@@ -39,8 +39,9 @@ visible = false
 script = ExtResource("2_am0fs")
 levelManager = NodePath("../../LevelManager")
 
-[node name="CardManager" parent="." node_paths=PackedStringArray("Item_Spawner") instance=ExtResource("3_6hkg8")]
+[node name="CardManager" parent="." node_paths=PackedStringArray("Item_Spawner", "drawCardButton") instance=ExtResource("3_6hkg8")]
 Item_Spawner = NodePath("../ItemSpawner")
+drawCardButton = NodePath("../Player/Hand/Control/TextureButton")
 
 [node name="Player" parent="." node_paths=PackedStringArray("levelManager", "gameBoardManager") instance=ExtResource("1_ep0r4")]
 floor_constant_speed = false
@@ -82,11 +83,11 @@ script = ExtResource("13_35paj")
 levelManager = NodePath("../LevelManager")
 gameBoardManager = NodePath("../GameBoard")
 
-[node name="AudioController" type="Node3D" parent="." node_paths=PackedStringArray("levelManager", "musicPlayers", "cardManager", "playCardSound", "drawCardSound")]
+[node name="AudioController" type="Node3D" parent="." node_paths=PackedStringArray("levelManager", "musicPlayers", "hand", "playCardSound", "drawCardSound")]
 script = ExtResource("23_eep7h")
 levelManager = NodePath("../LevelManager")
-musicPlayers = []
-cardManager = NodePath("../CardManager")
+musicPlayers = [NodePath("../RoundMusic"), NodePath("../PlayMusic")]
+hand = NodePath("../Player/Hand")
 playCardSound = NodePath("../CardHoverSound")
 drawCardSound = NodePath("../CardDrawSound")
 
@@ -94,7 +95,7 @@ drawCardSound = NodePath("../CardDrawSound")
 OverviewCamera = NodePath("../Overview")
 PlayerCamera = NodePath("../Player/SpringArmPivot/Camera3D")
 GBManager = NodePath("../GameBoard")
-maxRounds = 3
+maxPlaysFailed = 3
 
 [node name="KillBox" parent="." instance=ExtResource("21_nisgd")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -27.022, 0)

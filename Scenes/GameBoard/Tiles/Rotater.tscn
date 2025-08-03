@@ -19,7 +19,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.285009, 0)
 [node name="Node3D" type="Node3D" parent="." index="3" node_paths=PackedStringArray("LevelItemObject")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.297179, 0)
 script = ExtResource("2_pp28k")
-LevelItemObject = NodePath(".")
+LevelItemObject = NodePath("..")
 ItemActive = true
 EnableSpin = true
 SpinSpeed = Vector3(0, 18, 0)

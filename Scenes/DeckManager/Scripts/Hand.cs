@@ -5,6 +5,8 @@ using System.Net.Http;
 
 public partial class Hand : Node3D
 {
+    [Signal] public delegate void CardDrawnEventHandler();
+    [Signal] public delegate void CardPlayedEventHandler();
     [Export] LevelManager LevelManager;
     [Export] Deck currentDeck;
 
@@ -49,6 +51,7 @@ public partial class Hand : Node3D
                         currentHand.RemoveAt(i);
                         currentHandContainer.GetChild(i).QueueFree();
                         UpdateCardIDS();
+                        EmitSignal(SignalName.CardPlayed);
                         break;
                     }
                 }
@@ -172,6 +175,7 @@ public partial class Hand : Node3D
             currentHandContainer.AddChild(newCard);
             UpdateCardIDS();
             currentDraws++;
+            EmitSignal(SignalName.CardDrawn);
         }
     }
 

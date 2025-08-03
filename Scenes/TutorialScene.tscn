@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vk64ldo75glj"]
+[gd_scene load_steps=20 format=3 uid="uid://vk64ldo75glj"]
 
 [ext_resource type="Script" uid="uid://7gnu6pw5gypc" path="res://Scenes/SlideHolder.cs" id="1_d6567"]
 [ext_resource type="ArrayMesh" uid="uid://nfwgboedgc1w" path="res://Models/Meshes/Visor.obj" id="1_map6f"]
@@ -14,14 +14,20 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hp5wx"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gnu7h"]
-albedo_color = Color(1, 0.403443, 0.375046, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvt4f"]
+albedo_color = Color(0.948052, 0.373408, 0.0687589, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tt6wg"]
-material = SubResource("StandardMaterial3D_gnu7h")
+material = SubResource("StandardMaterial3D_jvt4f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gnu7h"]
+albedo_color = Color(0.948052, 0.373408, 0.0687589, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5v4vo"]
+top_radius = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74byh"]
-albedo_color = Color(0.365274, 0.329011, 1, 1)
+albedo_color = Color(1, 0.0655029, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_map6f"]
 albedo_color = Color(0.399575, 0.995572, 0.467816, 1)
@@ -35,8 +41,18 @@ transform = Transform3D(0.702569, -0.106724, 0.703567, 0.0752857, 0.994289, 0.07
 mesh = SubResource("CapsuleMesh_hp5wx")
 
 [node name="Glasses" type="MeshInstance3D" parent="LifeGuard"]
-transform = Transform3D(0.673059, 0, 0, 0, -2.12396e-09, -0.31194, 0, 0.0485905, -1.36353e-08, 0, 0.540026, 0.464327)
+transform = Transform3D(1.1628, 0, 0, 0, -2.12396e-09, -0.31194, 0, 0.0485905, -1.36353e-08, 0, 0.540026, 0.464327)
 mesh = SubResource("CylinderMesh_tt6wg")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="LifeGuard/Glasses"]
+transform = Transform3D(-0.15069, 7.19746e-07, 0, -1.31737e-08, -8.23293, 0, 0, 0, 0.365339, -0.424335, -7.45121, -1.12874e-09)
+material_override = SubResource("StandardMaterial3D_gnu7h")
+mesh = SubResource("CylinderMesh_5v4vo")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="LifeGuard/Glasses"]
+transform = Transform3D(-0.15069, 7.19746e-07, 0, -1.31737e-08, -8.23293, 0, 0, 0, 0.365339, 0.423591, -7.45121, 2.40497e-08)
+material_override = SubResource("StandardMaterial3D_gnu7h")
+mesh = SubResource("CylinderMesh_5v4vo")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="LifeGuard"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.162084, 0)
@@ -64,8 +80,18 @@ visible = false
 mesh = SubResource("CapsuleMesh_gnu7h")
 
 [node name="Glasses" type="MeshInstance3D" parent="LifeGuard2"]
-transform = Transform3D(0.673059, 0, 0, 0, -2.12396e-09, -0.31194, 0, 0.0485905, -1.36353e-08, 0, 0.540026, 0.464327)
+transform = Transform3D(1.1628, 0, 0, 0, -2.12396e-09, -0.31194, 0, 0.0485905, -1.36353e-08, 0, 0.540026, 0.464327)
 mesh = SubResource("CylinderMesh_tt6wg")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="LifeGuard2/Glasses"]
+transform = Transform3D(-0.15069, 7.19746e-07, 0, -1.31737e-08, -8.23293, 0, 0, 0, 0.365339, -0.424335, -7.45121, -1.12874e-09)
+material_override = SubResource("StandardMaterial3D_gnu7h")
+mesh = SubResource("CylinderMesh_5v4vo")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="LifeGuard2/Glasses"]
+transform = Transform3D(-0.15069, 7.19746e-07, 0, -1.31737e-08, -8.23293, 0, 0, 0, 0.365339, 0.423591, -7.45121, 2.40497e-08)
+material_override = SubResource("StandardMaterial3D_gnu7h")
+mesh = SubResource("CylinderMesh_5v4vo")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="LifeGuard2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.162084, 0)

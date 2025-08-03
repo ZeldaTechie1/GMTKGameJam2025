@@ -8,4 +8,4 @@
 [node name="LevelItem" parent="." index="3" node_paths=PackedStringArray("LevelItemObject") instance=ExtResource("2_6xbda")]
 LevelItemObject = NodePath("..")
 EnableSpin = true
-SpinSpeed = Vector3(0, 20, 0)
+SpinSpeed = Vector3(0, 18, 0)

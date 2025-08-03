@@ -7,7 +7,7 @@ public partial class AudioController : Node3D
 {
     [Export] LevelManager levelManager;
     [Export] AudioStreamPlayer[] musicPlayers;
-    [Export] CardManager cardManager;
+    [Export] Hand hand;
     [Export] AudioStreamPlayer playCardSound;
     [Export] AudioStreamPlayer drawCardSound;
 
@@ -16,16 +16,16 @@ public partial class AudioController : Node3D
         LowerAllMusic();
         levelManager.RoundStarted += PlayRoundMusic;
         levelManager.PlayStarted += PlayPlayingMusic;
-        cardManager.PlayCard += CardManager_PlayCard;
-        cardManager.DrawCard += CardManager_DrawCard;
+        hand.CardPlayed += CardPlayed;
+        hand.CardDrawn += CardDrawn;
     }
 
-    private void CardManager_DrawCard()
+    private void CardDrawn()
     {
         drawCardSound.Play();
     }
 
-    private void CardManager_PlayCard(int CardID)
+    private void CardPlayed()
     {
         playCardSound.Play();
     }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckin8e81s18g5"]
+[gd_scene load_steps=13 format=3 uid="uid://ckin8e81s18g5"]
 
 [ext_resource type="Script" uid="uid://dt38ple8v0tf5" path="res://Scenes/Player/Scripts/BasicPlayer.cs" id="1_a3d8c"]
 [ext_resource type="Script" uid="uid://dew2oewo5dold" path="res://Scenes/Player/Scripts/CameraRotate.cs" id="1_uvnfx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://niro6ve3eqif" path="res://Scenes/DeckManager/Scripts/Deck.cs" id="4_mtuoh"]
 [ext_resource type="PackedScene" uid="uid://hwcv6b7ghlma" path="res://Scenes/DeckManager/Card.tscn" id="5_dd0ac"]
 [ext_resource type="Script" uid="uid://ctt4sktx7t0yh" path="res://Scenes/DeckManager/Scripts/Hand.cs" id="5_htcer"]
+[ext_resource type="Texture2D" uid="uid://dyhaussn368p8" path="res://Textures/blankSlide.png" id="7_0gpr7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
@@ -99,3 +100,20 @@ offset_right = 406.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Hand/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -188.0
+offset_top = -216.0
+offset_right = 2.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("7_0gpr7")
+ignore_texture_size = true
+stretch_mode = 0

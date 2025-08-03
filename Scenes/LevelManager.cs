@@ -8,12 +8,12 @@ public partial class LevelManager : Node3D
     [Export] Camera3D OverviewCamera;
     [Export] Camera3D PlayerCamera;
     
-    [Export] public int currentRound { get; private set; }
+    [Export] public int playsFailed { get; private set; }
 
     [Export] public GameBoardManager GBManager;
-    [Export] int maxRounds;
+    [Export] int maxPlaysFailed;
     [Export] public int MaxBlinds = 3;
-    int currentBilnd;
+    [Export]int currentBlind;
 
     [Export] public Area3D GoalArea;
     [Signal] public delegate void LevelStartedEventHandler();
@@ -71,13 +71,6 @@ public partial class LevelManager : Node3D
 
     public void StartRound()
     {
-        if (currentRound > maxRounds)
-        {
-            GameIsOver();
-            GD.Print("Waahoo");
-            return;
-        }
-        currentRound++;
         currentState = LevelState.InRound;
         OverviewCamera.Current = true;
         PlayerCamera.Current = false;
@@ -94,7 +87,7 @@ public partial class LevelManager : Node3D
     {
         currentState = LevelState.InPlay;
         EmitPlayStarted();
-        levelTimer.Start();
+        //levelTimer.Start();
         levelTimer.Timeout += TimerFinished;
         GoalArea.BodyEntered += GoalArea_BodyEntered;
     }
@@ -104,6 +97,13 @@ public partial class LevelManager : Node3D
         EmitPlayFinished();
         levelTimer.Timeout -= TimerFinished;
         GoalArea.BodyEntered -= GoalArea_BodyEntered;
+        if (playsFailed > maxPlaysFailed)
+        {
+            GameIsOver();
+            GetTree().ChangeSceneToFile("res://Scenes/GameOverScene.tscn");
+            return;
+        }
+        playsFailed++;
         StartRound();
     }
 
@@ -119,10 +119,10 @@ public partial class LevelManager : Node3D
         levelTimer.Stop();
         EmitPlayerSucceeded();
         EndPlay();
-        if (currentBilnd < MaxBlinds)
+        if (currentBlind < MaxBlinds)
         {
             EmitAddToBoard();
-            currentBilnd++;
+            currentBlind++;
         }
     }
 
@@ -133,6 +133,7 @@ public partial class LevelManager : Node3D
 
     public void PlayerFail()
     {
+        playsFailed++;
         EmitPlayerFailed();
         EndPlay();
     }
