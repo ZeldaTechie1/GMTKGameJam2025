@@ -1,15 +1,16 @@
 ~ start
 Abstinence Coach: Welcome to abstinence class!
-Abstinence Coach: Don't have sex[wait=1] or you WILL get pragnet[wait=1] and die!
-Abstinence Coach: What's that?[wait=1] This is the slide course?[wait=1] Oh.
+Abstinence Coach: Don't have sex[wait=.5] or you WILL get [[pregant|pegnate|pegrent|gregnant|pregonate|pragnet|pregante|pegnat|preganananant]][wait=.5] and die!
+Abstinence Coach: What's that?[wait=.5] This is the slide course?[wait=.5] Oh.
 Lifeguard: [[Hi|Hello|Howdy]], welcome to Flip 'N Slide(TM).
 Lifeguard: The plan is simple! Go down this slide without falling. We don't have insurance therefore we are not liable for any injuries.
-Lifeguard: If you manage to get to the end, congratulations the slide will now be longer. The money saved by not having insurance let us have that tech!
+Lifeguard: If you manage to get to the end, congratulations the slide will now be longer. The money saved by not having insurance lets us have that tech!
 Lifeguard: However it only does that 3 times. Complete that and you're free to go!
 Lifeguard: Before you go down the slide you have the option to modify the slide with these Flip 'N Slide(TM) Trading Cards.
-Lifeguard: You can have up to 5 cards in your hand and draw up to 2 times per turn. For now you can play any amount of cards until you can't get more so go [wave amp=25 freq=5]craaazy[/wave].
-Lifeguard: You can move the camera around with 'A' and 'D' to get a better look at things.
-Lifeguard: Of course, we get bored easily watching you guys go down so we put obstacles in the way every turn for our entertainment.
+Lifeguard: You can have up to 5 cards in your hand and draw up to 3 times per turn. For now you can play any amount of cards until you can't get more so go [wave amp=25 freq=5]craaazy[/wave].
+Lifeguard: You can move the camera around with 'A' and 'D' to get a better look at things when you're in Build Mode(TM).
+Lifeguard: Be careful! Some cards have obstacles that can hinder your progress so choose wisely! If you're unsure just hover over the card and read the handy dandy TewlTip(TM).
+Lifeguard: If you are ready to not dissapoint, click on the Flip 'N Slide button and off to the races! Use WASD to control your character or meet your watery doom!
 Lifeguard: Fail too many times and you're banned from the park! We only like winners here.
-Lifeguard: Anyways good luck![wait=1] You're gonna need it.
+Lifeguard: Anyways good luck![wait=.5] You're gonna need it.
 => END
