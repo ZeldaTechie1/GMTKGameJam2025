@@ -63,7 +63,6 @@ public partial class ItemSpawner : Node3D
         {
             int randTile = Random.Shared.Next(0, validTiles.Count());
             Tile pickedTile = validTiles[randTile];
-            GD.Print($"Picked Tile at index {randTile} with track type {pickedTile.Track.PieceType}");
             List<ItemSpawnPoint> allSpawnPoints = pickedTile.Track.ItemSpawnPoints.ToList();
             List<(LevelItemSize, LevelItemLocation)> obstacleTypes = new List<(LevelItemSize, LevelItemLocation)>();
             foreach (ItemSpawnPoint spawnPoint in allSpawnPoints)
@@ -92,7 +91,6 @@ public partial class ItemSpawner : Node3D
 
             int randObstacle = Random.Shared.Next(0, potentialObstacles.Count);
             LevelItem obstacle = potentialObstacles[randObstacle];
-            GD.Print($"Picked obstacle at index {randObstacle} named {obstacle.Name}");
             List<ItemSpawnPoint> validSpawnPoints = allSpawnPoints.Select(x =>
             {
                 if (x.PointLocation == obstacle.ItemLocation && x.PointSize == obstacle.ItemSize)
@@ -108,10 +106,8 @@ public partial class ItemSpawner : Node3D
             }
 
             int randSpawnPoint = Random.Shared.Next(0, validSpawnPoints.Count);
-            GD.Print($"Picked Spawn Point at index {randSpawnPoint} named {validSpawnPoints[randSpawnPoint]}");
             validSpawnPoints[randSpawnPoint].AddChild(obstacle);
             potentialObstacles.RemoveAt(randObstacle);
-            GD.Print($"Spawned Obstacle! - {obstacle.Name}");
             foreach (LevelItem item in potentialObstacles)
             {
                 item.QueueFree();
@@ -239,12 +235,10 @@ public partial class ItemSpawner : Node3D
                 {
                     if (AIDPoint != null)
                     {
-                        GD.Print("Aid");
                         AIDPoint.QueueFree();
                     }
                     if (ObstaclePoint != null)
                     {
-                        GD.Print("Obstacle");
                         ObstaclePoint.QueueFree();
                     }
                     return false;
@@ -262,12 +256,10 @@ public partial class ItemSpawner : Node3D
                 {
                     if (AIDPoint != null)
                     {
-                        GD.Print("Aid");
                         AIDPoint.QueueFree();
                     }
                     if (ObstaclePoint != null)
                     {
-                        GD.Print("Obstacle");
                         ObstaclePoint.QueueFree();
                     }
                     return false;

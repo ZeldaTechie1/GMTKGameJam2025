@@ -58,17 +58,15 @@ public partial class LevelItem : Node3D
 
 
     Vector3 Origin;
-    public override void _Ready()
-    {
-        if (LevelItemObject != null)
-        {
-            Origin = LevelItemObject.Position;
-        }
-
-    }
+    bool setOrigin = false;
 
     public override void _Process(double delta)
     {
+        if(!setOrigin)
+        {
+            Origin = LevelItemObject.GlobalPosition;
+            setOrigin = false;
+        }
         if (EnableSpin)
         {
             Spin(delta, ReverseSpinSpin);
@@ -101,30 +99,28 @@ public partial class LevelItem : Node3D
     {
         Vector3 MoveSpeed = new Vector3(0, VerticalMoveSpeed, 0);
 
-        if (Math.Abs(Origin.DistanceTo(LevelItemObject.Position)) > MaxVerticalDistanceFromOrigin)
+        if (Math.Abs(Origin.DistanceTo(LevelItemObject.GlobalPosition)) > MaxVerticalDistanceFromOrigin)
         {
             VerticalMoveSwap = !VerticalMoveSwap;
         }
 
         if (VerticalMoveSwap)
         {
-            LevelItemObject.Position += MoveSpeed * (float)delta;
+            LevelItemObject.GlobalPosition += MoveSpeed * (float)delta;
         }
         else
         {
-            LevelItemObject.Position += MoveSpeed * (float)delta * -1;
+            LevelItemObject.GlobalPosition += MoveSpeed * (float)delta * -1;
 
         }
 
     }
     public void HorizontalMove(double delta)
     {
-
         if (X_Axis == false && Z_Axis == false)
         {
             X_Axis = true;
         }
-
 
         Vector3 MoveSpeed = new Vector3(0, 0, 0);
 
@@ -138,7 +134,7 @@ public partial class LevelItem : Node3D
         }
 
 
-        if (Math.Abs(Origin.DistanceTo(LevelItemObject.Position)) > MaxHorizontalDistanceFromOrigin && HCMS == true)
+        if (Math.Abs(Origin.DistanceTo(LevelItemObject.GlobalPosition)) > MaxHorizontalDistanceFromOrigin && HCMS == true)
         {
             HorizontalMoveSwap = !HorizontalMoveSwap;
             HCMS = false;
@@ -146,12 +142,12 @@ public partial class LevelItem : Node3D
 
         if (HorizontalMoveSwap)
         {
-            LevelItemObject.Position += MoveSpeed * (float)delta;
+            LevelItemObject.GlobalPosition += MoveSpeed * (float)delta;
             HCMS = true;
         }
         else
         {
-            LevelItemObject.Position += MoveSpeed * (float)delta * -1;
+            LevelItemObject.GlobalPosition += MoveSpeed * (float)delta * -1;
             HCMS = true;
         }
 

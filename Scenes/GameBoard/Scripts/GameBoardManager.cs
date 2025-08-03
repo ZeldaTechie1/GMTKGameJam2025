@@ -51,7 +51,6 @@ public partial class GameBoardManager : Node3D
 
     public void LevelStart()
     {
-        GD.PrintErr("Board Generating");
         GenerateMap();
         PopulateTileshWithTracks(Board);
     }
@@ -65,8 +64,6 @@ public partial class GameBoardManager : Node3D
         for (int i = 0; i < BoardLength; i++)
         {
             Vector3 position = this.GlobalPosition + new Vector3(0, 0, i * (CellSize));
-            //DebugDraw3D.DrawArrow(position, position + new Vector3(0, 100, 0), new Color(225, 0, 0,1),1,false,60);
-            GD.Print("Index:" + i + "Position:" + position);
             if (i == 0)
             {
                 Tile tileHolder = new Tile(i, TileType.Start);
@@ -215,7 +212,6 @@ public partial class GameBoardManager : Node3D
         {
             var test = TrackPieces[i].GetLocalScene();
             TrackPiece holder = (TrackPiece)(TrackPieces[i].Instantiate(PackedScene.GenEditState.Disabled));
-            GD.Print("Load index (" + i + "), Type [" + holder.PieceType + "]," + TrackPieces[i].ToString());
             PreloadPieces.Add(holder);
         }
     }
@@ -253,7 +249,6 @@ public partial class GameBoardManager : Node3D
     {
         SelectedTile = tile;
         Selector.Position = tile.Position;
-        GD.Print("Index:" + tile.TileID + "Position:" + tile.GlobalPosition);
 
     }
 
