@@ -9,3 +9,4 @@
 LevelItemObject = NodePath("..")
 EnableSpin = true
 SpinSpeed = Vector3(0, 18, 0)
+EnableHorizontalMovement = false

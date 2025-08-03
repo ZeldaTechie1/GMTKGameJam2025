@@ -65,7 +65,7 @@ public partial class LevelItem : Node3D
         if(!setOrigin)
         {
             Origin = LevelItemObject.GlobalPosition;
-            setOrigin = false;
+            setOrigin = true;
         }
         if (EnableSpin)
         {
@@ -132,7 +132,6 @@ public partial class LevelItem : Node3D
         {
             MoveSpeed.Z = HorizontalMoveSpeed;
         }
-
 
         if (Math.Abs(Origin.DistanceTo(LevelItemObject.GlobalPosition)) > MaxHorizontalDistanceFromOrigin && HCMS == true)
         {

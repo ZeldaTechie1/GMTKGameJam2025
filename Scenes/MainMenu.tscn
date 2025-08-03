@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cueht2g4j86up"]
+[gd_scene load_steps=5 format=3 uid="uid://cueht2g4j86up"]
 
 [ext_resource type="Script" uid="uid://d0p28wjpoa5li" path="res://Scenes/MainMenu.cs" id="1_853f1"]
 [ext_resource type="Theme" uid="uid://bhq63ycrrer6d" path="res://MainMenuTheme.tres" id="1_tt5f1"]
 [ext_resource type="AudioStream" uid="uid://cg28ydh4foa61" path="res://Sounds/Music/80s Waterbed Retiree Main.wav" id="3_8saeu"]
+[ext_resource type="Texture2D" uid="uid://dnpe33bgvosgj" path="res://Textures/FlipNSlideLogo.png" id="4_ghw46"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("playButton", "exitButton", "skipButton")]
 layout_mode = 3
@@ -21,18 +22,36 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -290.0
+offset_left = 1172.5
+offset_top = 125.5
+offset_right = -202.5
+offset_bottom = -782.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_tt5f1")
-text = "Flip 'N Slide"
+text = "TM"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -588.0
+offset_top = -433.0
+offset_right = 547.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ghw46")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

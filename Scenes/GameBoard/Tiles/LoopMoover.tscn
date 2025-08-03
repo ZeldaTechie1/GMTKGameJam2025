@@ -6,4 +6,5 @@
 
 [node name="LevelItem" parent="." index="3"]
 EnableSpin = false
+EnableHorizontalMovement = true
 HorizontalMoveSpeed = 4.0
