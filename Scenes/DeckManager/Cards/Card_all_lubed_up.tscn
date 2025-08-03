@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://rycd6uijxjqa"]
+
+[ext_resource type="PackedScene" uid="uid://bh4r31xuh0wbq" path="res://Scenes/DeckManager/Cards/DrawbackCard.tscn" id="1_lllrg"]
+[ext_resource type="PackedScene" uid="uid://c66mmil0hv177" path="res://Scenes/GameBoard/Aid/Speed Booster.tscn" id="2_35lvf"]
+[ext_resource type="PackedScene" uid="uid://c4htxkxsnexlo" path="res://Scenes/GameBoard/Obstacles/oil_slick.tscn" id="3_db62g"]
+[ext_resource type="Texture2D" uid="uid://e3uonoleiuup" path="res://Scenes/DeckManager/Cards/Textures/Speed-Floor+Oil.png" id="4_gm0yn"]
+
+[node name="All lubed up" instance=ExtResource("1_lllrg")]
+AidItem = ExtResource("2_35lvf")
+Obstacle = ExtResource("3_db62g")
+CardDrawback = true
+
+[node name="BoxContainer" parent="Panel" index="0"]
+tooltip_text = "ADDS A SPEED BOOSTER AND SOME SLPPERY OIL ;)
+"
+
+[node name="Name" parent="Panel/BoxContainer" index="0"]
+text = "ALL LUBED UP"
+
+[node name="Play Card" parent="Panel/BoxContainer" index="1"]
+texture_normal = ExtResource("4_gm0yn")

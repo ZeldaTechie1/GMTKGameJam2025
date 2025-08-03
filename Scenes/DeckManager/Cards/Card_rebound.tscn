@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwilpqc1d2ry1"]
+
+[ext_resource type="PackedScene" uid="uid://dwf7eswity88h" path="res://Scenes/DeckManager/Cards/AidCard.tscn" id="1_llget"]
+[ext_resource type="PackedScene" uid="uid://dgga0dscgmmsh" path="res://Scenes/GameBoard/Aid/Spring .tscn" id="2_52t42"]
+[ext_resource type="Texture2D" uid="uid://cq6sb3i7shj6n" path="res://Scenes/DeckManager/Cards/Textures/Bounce+Launcher.png" id="3_qpny0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fq5l"]
+bg_color = Color(0.815868, 0.530981, 0, 1)
+
+[node name="Rebound" instance=ExtResource("1_llget")]
+AidItem = ExtResource("2_52t42")
+CardDrawback = true
+
+[node name="BoxContainer" parent="Panel" index="0"]
+tooltip_text = "SPAWNS A TRAMPOLINE AND A REVERSE LAUNCHER."
+
+[node name="Name" parent="Panel/BoxContainer" index="0"]
+tooltip_text = ""
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_2fq5l")
+text = "Rebound"
+
+[node name="Play Card" parent="Panel/BoxContainer" index="1"]
+texture_normal = ExtResource("3_qpny0")

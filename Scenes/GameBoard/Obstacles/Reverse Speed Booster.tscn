@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://nqpg82hlo4vk"]
+
+[ext_resource type="Script" uid="uid://esgxv4cehgmc" path="res://Scenes/GameBoard/Obstacles/LevelItem.cs" id="1_dtx82"]
+[ext_resource type="PackedScene" uid="uid://b13624wehrv5k" path="res://Scenes/GameGrid/Modifiers/SlowDown.tscn" id="2_5c1hy"]
+
+[node name="ReverseSpeedBooster" type="Node3D" node_paths=PackedStringArray("LevelItemObject")]
+script = ExtResource("1_dtx82")
+LevelItemObject = NodePath("Slow")
+ItemType = 0
+ItemLocation = 0
+
+[node name="Slow" parent="." instance=ExtResource("2_5c1hy")]

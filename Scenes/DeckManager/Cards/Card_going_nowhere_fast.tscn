@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs7vr2xx2cs5i"]
+
+[ext_resource type="PackedScene" uid="uid://bh4r31xuh0wbq" path="res://Scenes/DeckManager/Cards/DrawbackCard.tscn" id="1_olmnu"]
+[ext_resource type="PackedScene" uid="uid://c6pbg8dl6xxni" path="res://Scenes/GameBoard/Aid/Speed Ring.tscn" id="2_ckahv"]
+[ext_resource type="Texture2D" uid="uid://cfdyw4r4h58qs" path="res://Scenes/DeckManager/Cards/Textures/SpeedRing+SlowFloor.png" id="2_kf0ou"]
+[ext_resource type="PackedScene" uid="uid://nqpg82hlo4vk" path="res://Scenes/GameBoard/Obstacles/Reverse Speed Booster.tscn" id="3_0edt3"]
+
+[node name="Going Nowhere Fast" instance=ExtResource("1_olmnu")]
+AidItem = ExtResource("2_ckahv")
+Obstacle = ExtResource("3_0edt3")
+CardDrawback = true
+
+[node name="BoxContainer" parent="Panel" index="0"]
+tooltip_text = "SPAWNS A SPEED RING AND REVERSE PAD."
+
+[node name="Name" parent="Panel/BoxContainer" index="0"]
+text = "Going Nowhere Fast"
+
+[node name="Play Card" parent="Panel/BoxContainer" index="1"]
+texture_normal = ExtResource("2_kf0ou")

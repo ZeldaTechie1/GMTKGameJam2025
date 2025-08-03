@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://d0gch2n6wyxbb" path="res://Scenes/GameGrid/Modifiers/Slick.tscn" id="2_uafm8"]
 
 [node name="OilSlick" instance=ExtResource("1_fimvj")]
-ItemSize = 2
 ItemLocation = 0
 
 [node name="Slick" parent="." index="0" instance=ExtResource("2_uafm8")]

@@ -15,7 +15,7 @@ public partial class CardManager : Node
 
     public override void _Ready()
     {
-        drawCardButton.ButtonUp += ()=> EmitDrawCard();
+    
     }
 
     public void EmitPlayCard(int CardID)
@@ -25,6 +25,10 @@ public partial class CardManager : Node
     public void EmitDrawCard()
     {
         EmitSignal(SignalName.DrawCard);
+    }
+    public void SetDraw()
+    {
+       
     }
      
 

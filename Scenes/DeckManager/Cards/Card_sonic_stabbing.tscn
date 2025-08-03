@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://by5nana7dokau"]
+
+[ext_resource type="PackedScene" uid="uid://d33t5w0okyp0u" path="res://Scenes/DeckManager/Cards/DeadlyDrawbacks.tscn" id="1_lnq75"]
+[ext_resource type="PackedScene" uid="uid://c66mmil0hv177" path="res://Scenes/GameBoard/Aid/Speed Booster.tscn" id="2_fh521"]
+[ext_resource type="PackedScene" uid="uid://o7j5acrdkk32" path="res://Scenes/GameBoard/Obstacles/floor_spikes.tscn" id="3_lywi2"]
+[ext_resource type="Texture2D" uid="uid://dp7io4543qj4f" path="res://Scenes/DeckManager/Cards/Textures/Speed-Floor+Spikes.png" id="4_aias0"]
+
+[node name="Sonic Stabbing" instance=ExtResource("1_lnq75")]
+AidItem = ExtResource("2_fh521")
+Obstacle = ExtResource("3_lywi2")
+
+[node name="BoxContainer" parent="Panel" index="0"]
+tooltip_text = "SPAWNS A SPEED BOOSTER AND A SPIKE FLOOR. "
+
+[node name="Name" parent="Panel/BoxContainer" index="0"]
+text = "Sonic Stabbing
+"
+
+[node name="Play Card" parent="Panel/BoxContainer" index="1"]
+texture_normal = ExtResource("4_aias0")

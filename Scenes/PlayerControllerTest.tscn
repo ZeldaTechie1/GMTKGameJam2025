@@ -1,23 +1,33 @@
-[gd_scene load_steps=30 format=3 uid="uid://cticu3sm2yxh6"]
+[gd_scene load_steps=40 format=3 uid="uid://cticu3sm2yxh6"]
 
 [ext_resource type="PackedScene" uid="uid://ckin8e81s18g5" path="res://Scenes/DeckManager/player.tscn" id="1_ep0r4"]
 [ext_resource type="Script" uid="uid://b46t1q6jieqtm" path="res://Scenes/SignalTester.cs" id="2_am0fs"]
 [ext_resource type="PackedScene" uid="uid://covltxgev3y2g" path="res://Scenes/DeckManager/CardManager.tscn" id="3_6hkg8"]
 [ext_resource type="PackedScene" uid="uid://d3ff2b7m68md6" path="res://Scenes/LevelManager.tscn" id="3_dkipe"]
-[ext_resource type="PackedScene" uid="uid://r12dhmtiu6u6" path="res://Scenes/DeckManager/Cards/card_speed_ring.tscn" id="4_ogjpr"]
+[ext_resource type="PackedScene" uid="uid://r12dhmtiu6u6" path="res://Scenes/DeckManager/Cards/Card_speed_ring.tscn" id="4_ogjpr"]
 [ext_resource type="Script" uid="uid://drb2gvxtjbite" path="res://Scenes/ItemSpawner.cs" id="5_6hkg8"]
+[ext_resource type="Script" uid="uid://bg6cei1pgephp" path="res://Scenes/DrawButton.cs" id="5_dld5r"]
 [ext_resource type="PackedScene" uid="uid://dmc83r8wd13em" path="res://Scenes/GameBoard/Tiles/tile_track1.tscn" id="5_x5qdp"]
 [ext_resource type="PackedScene" uid="uid://dmavjk8leao74" path="res://Scenes/GameBoard/Tiles/CheckpointTrack.tscn" id="6_35paj"]
 [ext_resource type="PackedScene" uid="uid://c7b8e5uapag4t" path="res://Scenes/GameBoard/Tiles/Tumbler.tscn" id="7_kf4my"]
 [ext_resource type="PackedScene" uid="uid://ca0ikr4k3yf2j" path="res://Scenes/GameBoard/Tiles/EndTrack.tscn" id="7_r65o5"]
 [ext_resource type="PackedScene" uid="uid://dk0w4ypsectjr" path="res://Scenes/GameBoard/Tiles/LoopDeLoopPiece.tscn" id="8_8xrjm"]
 [ext_resource type="PackedScene" uid="uid://3ci47gsa67wp" path="res://Scenes/GameBoard/Tiles/GameBoard.tscn" id="8_rntjc"]
+[ext_resource type="PackedScene" uid="uid://rycd6uijxjqa" path="res://Scenes/DeckManager/Cards/Card_all_lubed_up.tscn" id="8_yb8yy"]
+[ext_resource type="PackedScene" uid="uid://dw5eshrd88u4n" path="res://Scenes/DeckManager/Cards/Card_duality.tscn" id="9_0b6v1"]
 [ext_resource type="PackedScene" uid="uid://ccwr6mjfwj16d" path="res://Scenes/GameBoard/Tiles/LumpyPiece.tscn" id="9_l4he1"]
 [ext_resource type="PackedScene" uid="uid://ptsvuuf6jhya" path="res://Scenes/GameBoard/Tiles/starter_track.tscn" id="10_cn6qb"]
+[ext_resource type="PackedScene" uid="uid://cs7vr2xx2cs5i" path="res://Scenes/DeckManager/Cards/Card_going_nowhere_fast.tscn" id="10_r5q0r"]
+[ext_resource type="PackedScene" uid="uid://bj05hotee6o38" path="res://Scenes/DeckManager/Cards/Card_jump_and_jab.tscn" id="11_1e3uy"]
+[ext_resource type="PackedScene" uid="uid://bwilpqc1d2ry1" path="res://Scenes/DeckManager/Cards/Card_rebound.tscn" id="12_r25k4"]
 [ext_resource type="Script" uid="uid://cl1t03w1383as" path="res://Scenes/BuilderCamera.cs" id="13_35paj"]
+[ext_resource type="PackedScene" uid="uid://by5nana7dokau" path="res://Scenes/DeckManager/Cards/Card_sonic_stabbing.tscn" id="13_ijk1n"]
+[ext_resource type="PackedScene" uid="uid://qp8kmp0kesmh" path="res://Scenes/DeckManager/Cards/Card_speedy_bleedy.tscn" id="14_uwrie"]
 [ext_resource type="PackedScene" uid="uid://b5o15i4pusbsv" path="res://Scenes/GameBoard/Obstacles/BackwardsLauncher.tscn" id="15_cn6qb"]
+[ext_resource type="PackedScene" uid="uid://dd8un36yk76qb" path="res://Scenes/DeckManager/Cards/Card_speed_booster.tscn" id="15_ro4op"]
 [ext_resource type="PackedScene" uid="uid://cmrsgshyq6dm7" path="res://Scenes/GameBoard/Obstacles/floating_Spikes.tscn" id="16_s0rc4"]
 [ext_resource type="PackedScene" uid="uid://o7j5acrdkk32" path="res://Scenes/GameBoard/Obstacles/floor_spikes.tscn" id="17_6hkg8"]
+[ext_resource type="PackedScene" uid="uid://bhwqra5epulou" path="res://Scenes/DeckManager/Cards/Card_spring_mat.tscn" id="17_a8pjc"]
 [ext_resource type="PackedScene" uid="uid://df2q0jnmactw6" path="res://Scenes/GameBoard/Tiles/Rotater.tscn" id="18_i3yb2"]
 [ext_resource type="PackedScene" uid="uid://c4htxkxsnexlo" path="res://Scenes/GameBoard/Obstacles/oil_slick.tscn" id="18_nisgd"]
 [ext_resource type="PackedScene" uid="uid://dtj8xbwotvk65" path="res://Scenes/GameBoard/Tiles/Mover.tscn" id="19_ilurv"]
@@ -32,6 +42,24 @@
 
 [node name="PlayerControllerTest" type="Node3D"]
 
+[node name="PlayMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_kfvvt")
+volume_db = -10.0
+autoplay = true
+
+[node name="RoundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_eep7h")
+volume_db = -10.0
+autoplay = true
+
+[node name="CardDrawSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_ogjpr")
+volume_db = -10.0
+
+[node name="CardHoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_i3yb2")
+volume_db = -10.0
+
 [node name="Environment" type="Node3D" parent="."]
 visible = false
 
@@ -39,9 +67,8 @@ visible = false
 script = ExtResource("2_am0fs")
 levelManager = NodePath("../../LevelManager")
 
-[node name="CardManager" parent="." node_paths=PackedStringArray("Item_Spawner", "drawCardButton") instance=ExtResource("3_6hkg8")]
+[node name="CardManager" parent="." node_paths=PackedStringArray("Item_Spawner") instance=ExtResource("3_6hkg8")]
 Item_Spawner = NodePath("../ItemSpawner")
-drawCardButton = NodePath("../Player/Hand/Control/TextureButton")
 
 [node name="Player" parent="." node_paths=PackedStringArray("levelManager", "gameBoardManager") instance=ExtResource("1_ep0r4")]
 floor_constant_speed = false
@@ -54,13 +81,17 @@ Deceleration = 0.5
 levelManager = NodePath("../../LevelManager")
 
 [node name="Deck" parent="Player" index="3"]
-deck = Array[PackedScene]([ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr"), ExtResource("4_ogjpr")])
+deck = Array[PackedScene]([ExtResource("8_yb8yy"), ExtResource("9_0b6v1"), ExtResource("10_r5q0r"), ExtResource("11_1e3uy"), ExtResource("12_r25k4"), ExtResource("13_ijk1n"), ExtResource("14_uwrie"), ExtResource("15_ro4op"), ExtResource("4_ogjpr"), ExtResource("17_a8pjc"), ExtResource("8_yb8yy"), ExtResource("9_0b6v1"), ExtResource("10_r5q0r"), ExtResource("11_1e3uy"), ExtResource("12_r25k4"), ExtResource("13_ijk1n"), ExtResource("14_uwrie"), ExtResource("15_ro4op"), ExtResource("4_ogjpr"), ExtResource("17_a8pjc"), ExtResource("8_yb8yy"), ExtResource("9_0b6v1"), ExtResource("10_r5q0r"), ExtResource("11_1e3uy"), ExtResource("12_r25k4"), ExtResource("13_ijk1n"), ExtResource("14_uwrie"), ExtResource("15_ro4op"), ExtResource("4_ogjpr"), ExtResource("17_a8pjc"), ExtResource("8_yb8yy"), ExtResource("9_0b6v1"), ExtResource("10_r5q0r"), ExtResource("11_1e3uy"), ExtResource("12_r25k4"), ExtResource("13_ijk1n"), ExtResource("14_uwrie"), ExtResource("15_ro4op"), ExtResource("4_ogjpr"), ExtResource("17_a8pjc"), ExtResource("8_yb8yy"), ExtResource("9_0b6v1"), ExtResource("10_r5q0r"), ExtResource("11_1e3uy"), ExtResource("12_r25k4"), ExtResource("13_ijk1n"), ExtResource("14_uwrie"), ExtResource("15_ro4op"), ExtResource("4_ogjpr"), ExtResource("17_a8pjc")])
 
 [node name="Hand" parent="Player" index="4" node_paths=PackedStringArray("LevelManager", "OverViewCamera", "GBManager", "Card_Manager")]
 LevelManager = NodePath("../../LevelManager")
 OverViewCamera = NodePath("../../Overview")
 GBManager = NodePath("../../GameBoard")
 Card_Manager = NodePath("../../CardManager")
+
+[node name="TextureButton" parent="Player/Hand/Control" index="1" node_paths=PackedStringArray("cardManager")]
+script = ExtResource("5_dld5r")
+cardManager = NodePath("../../../../CardManager")
 
 [node name="ItemSpawner" type="Node3D" parent="." node_paths=PackedStringArray("levelManager", "gameBoardManager")]
 script = ExtResource("5_6hkg8")
@@ -102,23 +133,5 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -27.022, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.573219, 0.819402, 0, -0.819402, 0.573219, 0, 0, 0)
-
-[node name="PlayMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("21_kfvvt")
-volume_db = -10.0
-autoplay = true
-
-[node name="RoundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("22_eep7h")
-volume_db = -10.0
-autoplay = true
-
-[node name="CardDrawSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("24_ogjpr")
-volume_db = -10.0
-
-[node name="CardHoverSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_i3yb2")
-volume_db = -10.0
 
 [editable path="Player"]

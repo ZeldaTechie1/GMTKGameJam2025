@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhwqra5epulou"]
+[gd_scene load_steps=4 format=3 uid="uid://bhwqra5epulou"]
 
 [ext_resource type="PackedScene" uid="uid://dwf7eswity88h" path="res://Scenes/DeckManager/Cards/AidCard.tscn" id="1_87nc7"]
-[ext_resource type="PackedScene" uid="uid://c66mmil0hv177" path="res://Scenes/GameBoard/Aid/Speed Booster.tscn" id="2_1bn8k"]
+[ext_resource type="PackedScene" uid="uid://dgga0dscgmmsh" path="res://Scenes/GameBoard/Aid/Spring .tscn" id="2_1bn8k"]
+[ext_resource type="Texture2D" uid="uid://chr0oi4d4ouxm" path="res://Scenes/DeckManager/Cards/Textures/Bouncer.png" id="3_r8g36"]
 
-[node name="Spring Mat" instance=ExtResource("1_87nc7")]
+[node name="Trampoline" instance=ExtResource("1_87nc7")]
+tooltip_text = "SPAWNS A TRAMPOLINE "
 AidItem = ExtResource("2_1bn8k")
 Obstacle = null
 
 [node name="Name" parent="Panel/BoxContainer" index="0"]
 tooltip_text = "A springy piece of slide that will bounce you up into the air."
-text = "Spring mat"
+text = "Trampoline
+"
 
 [node name="Play Card" parent="Panel/BoxContainer" index="1"]
 tooltip_text = "A springy piece of slide that will bounce you up into the air
 ."
+texture_normal = ExtResource("3_r8g36")

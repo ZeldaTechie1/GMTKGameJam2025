@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://qp8kmp0kesmh"]
+
+[ext_resource type="PackedScene" uid="uid://d33t5w0okyp0u" path="res://Scenes/DeckManager/Cards/DeadlyDrawbacks.tscn" id="1_f7bpn"]
+[ext_resource type="PackedScene" uid="uid://c6pbg8dl6xxni" path="res://Scenes/GameBoard/Aid/Speed Ring.tscn" id="2_ws2pn"]
+[ext_resource type="PackedScene" uid="uid://cmrsgshyq6dm7" path="res://Scenes/GameBoard/Obstacles/floating_Spikes.tscn" id="3_sdt2w"]
+[ext_resource type="Texture2D" uid="uid://c155xa383knyy" path="res://Scenes/DeckManager/Cards/Textures/SpeedRing+Spikes.png" id="4_aop66"]
+
+[node name="Speedy Bleedy" instance=ExtResource("1_f7bpn")]
+AidItem = ExtResource("2_ws2pn")
+Obstacle = ExtResource("3_sdt2w")
+
+[node name="BoxContainer" parent="Panel" index="0"]
+tooltip_text = "SPAWNS A SPEED RING AND FLOATING SPIKES"
+
+[node name="Name" parent="Panel/BoxContainer" index="0"]
+text = "Speedy Bleedy
+"
+
+[node name="Play Card" parent="Panel/BoxContainer" index="1"]
+texture_normal = ExtResource("4_aop66")
