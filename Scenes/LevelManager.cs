@@ -7,11 +7,12 @@ public partial class LevelManager : Node3D
     [Export] RichTextLabel timerText;
     [Export] Camera3D OverviewCamera;
     [Export] Camera3D PlayerCamera;
+    [Export] Button playButton;
     
     [Export] public int playsFailed { get; private set; }
 
     [Export] public GameBoardManager GBManager;
-    [Export] int maxPlaysFailed;
+    [Export] public int maxPlaysFailed { get; private set; }
     [Export] public int MaxBlinds = 3;
     [Export]int currentBlind;
 
@@ -35,6 +36,7 @@ public partial class LevelManager : Node3D
     {
         Input.MouseMode = Input.MouseModeEnum.Visible;
         StartLevel();
+        playButton.ButtonUp += FlipNSlideButtonPressed;
     }
 
     public override void _Process(double delta)
@@ -46,14 +48,14 @@ public partial class LevelManager : Node3D
             int millisecs = Mathf.FloorToInt((levelTimer.TimeLeft - (int)levelTimer.TimeLeft) * 100);
             timerText.Text = $"{minutes}:{seconds}:{millisecs}";
         }
+    }
 
-        if (Input.IsActionJustPressed("StartPlay"))
+    private void FlipNSlideButtonPressed()
+    {
+        if (currentState == LevelState.InRound)
         {
-            if (currentState == LevelState.InRound)
-            {
-                EndRound();
-                StartPlay();
-            }
+            EndRound();
+            StartPlay();
         }
     }
 
@@ -97,13 +99,13 @@ public partial class LevelManager : Node3D
         EmitPlayFinished();
         levelTimer.Timeout -= TimerFinished;
         GoalArea.BodyEntered -= GoalArea_BodyEntered;
-        if (playsFailed > maxPlaysFailed)
+        if (playsFailed >= maxPlaysFailed)
         {
             GameIsOver();
             GetTree().ChangeSceneToFile("res://Scenes/GameOverScene.tscn");
             return;
         }
-        playsFailed++;
+        
         StartRound();
     }
 

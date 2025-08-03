@@ -14,8 +14,8 @@ public partial class Hand : Node3D
     [Export] HBoxContainer currentHandContainer;
     [Export] Control mainUIContainer;
     [Export] int maxHandCount;
-    [Export] int maxDraws;
-    [Export] int currentDraws;
+    [Export] public int maxDraws { get; private set; }
+    [Export] public int currentDraws { get; private set; }
     [Export] Camera3D OverViewCamera;
 
     [Export] GameBoardManager GBManager;

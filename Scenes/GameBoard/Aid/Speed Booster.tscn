@@ -10,4 +10,5 @@ ItemLocation = 0
 ItemActive = true
 
 [node name="SpeedUp" parent="." instance=ExtResource("2_ur4fl")]
+transform = Transform3D(-5, 0, 4.37114e-07, 0, 5, 0, -4.37114e-07, 0, -5, 0, 0, 0)
 LaunchPower = 5.0

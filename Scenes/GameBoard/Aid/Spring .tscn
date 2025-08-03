@@ -10,3 +10,4 @@ ItemLocation = 0
 ItemActive = true
 
 [node name="BaseArea" parent="." instance=ExtResource("2_ajv7a")]
+LaunchPower = 10.0

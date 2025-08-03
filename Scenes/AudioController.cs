@@ -34,11 +34,19 @@ public partial class AudioController : Node3D
     {
         LowerAllMusic();
         musicPlayers[0].VolumeDb = -10;
+        if (levelManager.playsFailed == 2)
+        {
+            musicPlayers[0].PitchScale = 1.15f;
+        }
     }
     public void PlayPlayingMusic()
     {
         LowerAllMusic();
         musicPlayers[1].VolumeDb = -10;
+        if (levelManager.playsFailed == 2)
+        {
+            musicPlayers[1].PitchScale = 1.15f;
+        }
     }
 
     public void LowerAllMusic()

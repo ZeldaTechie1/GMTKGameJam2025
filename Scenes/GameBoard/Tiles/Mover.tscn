@@ -4,6 +4,51 @@
 
 [node name="TrackPiece" instance=ExtResource("1_c18lf")]
 
+[node name="Item Spawn point" parent="ItemPoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, 0)
+
+[node name="Item Spawn point2" parent="ItemPoints" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, -10)
+
+[node name="Item Spawn point3" parent="ItemPoints" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, -20)
+
+[node name="Item Spawn point4" parent="ItemPoints" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, 10)
+
+[node name="Item Spawn point5" parent="ItemPoints" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, 20)
+
+[node name="Item Spawn point11" parent="ItemPoints" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, 0)
+
+[node name="Item Spawn point12" parent="ItemPoints" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, -10)
+
+[node name="Item Spawn point13" parent="ItemPoints" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, -20)
+
+[node name="Item Spawn point14" parent="ItemPoints" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, 10)
+
+[node name="Item Spawn point15" parent="ItemPoints" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, 20)
+
+[node name="Item Spawn point16" parent="ItemPoints" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, 0)
+
+[node name="Item Spawn point17" parent="ItemPoints" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, -10)
+
+[node name="Item Spawn point18" parent="ItemPoints" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, -20)
+
+[node name="Item Spawn point19" parent="ItemPoints" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, 10)
+
+[node name="Item Spawn point20" parent="ItemPoints" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880445, 20)
+
 [node name="Node3D" parent="." index="3"]
 EnableSpin = false
 EnableHorizontalMovement = true

@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://niro6ve3eqif" path="res://Scenes/DeckManager/Scripts/Deck.cs" id="4_mtuoh"]
 [ext_resource type="PackedScene" uid="uid://hwcv6b7ghlma" path="res://Scenes/DeckManager/Card.tscn" id="5_dd0ac"]
 [ext_resource type="Script" uid="uid://ctt4sktx7t0yh" path="res://Scenes/DeckManager/Scripts/Hand.cs" id="5_htcer"]
-[ext_resource type="Texture2D" uid="uid://dyhaussn368p8" path="res://Textures/blankSlide.png" id="7_0gpr7"]
+[ext_resource type="Texture2D" uid="uid://miigyqsba3ju" path="res://Scenes/DeckManager/Cards/Textures/CardBacks.png" id="7_0gpr7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
@@ -108,8 +108,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -188.0
-offset_top = -216.0
+offset_left = -253.0
+offset_top = -291.0
 offset_right = 2.0
 offset_bottom = 4.0
 grow_horizontal = 0

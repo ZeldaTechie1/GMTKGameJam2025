@@ -101,12 +101,12 @@ PointSize = 0
 PointLocation = 1
 
 [node name="Item Spawn point8" parent="ItemPoints" index="16" instance=ExtResource("3_b3hv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.36372, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28098, -20)
 PointSize = 0
 PointLocation = 1
 
 [node name="Item Spawn point10" parent="ItemPoints" index="17" instance=ExtResource("3_b3hv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.02538, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.942642, 20)
 PointSize = 0
 PointLocation = 1
 
@@ -116,12 +116,12 @@ PointSize = 1
 PointLocation = 1
 
 [node name="Item Spawn point20" parent="ItemPoints" index="19" instance=ExtResource("3_b3hv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.36372, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28098, -20)
 PointSize = 1
 PointLocation = 1
 
 [node name="Item Spawn point21" parent="ItemPoints" index="20" instance=ExtResource("3_b3hv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.02538, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.942642, 20)
 PointSize = 1
 PointLocation = 1
 
@@ -131,11 +131,11 @@ PointSize = 2
 PointLocation = 1
 
 [node name="Item Spawn point23" parent="ItemPoints" index="22" instance=ExtResource("3_b3hv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.36372, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28098, -20)
 PointSize = 2
 PointLocation = 1
 
 [node name="Item Spawn point24" parent="ItemPoints" index="23" instance=ExtResource("3_b3hv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.02538, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.942642, 20)
 PointSize = 2
 PointLocation = 1
