@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://df2q0jnmactw6"]
+[gd_scene load_steps=6 format=3 uid="uid://df2q0jnmactw6"]
 
 [ext_resource type="PackedScene" uid="uid://b0w1x4nhy32y6" path="res://Scenes/GameBoard/Tiles/straightPiece.tscn" id="1_cf0ck"]
 [ext_resource type="Script" uid="uid://esgxv4cehgmc" path="res://Scenes/GameBoard/Obstacles/LevelItem.cs" id="2_pp28k"]
+[ext_resource type="Material" uid="uid://0m6q8o81j3y4" path="res://Scenes/GameBoard/Tiles/PissYellow.tres" id="3_a2och"]
 [ext_resource type="ArrayMesh" uid="uid://cijjltci7t2b5" path="res://Models/Meshes/StraightTrack.obj" id="3_wvhpi"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a2och"]
@@ -26,6 +27,7 @@ SpinSpeed = Vector3(0, 18, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.285009, 0)
+material_override = ExtResource("3_a2och")
 mesh = ExtResource("3_wvhpi")
 skeleton = NodePath("../..")
 

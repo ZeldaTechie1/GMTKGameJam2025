@@ -2,17 +2,16 @@
 
 [ext_resource type="Script" uid="uid://jblepadonsf3" path="res://Scenes/GameGrid/Modifiers/Modifier.cs" id="1_wyvvk"]
 [ext_resource type="Shader" uid="uid://du2w32aewqotk" path="res://kill_box.gdshader" id="2_uow2p"]
+[ext_resource type="Texture2D" uid="uid://nv0et0ny5mj" path="res://Textures/Water-Texture..png" id="3_8pbpc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uow2p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42jto"]
 render_priority = 0
 shader = ExtResource("2_uow2p")
 shader_parameter/slide_speed = 0.3
 shader_parameter/wobble_speed = 1.0
 shader_parameter/wobble_intensity = 0.4
-shader_parameter/texture_scale = 0.2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pbpc"]
-next_pass = SubResource("ShaderMaterial_uow2p")
+shader_parameter/texture_scale = 0.05
+shader_parameter/water = ExtResource("3_8pbpc")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8pbpc"]
 size = Vector2(20000, 20000)
@@ -26,7 +25,7 @@ script = ExtResource("1_wyvvk")
 modifierType = 6
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-material_override = SubResource("StandardMaterial3D_8pbpc")
+material_override = SubResource("ShaderMaterial_42jto")
 mesh = SubResource("PlaneMesh_8pbpc")
 skeleton = NodePath("../..")
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccwr6mjfwj16d"]
+[gd_scene load_steps=6 format=3 uid="uid://ccwr6mjfwj16d"]
 
 [ext_resource type="PackedScene" uid="uid://dmc83r8wd13em" path="res://Scenes/GameBoard/Tiles/tile_track1.tscn" id="1_pamds"]
+[ext_resource type="Material" uid="uid://0m6q8o81j3y4" path="res://Scenes/GameBoard/Tiles/PissYellow.tres" id="2_jqwyh"]
 [ext_resource type="ArrayMesh" uid="uid://ceerfqso2d3uf" path="res://Models/Meshes/LumpsAndBumps.obj" id="2_tp75b"]
 [ext_resource type="PackedScene" uid="uid://0pu8isihwh16" path="res://item_spawn_point.tscn" id="3_ss7qx"]
 
@@ -9,6 +10,7 @@ data = PackedVector3Array(5.0003, -0.4706, 23.5822, 4.5993, -0.4706, 23.5822, 5.
 
 [node name="LumpyPiece" node_paths=PackedStringArray("ItemSpawnPoints") instance=ExtResource("1_pamds")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_jqwyh")
 mesh = ExtResource("2_tp75b")
 ItemSpawnPoints = [NodePath("ItemPoints/Item Spawn point6"), NodePath("ItemPoints/Item Spawn point7"), NodePath("ItemPoints/Item Spawn point8"), NodePath("ItemPoints/Item Spawn point9"), NodePath("ItemPoints/Item Spawn point10"), NodePath("ItemPoints/Item Spawn point11"), NodePath("ItemPoints/Item Spawn point12"), NodePath("ItemPoints/Item Spawn point13"), NodePath("ItemPoints/Item Spawn point14"), NodePath("ItemPoints/Item Spawn point15"), NodePath("ItemPoints/Item Spawn point16"), NodePath("ItemPoints/Item Spawn point17"), NodePath("ItemPoints/Item Spawn point18"), NodePath("ItemPoints/Item Spawn point19"), NodePath("ItemPoints/Item Spawn point20"), NodePath("ItemPoints/Item Spawn point21"), NodePath("ItemPoints/Item Spawn point22"), NodePath("ItemPoints/Item Spawn point23"), NodePath("ItemPoints/Item Spawn point24"), NodePath("ItemPoints/Item Spawn point25"), NodePath("ItemPoints/Item Spawn point26"), NodePath("ItemPoints/Item Spawn point27"), NodePath("ItemPoints/Item Spawn point28"), NodePath("ItemPoints/Item Spawn point29"), NodePath("ItemPoints/Item Spawn point30"), NodePath("ItemPoints/Item Spawn point31"), NodePath("ItemPoints/Item Spawn point32"), NodePath("ItemPoints/Item Spawn point33"), NodePath("ItemPoints/Item Spawn point34"), NodePath("ItemPoints/Item Spawn point35")]
 

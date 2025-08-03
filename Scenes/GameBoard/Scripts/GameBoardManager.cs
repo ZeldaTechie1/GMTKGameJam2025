@@ -45,9 +45,22 @@ public partial class GameBoardManager : Node3D
     {
         Level_Manager.GenerateBoard += LevelStart;
         Level_Manager.AddToBoard += AddToBoard;
+        Level_Manager.PlayStarted += PlayStart;
+        Level_Manager.RoundStarted += RoundStart;
+
         base._Ready();
         LoadPieces();
     }
+
+    private void PlayStart()
+    {
+        Selector.Visible = false;
+    }
+        private void RoundStart()
+    {
+        Selector.Visible = true;
+    }
+
 
     public void LevelStart()
     {
