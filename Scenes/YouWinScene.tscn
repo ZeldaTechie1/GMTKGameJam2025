@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dmfbte8nqnoh0"]
+[gd_scene load_steps=23 format=3 uid="uid://duu14dsr8r8hw"]
 
-[ext_resource type="ArrayMesh" uid="uid://nfwgboedgc1w" path="res://Models/Meshes/Visor.obj" id="1_a74uc"]
-[ext_resource type="Script" uid="uid://b52adp31p3mjv" path="res://Scenes/GameFinish.cs" id="1_gv64c"]
-[ext_resource type="Texture2D" uid="uid://bqg24nm6ao4wl" path="res://Textures/Clouds.png" id="2_bv81r"]
-[ext_resource type="AudioStream" uid="uid://b2e31hw8pnotv" path="res://Sounds/Music/Childrens Adventure Anthem Main.wav" id="3_bv81r"]
-[ext_resource type="Texture2D" uid="uid://bbv10ql6g3021" path="res://Textures/BetterLuckNextTime.png" id="3_gv64c"]
-[ext_resource type="Texture2D" uid="uid://cwcnpa2nuu8v7" path="res://Textures/Twin.png" id="4_bv81r"]
+[ext_resource type="ArrayMesh" uid="uid://nfwgboedgc1w" path="res://Models/Meshes/Visor.obj" id="1_jv1s6"]
+[ext_resource type="Script" uid="uid://b52adp31p3mjv" path="res://Scenes/GameFinish.cs" id="1_k2e1v"]
+[ext_resource type="Texture2D" uid="uid://bqg24nm6ao4wl" path="res://Textures/Clouds.png" id="2_k2e1v"]
+[ext_resource type="Texture2D" uid="uid://bc51syeegngso" path="res://Textures/YouDidIt.png" id="3_jv1s6"]
+[ext_resource type="Texture2D" uid="uid://cwcnpa2nuu8v7" path="res://Textures/Twin.png" id="4_x8vnj"]
+[ext_resource type="AudioStream" uid="uid://b2e31hw8pnotv" path="res://Sounds/Music/Childrens Adventure Anthem Main.wav" id="5_d2857"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gv64c"]
 
@@ -58,8 +58,8 @@ albedo_color = Color(1, 0.0666667, 0, 0.196078)
 transparency = 1
 albedo_color = Color(0.4, 0.996078, 0.466667, 0.196078)
 
-[node name="GameOverScene" type="Node3D" node_paths=PackedStringArray("exitButton", "mainMenuButton")]
-script = ExtResource("1_gv64c")
+[node name="YouWin" type="Node3D" node_paths=PackedStringArray("exitButton", "mainMenuButton")]
+script = ExtResource("1_k2e1v")
 exitButton = NodePath("SlideHolder/Button")
 mainMenuButton = NodePath("SlideHolder/Button2")
 
@@ -98,7 +98,7 @@ material = SubResource("StandardMaterial3D_7n5gh")
 
 [node name="Visor" type="MeshInstance3D" parent="LifeGuard"]
 transform = Transform3D(0.284, -2.13186e-09, 2.98023e-08, -1.30603e-09, 0.284, 1.00408e-09, -2.98023e-08, 1.81171e-09, 0.284, -0.00128005, 0.917045, 0.0697681)
-mesh = ExtResource("1_a74uc")
+mesh = ExtResource("1_jv1s6")
 surface_material_override/0 = SubResource("StandardMaterial3D_cofyd")
 
 [node name="LifeGuard2" type="MeshInstance3D" parent="."]
@@ -144,7 +144,7 @@ material = SubResource("StandardMaterial3D_jlaih")
 [node name="Visor" type="MeshInstance3D" parent="LifeGuard2"]
 transform = Transform3D(0.284, -2.13186e-09, 2.98023e-08, -1.30603e-09, 0.284, 1.00408e-09, -2.98023e-08, 1.81171e-09, 0.284, -0.00128005, 0.917045, 0.0697681)
 layers = 2
-mesh = ExtResource("1_a74uc")
+mesh = ExtResource("1_jv1s6")
 surface_material_override/0 = SubResource("StandardMaterial3D_odd1w")
 
 [node name="SlideHolder" type="Control" parent="."]
@@ -183,7 +183,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_bv81r")
+texture = ExtResource("2_k2e1v")
 expand_mode = 3
 
 [node name="TextureRect2" type="TextureRect" parent="SlideHolder/TextureRect"]
@@ -198,7 +198,7 @@ offset_right = -14.0
 offset_bottom = -161.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_gv64c")
+texture = ExtResource("3_jv1s6")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="SlideHolder/TextureRect"]
@@ -212,7 +212,7 @@ offset_top = 609.0
 offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_bv81r")
+texture = ExtResource("4_x8vnj")
 expand_mode = 1
 
 [node name="Button" type="Button" parent="SlideHolder"]
@@ -251,6 +251,6 @@ transform = Transform3D(0.69724, -0.509431, 0.504318, 0, 0.703531, 0.710664, -0.
 layers = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_bv81r")
+stream = ExtResource("5_d2857")
 volume_db = -10.0
 autoplay = true
